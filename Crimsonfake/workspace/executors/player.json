@@ -9,6 +9,12 @@
             ]
         },
         {
+            "type": "windowParameters",
+            "list": [
+                "windowParameters"
+            ]
+        },
+        {
             "type": "playerWorldState",
             "list": [
                 "worldState"
@@ -18,6 +24,12 @@
             "type": "inputs",
             "list": [
                 "inputs"
+            ]
+        },
+        {
+            "type": "playerWeaponState",
+            "list": [
+                "weaponState"
             ]
         }
     ],
@@ -30,13 +42,20 @@
         }
     ],
     "contextsToFlush": [
-        "renderCmds"
+        "renderCmds",
+        "bulletsToCreate"
     ],
     "contextsWriteTo": [
         {
             "type": "renderCmds",
             "list": [
                 "renderCmds"
+            ]
+        },
+        {
+            "type": "bullets",
+            "list": [
+                "bulletsToCreate"
             ]
         }
     ]

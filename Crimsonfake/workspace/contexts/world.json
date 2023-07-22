@@ -1,0 +1,24 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "size",
+            "initial": 512
+        },
+        {
+            "type": "object",
+            "dataType": "int32_t",
+            "name": "numOfTiles",
+            "initial": 4
+        },
+        {
+            "type": "object",
+            "dataType": "Engine::String",
+            "name": "textureName",
+            "initial": "world.png"
+        }
+    ]
+}

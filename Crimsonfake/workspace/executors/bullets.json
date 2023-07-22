@@ -1,0 +1,38 @@
+{
+    "whoIAm": "Executor",
+    "version": 1,
+    "contextsLocal": [
+        {
+            "type": "bullets",
+            "list": [
+                "active"
+            ]
+        },
+        {
+            "type": "elements",
+            "list": [
+                "toRemove"
+            ]
+        }
+    ],
+    "contextsShared": [
+        {
+            "type": "bullets",
+            "list": [
+                "toCreate"
+            ]
+        }
+    ],
+    "contextsToFlush": [
+        "renderCmds",
+        "toRemove"
+    ],
+    "contextsWriteTo": [
+        {
+            "type": "renderCmds",
+            "list": [
+                "renderCmds"
+            ]
+        }
+    ]
+}

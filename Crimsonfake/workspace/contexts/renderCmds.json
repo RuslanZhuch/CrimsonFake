@@ -3,9 +3,29 @@
     "version": 1,
     "data": [
         {
+            "type": "object",
+            "dataType": "float",
+            "merge": "simple_nz",
+            "name": "cameraX",
+            "initial": 0
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "merge": "simple_nz",
+            "name": "cameraY",
+            "initial": 0
+        },
+        {
             "type": "dbbuffer",
             "dataType": "uint64_t",
             "name": "materialNames",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "depth",
             "capacity": 128
         },
         {

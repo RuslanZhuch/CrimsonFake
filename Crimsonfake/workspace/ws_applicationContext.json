@@ -15,10 +15,15 @@
         {
             "contextName": "mouse",
             "instanceName": "mouse"
+        },
+        {
+            "contextName": "bullets",
+            "instanceName": "bulletsToCreate"
         }
     ],
     "sharedContextsInstancesToFlush": [
-        "renderCmds"
+        "renderCmds",
+        "bulletsToCreate"
     ],
     "sharedContextsUsage": [
         {
@@ -35,6 +40,11 @@
             "instanceName": "mouse",
             "executorName": "player",
             "executorSharedName": "mouse"
+        },
+        {
+            "instanceName": "bulletsToCreate",
+            "executorName": "bullets",
+            "executorSharedName": "toCreate"
         }
     ],
     "sharedContextsMerge": [
@@ -57,6 +67,21 @@
             "instanceName": "renderCmds",
             "executorName": "player",
             "executorContextName": "renderCmds"
+        },
+        {
+            "instanceName": "renderCmds",
+            "executorName": "bullets",
+            "executorContextName": "renderCmds"
+        },
+        {
+            "instanceName": "renderCmds",
+            "executorName": "world",
+            "executorContextName": "renderCmds"
+        },
+        {
+            "instanceName": "bulletsToCreate",
+            "executorName": "player",
+            "executorContextName": "bulletsToCreate"
         }
     ]
 }

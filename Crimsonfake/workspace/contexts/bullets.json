@@ -1,0 +1,36 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "dbbuffer",
+            "dataType": "uint64_t",
+            "name": "textureNames",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "float",
+            "name": "velocity",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "Types::Coord::Vec2f",
+            "name": "position",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "float",
+            "name": "angle",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "float",
+            "name": "timeLeft",
+            "capacity": 128
+        }
+    ]
+}

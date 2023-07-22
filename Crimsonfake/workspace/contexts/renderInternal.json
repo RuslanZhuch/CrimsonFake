@@ -11,6 +11,12 @@
             "type": "object",
             "dataType": "ProtoRenderer::mesh_t",
             "name": "spriteMesh"
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "priority",
+            "capacity": 128
         }
     ]
 }

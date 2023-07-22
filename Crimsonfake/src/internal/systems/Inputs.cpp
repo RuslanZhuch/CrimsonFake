@@ -56,8 +56,8 @@ int32_t Game::Inputs::computeFireComponent(uint32_t currentInputs, uint32_t prev
     const auto table{ Dod::CondTable::generate(tableSrc, xOrMasksMem, ignoreMem) };
 
     const uint32_t inputs{
-        (uint32_t((currentInputs & 8) != 0) << 0) |
-        (uint32_t((prevInputs & 8) != 0) << 1)
+        (uint32_t((currentInputs & 16) != 0) << 0) |
+        (uint32_t((prevInputs & 16) != 0) << 1)
     };
 
     std::array<int32_t, 16> qValuesMem;
@@ -68,7 +68,7 @@ int32_t Game::Inputs::computeFireComponent(uint32_t currentInputs, uint32_t prev
 
     const auto transformOutputs{ std::to_array<int32_t>({
         1,
-        0,
+        1,
         0,
     }) };
 

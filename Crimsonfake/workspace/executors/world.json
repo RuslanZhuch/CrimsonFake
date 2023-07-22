@@ -1,0 +1,25 @@
+{
+    "whoIAm": "Executor",
+    "version": 1,
+    "contextsLocal": [
+        {
+            "type": "world",
+            "list": [
+                "world"
+            ]
+        }
+    ],
+    "contextsShared": [
+    ],
+    "contextsToFlush": [
+        "renderCmds"
+    ],
+    "contextsWriteTo": [
+        {
+            "type": "renderCmds",
+            "list": [
+                "renderCmds"
+            ]
+        }
+    ]
+}

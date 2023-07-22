@@ -18,11 +18,17 @@
         "renderCmds.json",
         "inputs.json",
         "mouse.json",
+        "world.json",
+        "bullets.json",
+        "elements.json",
+        "playerWeaponState.json",
         "windowParameters.json"
     ],
     "executors_paths": [
         "render.json",
         "player.json",
+        "world.json",
+        "bullets.json",
         "assets.json"
     ]
 }

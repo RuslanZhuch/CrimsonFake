@@ -24,7 +24,7 @@
             "type": "object",
             "dataType": "float",
             "name": "size",
-            "initial": 32
+            "initial": 16
         },
         {
             "type": "object",

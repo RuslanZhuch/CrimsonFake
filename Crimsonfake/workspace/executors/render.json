@@ -30,7 +30,8 @@
         }
     ],
     "contextsToFlush": [
-        "application"
+        "application",
+        "internal"
     ],
     "contextsWriteTo": [
         {
