@@ -3,8 +3,8 @@ root_dir = Path.cwd()
 
 import sys
 sys.path.append(root_dir)
-sys.path.append("../../RisingCore/tools/engineCodegen/src")
-sys.path.append("../../RisingCore/tools/thirdparty/code_generator/src")
+sys.path.append("../frameworks/RisingCore/tools/engineCodegen/src")
+sys.path.append("../frameworks/RisingCore/tools/thirdparty/code_generator/src")
 
 import project
 
