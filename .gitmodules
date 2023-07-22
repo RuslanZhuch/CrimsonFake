@@ -1,0 +1,6 @@
+[submodule "frameworks/RisingCore"]
+	path = frameworks/RisingCore
+	url = git@github.com:RuslanZhuch/RisingCore.git
+[submodule "frameworks/ProtoRender"]
+	path = frameworks/ProtoRender
+	url = git@github.com:RuslanZhuch/ProtoRender.git

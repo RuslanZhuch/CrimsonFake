@@ -1,0 +1,28 @@
+{
+    "project_dest_folder": "src",
+    "application_context_path": "ws_applicationContext.json",
+    "project_root_src_folder": "workspace",
+    "project_root_src_types": "workspace/types",
+    "project_contexts_src_folder": "workspace/contexts",
+    "project_executors_src_folder": "workspace/executors",
+    "types_paths": [
+        "default.json",
+        "framework.json"
+    ],
+    "contexts_paths": [
+        "application.json",
+        "playerInitial.json",
+        "playerWorldState.json",
+        "renderInternal.json",
+        "materials.json",
+        "renderCmds.json",
+        "inputs.json",
+        "mouse.json",
+        "windowParameters.json"
+    ],
+    "executors_paths": [
+        "render.json",
+        "player.json",
+        "assets.json"
+    ]
+}

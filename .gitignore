@@ -1,0 +1,9 @@
+﻿.vs
+x64
+libs/RisingCore
+libs/ProtoRender
+Crimsonfake/workspace/contexts/prev
+Crimsonfake/workspace/executors/prev
+Crimsonfake/workspace/prev
+Crimsonfake/src/contexts
+Crimsonfake/src/executors/*Executor.*

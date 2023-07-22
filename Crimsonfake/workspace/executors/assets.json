@@ -1,0 +1,19 @@
+{
+    "whoIAm": "Executor",
+    "version": 1,
+    "contextsLocal": [
+    ],
+    "contextsShared": [
+    ],
+    "contextsToFlush": [
+        "materials"
+    ],
+    "contextsWriteTo": [
+        {
+            "type": "materials",
+            "list": [
+                "materials"
+            ]
+        }
+    ]
+}

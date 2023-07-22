@@ -1,0 +1,18 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "dbbuffer",
+            "dataType": "uint64_t",
+            "name": "materialNames",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "Types::Render::Cmd",
+            "name": "commands",
+            "capacity": 128
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "ProtoRenderer::rendererPtr_t",
+            "name": "renderer"
+        },
+        {
+            "type": "object",
+            "dataType": "ProtoRenderer::mesh_t",
+            "name": "spriteMesh"
+        }
+    ]
+}

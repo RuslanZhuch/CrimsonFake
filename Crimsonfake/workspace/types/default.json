@@ -1,0 +1,12 @@
+{
+    "whoIAm": "TypesDesc",
+    "version": 1,
+    "data":{
+        "int32_t": "None",
+        "uint32_t": "None",
+        "float": "None",
+        "int64_t": "None",
+        "uint64_t": "None",
+        "Engine::String": "engine/String.h"
+    }
+}

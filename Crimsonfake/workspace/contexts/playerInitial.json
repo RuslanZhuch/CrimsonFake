@@ -1,0 +1,36 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "x",
+            "initial": 100
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "y",
+            "initial": 100
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "velocity",
+            "initial": 200
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "size",
+            "initial": 32
+        },
+        {
+            "type": "object",
+            "dataType": "Engine::String",
+            "name": "textureName",
+            "initial": "player.png"
+        }
+    ]
+}

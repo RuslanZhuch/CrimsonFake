@@ -1,0 +1,43 @@
+{
+    "whoIAm": "Executor",
+    "version": 1,
+    "contextsLocal": [
+        {
+            "type": "playerInitial",
+            "list": [
+                "initial"
+            ]
+        },
+        {
+            "type": "playerWorldState",
+            "list": [
+                "worldState"
+            ]
+        },
+        {
+            "type": "inputs",
+            "list": [
+                "inputs"
+            ]
+        }
+    ],
+    "contextsShared": [
+        {
+            "type": "mouse",
+            "list": [
+                "mouse"
+            ]
+        }
+    ],
+    "contextsToFlush": [
+        "renderCmds"
+    ],
+    "contextsWriteTo": [
+        {
+            "type": "renderCmds",
+            "list": [
+                "renderCmds"
+            ]
+        }
+    ]
+}

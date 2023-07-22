@@ -1,0 +1,18 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "x",
+            "initial": 0
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "y",
+            "initial": 0
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "uint32_t",
+            "name": "prevInputs",
+            "initial": 0
+        },
+        {
+            "type": "object",
+            "dataType": "uint32_t",
+            "name": "inputs",
+            "initial": 0
+        },
+        {
+            "type": "object",
+            "dataType": "Game::Inputs::MoveState",
+            "name": "moveState"
+        }
+    ]
+}

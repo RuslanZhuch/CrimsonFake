@@ -1,0 +1,49 @@
+{
+    "whoIAm": "Executor",
+    "version": 1,
+    "contextsLocal": [
+        {
+            "type": "renderInternal",
+            "list": [
+                "internal"
+            ]
+        },
+        {
+            "type": "windowParameters",
+            "list": [
+                "windowParameters"
+            ]
+        }
+    ],
+    "contextsShared": [
+        {
+            "type": "renderCmds",
+            "list": [
+                "cmds"
+            ]
+        },
+        {
+            "type": "materials",
+            "list": [
+                "materials"
+            ]
+        }
+    ],
+    "contextsToFlush": [
+        "application"
+    ],
+    "contextsWriteTo": [
+        {
+            "type": "application",
+            "list": [
+                "application"
+            ]
+        },
+        {
+            "type": "mouse",
+            "list": [
+                "mouse"
+            ]
+        }
+    ]
+}

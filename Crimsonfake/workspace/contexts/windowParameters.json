@@ -1,0 +1,24 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "uint32_t",
+            "name": "width",
+            "initial": 1380
+        },
+        {
+            "type": "object",
+            "dataType": "uint32_t",
+            "name": "height",
+            "initial": 720
+        },
+        {
+            "type": "object",
+            "dataType": "Engine::String",
+            "name": "title",
+            "initial": "Crimsonfake"
+        }
+    ]
+}

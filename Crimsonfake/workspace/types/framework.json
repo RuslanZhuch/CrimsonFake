@@ -1,0 +1,11 @@
+{
+    "whoIAm": "TypesDesc",
+    "version": 1,
+    "data":{
+        "ProtoRenderer::rendererPtr_t": "renderer.h",
+        "ProtoRenderer::mesh_t": "renderer.h",
+        "ProtoRenderer::texture_t": "renderer.h",
+        "Types::Render::Cmd": "internal/supportTypes/renderTypes.h",
+        "Game::Inputs::MoveState": "internal/systems/inputs.h"
+    }
+}

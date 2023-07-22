@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{95f92063-9d84-4386-a5e2-06e5da6b56e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\generated">
+      <UniqueIdentifier>{596c03ae-55e7-4173-ab2a-7c52af49fee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\generated\contexts">
+      <UniqueIdentifier>{292ad3da-5406-4db7-8758-7d008f69486f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\generated\executors">
+      <UniqueIdentifier>{c947d469-cd9d-4fab-9c31-01feb2f2bac6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\code">
+      <UniqueIdentifier>{585b3303-f0ad-4705-8e7c-d07b56474e76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\internal">
+      <UniqueIdentifier>{d6cbf608-a7e4-4a50-9229-c6e0819c4474}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\internal\systems">
+      <UniqueIdentifier>{d14c52f8-1422-4dcb-9ca9-b5ac88f1a6f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\internal\supportTypes">
+      <UniqueIdentifier>{234efd45-6cf6-4bf0-9a33-e57e05feb604}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\contexts\ApplicationContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\runtime.cpp">
+      <Filter>src\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\PlayerInitialContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\PlayerWorldStateContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\RenderExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\RenderExecutorImpl.cpp">
+      <Filter>src\code</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\RenderInternalContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\WindowParametersContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\MaterialsContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\AssetsExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\AssetsExecutorImpl.cpp">
+      <Filter>src\code</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\RenderCmdsContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\PlayerExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\PlayerExecutorImpl.cpp">
+      <Filter>src\code</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\InputsContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\internal\systems\Inputs.cpp">
+      <Filter>src\internal\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\MouseContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\contexts\ApplicationContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\PlayerInitialContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\PlayerWorldStateContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\RenderExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\RenderInternalContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\WindowParametersContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\MaterialsContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\AssetsExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\RenderCmdsContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\PlayerExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\InputsContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\internal\systems\Inputs.h">
+      <Filter>src\internal\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\MouseContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\internal\supportTypes\renderTypes.h">
+      <Filter>src\internal\supportTypes</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

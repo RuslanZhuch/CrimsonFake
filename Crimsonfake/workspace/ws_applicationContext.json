@@ -1,0 +1,62 @@
+{
+    "sharedContextsInstances": [
+        {
+            "contextName": "application",
+            "instanceName": "sApplication"
+        },
+        {
+            "contextName": "materials",
+            "instanceName": "materials"
+        },
+        {
+            "contextName": "renderCmds",
+            "instanceName": "renderCmds"
+        },
+        {
+            "contextName": "mouse",
+            "instanceName": "mouse"
+        }
+    ],
+    "sharedContextsInstancesToFlush": [
+        "renderCmds"
+    ],
+    "sharedContextsUsage": [
+        {
+            "instanceName": "renderCmds",
+            "executorName": "render",
+            "executorSharedName": "cmds"
+        },
+        {
+            "instanceName": "materials",
+            "executorName": "render",
+            "executorSharedName": "materials"
+        },
+        {
+            "instanceName": "mouse",
+            "executorName": "player",
+            "executorSharedName": "mouse"
+        }
+    ],
+    "sharedContextsMerge": [
+        {
+            "instanceName": "sApplication",
+            "executorName": "render",
+            "executorContextName": "application"
+        },
+        {
+            "instanceName": "mouse",
+            "executorName": "render",
+            "executorContextName": "mouse"
+        },
+        {
+            "instanceName": "materials",
+            "executorName": "assets",
+            "executorContextName": "materials"
+        },
+        {
+            "instanceName": "renderCmds",
+            "executorName": "player",
+            "executorContextName": "renderCmds"
+        }
+    ]
+}
