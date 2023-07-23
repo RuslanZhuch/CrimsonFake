@@ -1,0 +1,25 @@
+{
+    "whoIAm": "Executor",
+    "version": 1,
+    "contextsLocal": [
+        {
+            "type": "spawnerState",
+            "list": [
+                "state"
+            ]
+        }
+    ],
+    "contextsShared": [
+    ],
+    "contextsToFlush": [
+        "toSpawn"
+    ],
+    "contextsWriteTo": [
+        {
+            "type": "enemies",
+            "list": [
+                "toSpawn"
+            ]
+        }
+    ]
+}

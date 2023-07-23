@@ -1,0 +1,24 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "int32_t",
+            "name": "spawnedSpiders",
+            "initial": 0
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "timeLeftToSpawn",
+            "initial": 0
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "spawnPeriod",
+            "initial": 2
+        }
+    ]
+}

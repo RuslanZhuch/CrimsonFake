@@ -5,12 +5,14 @@
         {
             "type": "object",
             "dataType": "float",
+            "merge": "simple",
             "name": "x",
             "initial": 0
         },
         {
             "type": "object",
             "dataType": "float",
+            "merge": "simple",
             "name": "y",
             "initial": 0
         }

@@ -1,13 +1,17 @@
 #include <Contexts/ApplicationContext.h>
 #include <Contexts/BulletsContext.h>
+#include <Contexts/EnemiesContext.h>
 #include <Contexts/MaterialsContext.h>
 #include <Contexts/MouseContext.h>
+#include <Contexts/PlayerWorldStateContext.h>
 #include <Contexts/RenderCmdsContext.h>
 
 #include <executors/RenderExecutor.h>
 #include <executors/PlayerExecutor.h>
 #include <executors/WorldExecutor.h>
 #include <executors/BulletsExecutor.h>
+#include <executors/EnemiesExecutor.h>
+#include <executors/SpawnerExecutor.h>
 #include <executors/AssetsExecutor.h>
 
 #include <dod/SharedContext.h>
@@ -21,6 +25,8 @@ int main()
     Dod::SharedContext::Controller<Game::Context::RenderCmds::Data> renderCmdsContext;
     Dod::SharedContext::Controller<Game::Context::Mouse::Data> mouseContext;
     Dod::SharedContext::Controller<Game::Context::Bullets::Data> bulletsToCreateContext;
+    Dod::SharedContext::Controller<Game::Context::Enemies::Data> enemiesToSpawnContext;
+    Dod::SharedContext::Controller<Game::Context::PlayerWorldState::Data> playerWorldStateContext;
 
     Game::ExecutionBlock::Render render;
     render.loadContext();
@@ -38,6 +44,14 @@ int main()
     bullets.loadContext();
     bullets.toCreateContext = &bulletsToCreateContext;
     bullets.initiate();
+    Game::ExecutionBlock::Enemies enemies;
+    enemies.loadContext();
+    enemies.toSpawnContext = &enemiesToSpawnContext;
+    enemies.playerWorldStateContext = &playerWorldStateContext;
+    enemies.initiate();
+    Game::ExecutionBlock::Spawner spawner;
+    spawner.loadContext();
+    spawner.initiate();
     Game::ExecutionBlock::Assets assets;
     assets.loadContext();
     assets.initiate();
@@ -51,9 +65,12 @@ int main()
         player.update(deltaTime);
         world.update(deltaTime);
         bullets.update(deltaTime);
+        enemies.update(deltaTime);
+        spawner.update(deltaTime);
         assets.update(deltaTime);
 
         Dod::SharedContext::flush(&renderCmdsContext);
+        Dod::SharedContext::flush(&enemiesToSpawnContext);
         Dod::SharedContext::flush(&bulletsToCreateContext);
 
         Dod::SharedContext::merge(&sApplicationContext, render.applicationContext);
@@ -62,12 +79,17 @@ int main()
         Dod::SharedContext::merge(&renderCmdsContext, player.renderCmdsContext);
         Dod::SharedContext::merge(&renderCmdsContext, bullets.renderCmdsContext);
         Dod::SharedContext::merge(&renderCmdsContext, world.renderCmdsContext);
+        Dod::SharedContext::merge(&renderCmdsContext, enemies.renderCmdsContext);
         Dod::SharedContext::merge(&bulletsToCreateContext, player.bulletsToCreateContext);
+        Dod::SharedContext::merge(&enemiesToSpawnContext, spawner.toSpawnContext);
+        Dod::SharedContext::merge(&playerWorldStateContext, player.worldStateContext);
 
         render.flushSharedLocalContexts();
         player.flushSharedLocalContexts();
         world.flushSharedLocalContexts();
         bullets.flushSharedLocalContexts();
+        enemies.flushSharedLocalContexts();
+        spawner.flushSharedLocalContexts();
         assets.flushSharedLocalContexts();
 
         for (int32_t cmdId{}; cmdId < Dod::BufferUtils::getNumFilledElements(sApplicationContext.context.commands); ++cmdId)

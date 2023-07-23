@@ -1,0 +1,37 @@
+{
+    "whoIAm": "Executor",
+    "version": 1,
+    "contextsLocal": [
+        {
+            "type": "enemies",
+            "list": [
+                "spiders"
+            ]
+        }
+    ],
+    "contextsShared": [
+        {
+            "type": "enemies",
+            "list": [
+                "toSpawn"
+            ]
+        },
+        {
+            "type": "playerWorldState",
+            "list": [
+                "playerWorldState"
+            ]
+        }
+    ],
+    "contextsToFlush": [
+        "renderCmds"
+    ],
+    "contextsWriteTo": [
+        {
+            "type": "renderCmds",
+            "list": [
+                "renderCmds"
+            ]
+        }
+    ]
+}

@@ -19,10 +19,19 @@
         {
             "contextName": "bullets",
             "instanceName": "bulletsToCreate"
+        },
+        {
+            "contextName": "enemies",
+            "instanceName": "enemiesToSpawn"
+        },
+        {
+            "contextName": "playerWorldState",
+            "instanceName": "playerWorldState"
         }
     ],
     "sharedContextsInstancesToFlush": [
         "renderCmds",
+        "enemiesToSpawn",
         "bulletsToCreate"
     ],
     "sharedContextsUsage": [
@@ -45,6 +54,16 @@
             "instanceName": "bulletsToCreate",
             "executorName": "bullets",
             "executorSharedName": "toCreate"
+        },
+        {
+            "instanceName": "enemiesToSpawn",
+            "executorName": "enemies",
+            "executorSharedName": "toSpawn"
+        },
+        {
+            "instanceName": "playerWorldState",
+            "executorName": "enemies",
+            "executorSharedName": "playerWorldState"
         }
     ],
     "sharedContextsMerge": [
@@ -79,9 +98,24 @@
             "executorContextName": "renderCmds"
         },
         {
+            "instanceName": "renderCmds",
+            "executorName": "enemies",
+            "executorContextName": "renderCmds"
+        },
+        {
             "instanceName": "bulletsToCreate",
             "executorName": "player",
             "executorContextName": "bulletsToCreate"
+        },
+        {
+            "instanceName": "enemiesToSpawn",
+            "executorName": "spawner",
+            "executorContextName": "toSpawn"
+        },
+        {
+            "instanceName": "playerWorldState",
+            "executorName": "player",
+            "executorContextName": "worldState"
         }
     ]
 }

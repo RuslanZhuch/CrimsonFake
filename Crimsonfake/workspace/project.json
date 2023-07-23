@@ -21,6 +21,8 @@
         "world.json",
         "bullets.json",
         "elements.json",
+        "enemies.json",
+        "spawnerState.json",
         "playerWeaponState.json",
         "windowParameters.json"
     ],
@@ -29,6 +31,8 @@
         "player.json",
         "world.json",
         "bullets.json",
+        "enemies.json",
+        "spawner.json",
         "assets.json"
     ]
 }

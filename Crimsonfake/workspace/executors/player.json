@@ -15,12 +15,6 @@
             ]
         },
         {
-            "type": "playerWorldState",
-            "list": [
-                "worldState"
-            ]
-        },
-        {
             "type": "inputs",
             "list": [
                 "inputs"
@@ -56,6 +50,12 @@
             "type": "bullets",
             "list": [
                 "bulletsToCreate"
+            ]
+        },
+        {
+            "type": "playerWorldState",
+            "list": [
+                "worldState"
             ]
         }
     ]

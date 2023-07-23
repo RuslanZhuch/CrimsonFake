@@ -1,0 +1,25 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "int32_t",
+            "merge": "simple",
+            "name": "type",
+            "initial": 0
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "Types::Coord::Vec2f",
+            "name": "position",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "float",
+            "name": "angle",
+            "capacity": 128
+        }
+    ]
+}
