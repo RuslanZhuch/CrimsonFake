@@ -120,6 +120,9 @@
     <ClCompile Include="src\executors\SpawnerExecutorImpl.cpp">
       <Filter>src\code</Filter>
     </ClCompile>
+    <ClCompile Include="src\contexts\CollisionsDataContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\contexts\ApplicationContext.h">
@@ -196,6 +199,12 @@
     </ClInclude>
     <ClInclude Include="src\executors\SpawnerExecutor.h">
       <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Internal\supportTypes\collisionTypes.h">
+      <Filter>src\internal\supportTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\CollisionsDataContext.h">
+      <Filter>src\generated\contexts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

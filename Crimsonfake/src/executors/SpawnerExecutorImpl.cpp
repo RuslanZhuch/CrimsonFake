@@ -20,7 +20,7 @@ namespace Game::ExecutionBlock
 
         this->stateContext.timeLeftToSpawn = std::max(0.f, this->stateContext.timeLeftToSpawn - dt);
 
-        const auto bNeedToSpawn{ this->stateContext.timeLeftToSpawn <= 0.f && this->stateContext.spawnedSpiders < 64 };
+        const auto bNeedToSpawn{ this->stateContext.timeLeftToSpawn <= 0.f };
         this->stateContext.timeLeftToSpawn += this->stateContext.spawnPeriod * bNeedToSpawn;
 
         this->stateContext.spawnedSpiders += bNeedToSpawn;
@@ -30,10 +30,11 @@ namespace Game::ExecutionBlock
 
         Dod::BufferUtils::populate(this->toSpawnContext.position, Types::Coord::Vec2f(randX, randY), bNeedToSpawn);
         Dod::BufferUtils::populate(this->toSpawnContext.angle, 0.f, bNeedToSpawn);
+        Dod::BufferUtils::populate(this->toSpawnContext.health, 5, bNeedToSpawn);
         this->toSpawnContext.type = 1;
 
-        if (bNeedToSpawn)
-            std::cout << std::format("Spawn request: {}, x: {}, y: {}\n", bNeedToSpawn, randX, randY);
+//        if (bNeedToSpawn)
+//            std::cout << std::format("Spawn request: {}, x: {}, y: {}\n", bNeedToSpawn, randX, randY);
         
     }
 

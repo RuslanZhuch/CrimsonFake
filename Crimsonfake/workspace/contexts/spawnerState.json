@@ -18,7 +18,7 @@
             "type": "object",
             "dataType": "float",
             "name": "spawnPeriod",
-            "initial": 2
+            "initial": 1
         }
     ]
 }

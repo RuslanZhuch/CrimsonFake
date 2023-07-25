@@ -27,12 +27,17 @@
         {
             "contextName": "playerWorldState",
             "instanceName": "playerWorldState"
+        },
+        {
+            "contextName": "collisionsData",
+            "instanceName": "collisionsData"
         }
     ],
     "sharedContextsInstancesToFlush": [
         "renderCmds",
         "enemiesToSpawn",
-        "bulletsToCreate"
+        "bulletsToCreate",
+        "collisionsData"
     ],
     "sharedContextsUsage": [
         {
@@ -64,6 +69,16 @@
             "instanceName": "playerWorldState",
             "executorName": "enemies",
             "executorSharedName": "playerWorldState"
+        },
+        {
+            "instanceName": "collisionsData",
+            "executorName": "bullets",
+            "executorSharedName": "collisionsInput"
+        },
+        {
+            "instanceName": "collisionsData",
+            "executorName": "enemies",
+            "executorSharedName": "collisionsInput"
         }
     ],
     "sharedContextsMerge": [
@@ -116,6 +131,16 @@
             "instanceName": "playerWorldState",
             "executorName": "player",
             "executorContextName": "worldState"
+        },
+        {
+            "instanceName": "collisionsData",
+            "executorName": "enemies",
+            "executorContextName": "collisionsOutput"
+        },
+        {
+            "instanceName": "collisionsData",
+            "executorName": "bullets",
+            "executorContextName": "collisionsOutput"
         }
     ]
 }

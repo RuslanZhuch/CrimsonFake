@@ -1,6 +1,7 @@
 #include "EnemiesExecutor.h"
 
 #include <dod/BufferUtils.h>
+#include <dod/Algorithms.h>
 
 #include <numbers>
 
@@ -16,16 +17,56 @@ namespace Game::ExecutionBlock
     void Enemies::updateImpl(float dt) noexcept
     {
 
+        constexpr auto offset{ 10.f };
+        const auto bullets{ Dod::SharedContext::get(this->collisionsInputContext).playerBullets };
+        for (int32_t bulletId{}; bulletId < Dod::BufferUtils::getNumFilledElements(bullets); ++bulletId)
+        {
+            const auto& bullet{ Dod::BufferUtils::get(bullets, bulletId) };
+
+            for (int32_t enemyId{}; enemyId < Dod::BufferUtils::getNumFilledElements(this->spidersContext.position); ++enemyId)
+            {
+                constexpr auto enemyRadius{ 32.f };
+                const auto enemyPosition{ Dod::BufferUtils::get(this->spidersContext.position, enemyId) };
+                const auto vecX{ enemyPosition.x - bullet.x };
+                const auto vecY{ enemyPosition.y - bullet.y };
+                const auto distance{ std::sqrtf(vecX * vecX + vecY * vecY) };
+
+                const auto bCollide{ distance <= bullet.r + enemyRadius };
+
+                const auto dirX{ vecX / (distance + 0.01f) };
+                const auto dirY{ vecY / (distance + 0.01f) };
+
+                Dod::BufferUtils::get(this->spidersContext.position, enemyId).x += dirX * offset * bCollide;
+                Dod::BufferUtils::get(this->spidersContext.position, enemyId).y += dirY * offset * bCollide;
+                Dod::BufferUtils::get(this->spidersContext.health, enemyId) -= bCollide;
+
+            }
+        }
+
+        for (int32_t id{}; id < Dod::BufferUtils::getNumFilledElements(this->spidersContext.health); ++id)
+        {
+            const auto health = Dod::BufferUtils::get(this->spidersContext.health, id);
+            const auto bNeedRemove{ health <= 0 };
+            Dod::BufferUtils::populate(this->toRemoveContext.ids, id, bNeedRemove);
+        }
+
+        Dod::Algorithms::leftUniques(this->toRemoveContext.ids);
+
+        Dod::BufferUtils::remove(this->spidersContext.position, Dod::BufferUtils::createImFromBuffer(this->toRemoveContext.ids));
+        Dod::BufferUtils::remove(this->spidersContext.angle, Dod::BufferUtils::createImFromBuffer(this->toRemoveContext.ids));
+        Dod::BufferUtils::remove(this->spidersContext.health, Dod::BufferUtils::createImFromBuffer(this->toRemoveContext.ids));
+
         const auto toSpawnPosition{ Dod::SharedContext::get(this->toSpawnContext).position };
         const auto toSpawnAngle{ Dod::SharedContext::get(this->toSpawnContext).angle };
         const auto toSpawnType{ Dod::SharedContext::get(this->toSpawnContext).type };
+        const auto toSpawnHealth{ Dod::SharedContext::get(this->toSpawnContext).health };
 
         Dod::BufferUtils::append(this->spidersContext.position, Dod::BufferUtils::createImFromBuffer(toSpawnPosition));
         Dod::BufferUtils::append(this->spidersContext.angle, Dod::BufferUtils::createImFromBuffer(toSpawnAngle));
+        Dod::BufferUtils::append(this->spidersContext.health, Dod::BufferUtils::createImFromBuffer(toSpawnHealth));
 
         const auto playerX{ Dod::SharedContext::get(this->playerWorldStateContext).x };
         const auto playerY{ Dod::SharedContext::get(this->playerWorldStateContext).y };
-
 
         for (int32_t enemyLeftId{}; enemyLeftId < Dod::BufferUtils::getNumFilledElements(this->spidersContext.position); ++enemyLeftId)
         {
@@ -99,6 +140,17 @@ namespace Game::ExecutionBlock
             Dod::BufferUtils::populate(this->renderCmdsContext.commands, cmd, true);
             Dod::BufferUtils::populate(this->renderCmdsContext.materialNames, textureKey, true);
             Dod::BufferUtils::populate(this->renderCmdsContext.depth, 10, true);
+
+        }
+
+        Types::Collision::Circle collision;
+        collision.r = 32.f;
+        for (int32_t bulletId{}; bulletId < Dod::BufferUtils::getNumFilledElements(this->spidersContext.position); ++bulletId)
+        {
+
+            collision.x = Dod::BufferUtils::get(this->spidersContext.position, bulletId).x;
+            collision.y = Dod::BufferUtils::get(this->spidersContext.position, bulletId).y;
+            Dod::BufferUtils::populate(this->collisionsOutputContext.enemies, collision, true);
 
         }
 

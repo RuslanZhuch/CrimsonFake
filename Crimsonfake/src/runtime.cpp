@@ -1,5 +1,6 @@
 #include <Contexts/ApplicationContext.h>
 #include <Contexts/BulletsContext.h>
+#include <Contexts/CollisionsDataContext.h>
 #include <Contexts/EnemiesContext.h>
 #include <Contexts/MaterialsContext.h>
 #include <Contexts/MouseContext.h>
@@ -27,6 +28,7 @@ int main()
     Dod::SharedContext::Controller<Game::Context::Bullets::Data> bulletsToCreateContext;
     Dod::SharedContext::Controller<Game::Context::Enemies::Data> enemiesToSpawnContext;
     Dod::SharedContext::Controller<Game::Context::PlayerWorldState::Data> playerWorldStateContext;
+    Dod::SharedContext::Controller<Game::Context::CollisionsData::Data> collisionsDataContext;
 
     Game::ExecutionBlock::Render render;
     render.loadContext();
@@ -43,11 +45,13 @@ int main()
     Game::ExecutionBlock::Bullets bullets;
     bullets.loadContext();
     bullets.toCreateContext = &bulletsToCreateContext;
+    bullets.collisionsInputContext = &collisionsDataContext;
     bullets.initiate();
     Game::ExecutionBlock::Enemies enemies;
     enemies.loadContext();
     enemies.toSpawnContext = &enemiesToSpawnContext;
     enemies.playerWorldStateContext = &playerWorldStateContext;
+    enemies.collisionsInputContext = &collisionsDataContext;
     enemies.initiate();
     Game::ExecutionBlock::Spawner spawner;
     spawner.loadContext();
@@ -72,6 +76,7 @@ int main()
         Dod::SharedContext::flush(&renderCmdsContext);
         Dod::SharedContext::flush(&enemiesToSpawnContext);
         Dod::SharedContext::flush(&bulletsToCreateContext);
+        Dod::SharedContext::flush(&collisionsDataContext);
 
         Dod::SharedContext::merge(&sApplicationContext, render.applicationContext);
         Dod::SharedContext::merge(&mouseContext, render.mouseContext);
@@ -83,6 +88,8 @@ int main()
         Dod::SharedContext::merge(&bulletsToCreateContext, player.bulletsToCreateContext);
         Dod::SharedContext::merge(&enemiesToSpawnContext, spawner.toSpawnContext);
         Dod::SharedContext::merge(&playerWorldStateContext, player.worldStateContext);
+        Dod::SharedContext::merge(&collisionsDataContext, enemies.collisionsOutputContext);
+        Dod::SharedContext::merge(&collisionsDataContext, bullets.collisionsOutputContext);
 
         render.flushSharedLocalContexts();
         player.flushSharedLocalContexts();

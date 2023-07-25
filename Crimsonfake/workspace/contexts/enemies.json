@@ -20,6 +20,12 @@
             "dataType": "float",
             "name": "angle",
             "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "health",
+            "capacity": 128
         }
     ]
 }

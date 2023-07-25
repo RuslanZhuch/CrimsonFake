@@ -139,6 +139,7 @@
   <ItemGroup>
     <ClCompile Include="src\contexts\ApplicationContext.cpp" />
     <ClCompile Include="src\contexts\BulletsContext.cpp" />
+    <ClCompile Include="src\contexts\CollisionsDataContext.cpp" />
     <ClCompile Include="src\contexts\ElementsContext.cpp" />
     <ClCompile Include="src\contexts\EnemiesContext.cpp" />
     <ClCompile Include="src\contexts\InputsContext.cpp" />
@@ -172,6 +173,7 @@
   <ItemGroup>
     <ClInclude Include="src\contexts\ApplicationContext.h" />
     <ClInclude Include="src\contexts\BulletsContext.h" />
+    <ClInclude Include="src\contexts\CollisionsDataContext.h" />
     <ClInclude Include="src\contexts\ElementsContext.h" />
     <ClInclude Include="src\contexts\EnemiesContext.h" />
     <ClInclude Include="src\contexts\InputsContext.h" />
@@ -192,6 +194,7 @@
     <ClInclude Include="src\executors\RenderExecutor.h" />
     <ClInclude Include="src\executors\SpawnerExecutor.h" />
     <ClInclude Include="src\executors\WorldExecutor.h" />
+    <ClInclude Include="src\Internal\supportTypes\collisionTypes.h" />
     <ClInclude Include="src\internal\supportTypes\coordTypes.h" />
     <ClInclude Include="src\internal\supportTypes\renderTypes.h" />
     <ClInclude Include="src\internal\systems\Inputs.h" />

@@ -21,17 +21,30 @@
             "list": [
                 "toCreate"
             ]
+        },
+        {
+            "type": "collisionsData",
+            "list": [
+                "collisionsInput"
+            ]
         }
     ],
     "contextsToFlush": [
         "renderCmds",
-        "toRemove"
+        "toRemove",
+        "collisionsOutput"
     ],
     "contextsWriteTo": [
         {
             "type": "renderCmds",
             "list": [
                 "renderCmds"
+            ]
+        },
+        {
+            "type": "collisionsData",
+            "list": [
+                "collisionsOutput"
             ]
         }
     ]

@@ -2,6 +2,8 @@
     "whoIAm": "TypesDesc",
     "version": 1,
     "data":{
+        "int8_t": "None",
+        "uint8_t": "None",
         "int32_t": "None",
         "uint32_t": "None",
         "float": "None",

@@ -1,0 +1,18 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "dbbuffer",
+            "dataType": "Types::Collision::Circle",
+            "name": "playerBullets",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "Types::Collision::Circle",
+            "name": "enemies",
+            "capacity": 128
+        }
+    ]
+}

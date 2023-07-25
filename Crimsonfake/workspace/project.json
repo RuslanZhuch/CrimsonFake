@@ -24,6 +24,7 @@
         "enemies.json",
         "spawnerState.json",
         "playerWeaponState.json",
+        "collisionsData.json",
         "windowParameters.json"
     ],
     "executors_paths": [

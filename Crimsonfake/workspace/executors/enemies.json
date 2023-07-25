@@ -7,6 +7,13 @@
             "list": [
                 "spiders"
             ]
+        },
+        {
+            "type": "elements",
+            "list": [
+                "toRemove",
+                "toHit"
+            ]
         }
     ],
     "contextsShared": [
@@ -21,16 +28,31 @@
             "list": [
                 "playerWorldState"
             ]
+        },
+        {
+            "type": "collisionsData",
+            "list": [
+                "collisionsInput"
+            ]
         }
     ],
     "contextsToFlush": [
-        "renderCmds"
+        "renderCmds",
+        "collisionsOutput",
+        "toRemove",
+        "toHit"
     ],
     "contextsWriteTo": [
         {
             "type": "renderCmds",
             "list": [
                 "renderCmds"
+            ]
+        },
+        {
+            "type": "collisionsData",
+            "list": [
+                "collisionsOutput"
             ]
         }
     ]
