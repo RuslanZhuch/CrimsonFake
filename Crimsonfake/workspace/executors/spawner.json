@@ -7,6 +7,12 @@
             "list": [
                 "state"
             ]
+        },
+        {
+            "type": "spawnerParameters",
+            "list": [
+                "parameters"
+            ]
         }
     ],
     "contextsShared": [

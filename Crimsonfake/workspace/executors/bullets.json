@@ -23,7 +23,7 @@
             ]
         },
         {
-            "type": "collisionsData",
+            "type": "collisionsResult",
             "list": [
                 "collisionsInput"
             ]

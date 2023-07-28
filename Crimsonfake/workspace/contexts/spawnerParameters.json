@@ -1,0 +1,12 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "int32_t",
+            "name": "maxSpiders",
+            "initial": 1
+        }
+    ]
+}

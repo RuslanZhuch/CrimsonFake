@@ -1,4 +1,25 @@
 {
+    "schema":[
+        {
+            "executors": [
+                "assets",
+                "bullets",
+                "enemies",
+                "player",
+                "render",
+                "spawner",
+                "world"
+            ]
+        },
+        {
+            "waitPools": [
+                "collisionsData"
+            ],
+            "executors": [
+                "collisions"
+            ]
+        }
+    ],
     "sharedContextsInstances": [
         {
             "contextName": "application",
@@ -29,15 +50,15 @@
             "instanceName": "playerWorldState"
         },
         {
-            "contextName": "collisionsData",
-            "instanceName": "collisionsData"
+            "contextName": "collisionsResult",
+            "instanceName": "collisionsResult"
         }
     ],
     "sharedContextsInstancesToFlush": [
         "renderCmds",
         "enemiesToSpawn",
         "bulletsToCreate",
-        "collisionsData"
+        "collisionsResult"
     ],
     "sharedContextsUsage": [
         {
@@ -71,12 +92,12 @@
             "executorSharedName": "playerWorldState"
         },
         {
-            "instanceName": "collisionsData",
+            "instanceName": "collisionsResult",
             "executorName": "bullets",
             "executorSharedName": "collisionsInput"
         },
         {
-            "instanceName": "collisionsData",
+            "instanceName": "collisionsResult",
             "executorName": "enemies",
             "executorSharedName": "collisionsInput"
         }
@@ -132,6 +153,26 @@
             "executorName": "player",
             "executorContextName": "worldState"
         },
+        {
+            "instanceName": "collisionsResult",
+            "executorName": "collisions",
+            "executorContextName": "output"
+        }
+    ],
+    "poolContextsInstances": [
+        {
+            "contextName": "collisionsData",
+            "instanceName": "collisionsData"
+        }
+    ],
+    "poolContextsUsage": [
+        {
+            "instanceName": "collisionsData",
+            "executorName": "collisions",
+            "executorSharedName": "input"
+        }
+    ],
+    "poolContextsMerge": [
         {
             "instanceName": "collisionsData",
             "executorName": "enemies",

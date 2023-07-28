@@ -1,0 +1,25 @@
+{
+    "whoIAm": "Executor",
+    "version": 1,
+    "contextsLocal": [
+    ],
+    "contextsShared": [
+        {
+            "type": "collisionsData",
+            "list": [
+                "input"
+            ]
+        }
+    ],
+    "contextsToFlush": [
+        "output"
+    ],
+    "contextsWriteTo": [
+        {
+            "type": "collisionsResult",
+            "list": [
+                "output"
+            ]
+        }
+    ]
+}

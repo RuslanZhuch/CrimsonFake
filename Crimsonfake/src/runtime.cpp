@@ -1,6 +1,7 @@
 #include <Contexts/ApplicationContext.h>
 #include <Contexts/BulletsContext.h>
 #include <Contexts/CollisionsDataContext.h>
+#include <Contexts/CollisionsResultContext.h>
 #include <Contexts/EnemiesContext.h>
 #include <Contexts/MaterialsContext.h>
 #include <Contexts/MouseContext.h>
@@ -11,6 +12,7 @@
 #include <executors/PlayerExecutor.h>
 #include <executors/WorldExecutor.h>
 #include <executors/BulletsExecutor.h>
+#include <executors/CollisionsExecutor.h>
 #include <executors/EnemiesExecutor.h>
 #include <executors/SpawnerExecutor.h>
 #include <executors/AssetsExecutor.h>
@@ -28,6 +30,7 @@ int main()
     Dod::SharedContext::Controller<Game::Context::Bullets::Data> bulletsToCreateContext;
     Dod::SharedContext::Controller<Game::Context::Enemies::Data> enemiesToSpawnContext;
     Dod::SharedContext::Controller<Game::Context::PlayerWorldState::Data> playerWorldStateContext;
+    Dod::SharedContext::Controller<Game::Context::CollisionsResult::Data> collisionsResultContext;
     Dod::SharedContext::Controller<Game::Context::CollisionsData::Data> collisionsDataContext;
 
     Game::ExecutionBlock::Render render;
@@ -45,13 +48,17 @@ int main()
     Game::ExecutionBlock::Bullets bullets;
     bullets.loadContext();
     bullets.toCreateContext = &bulletsToCreateContext;
-    bullets.collisionsInputContext = &collisionsDataContext;
+    bullets.collisionsInputContext = &collisionsResultContext;
     bullets.initiate();
+    Game::ExecutionBlock::Collisions collisions;
+    collisions.loadContext();
+    collisions.inputContext = &collisionsDataContext;
+    collisions.initiate();
     Game::ExecutionBlock::Enemies enemies;
     enemies.loadContext();
     enemies.toSpawnContext = &enemiesToSpawnContext;
     enemies.playerWorldStateContext = &playerWorldStateContext;
-    enemies.collisionsInputContext = &collisionsDataContext;
+    enemies.collisionsInputContext = &collisionsResultContext;
     enemies.initiate();
     Game::ExecutionBlock::Spawner spawner;
     spawner.loadContext();
@@ -65,18 +72,25 @@ int main()
     {
         const auto start{ std::chrono::high_resolution_clock::now() };
 
-        render.update(deltaTime);
-        player.update(deltaTime);
-        world.update(deltaTime);
+
+        assets.update(deltaTime);
         bullets.update(deltaTime);
         enemies.update(deltaTime);
+        player.update(deltaTime);
+        render.update(deltaTime);
         spawner.update(deltaTime);
-        assets.update(deltaTime);
+        world.update(deltaTime);
 
+        Dod::SharedContext::merge(&collisionsDataContext, enemies.collisionsOutputContext);
+        Dod::SharedContext::merge(&collisionsDataContext, bullets.collisionsOutputContext);
+
+        collisions.update(deltaTime);
+
+        Dod::SharedContext::flush(&collisionsDataContext);
         Dod::SharedContext::flush(&renderCmdsContext);
         Dod::SharedContext::flush(&enemiesToSpawnContext);
         Dod::SharedContext::flush(&bulletsToCreateContext);
-        Dod::SharedContext::flush(&collisionsDataContext);
+        Dod::SharedContext::flush(&collisionsResultContext);
 
         Dod::SharedContext::merge(&sApplicationContext, render.applicationContext);
         Dod::SharedContext::merge(&mouseContext, render.mouseContext);
@@ -88,13 +102,13 @@ int main()
         Dod::SharedContext::merge(&bulletsToCreateContext, player.bulletsToCreateContext);
         Dod::SharedContext::merge(&enemiesToSpawnContext, spawner.toSpawnContext);
         Dod::SharedContext::merge(&playerWorldStateContext, player.worldStateContext);
-        Dod::SharedContext::merge(&collisionsDataContext, enemies.collisionsOutputContext);
-        Dod::SharedContext::merge(&collisionsDataContext, bullets.collisionsOutputContext);
+        Dod::SharedContext::merge(&collisionsResultContext, collisions.outputContext);
 
         render.flushSharedLocalContexts();
         player.flushSharedLocalContexts();
         world.flushSharedLocalContexts();
         bullets.flushSharedLocalContexts();
+        collisions.flushSharedLocalContexts();
         enemies.flushSharedLocalContexts();
         spawner.flushSharedLocalContexts();
         assets.flushSharedLocalContexts();

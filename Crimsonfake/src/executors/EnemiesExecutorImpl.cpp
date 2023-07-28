@@ -4,10 +4,60 @@
 #include <dod/Algorithms.h>
 
 #include <numbers>
+#include <iostream>
+#include <format>
 
 static constexpr auto pi{ static_cast<float>(std::numbers::pi) };
 namespace Game::ExecutionBlock
 {
+
+    [[nodiscard]] static auto generateVelocityNorm(
+        float currentTime,
+        float period,
+        float standTime
+    )
+    {
+
+        const auto moveTime{ period - standTime };
+        const auto bNeedMove{ currentTime <= moveTime };
+
+        const auto normMoveTime{ currentTime / moveTime };
+
+        const auto scale{ moveTime / 2.f };
+
+        const auto time{ currentTime - scale };
+        const auto output{ 4.f / scale * (-time * time + scale * scale) * bNeedMove };
+        return std::min(output, 1.f);
+
+    }
+
+    [[nodiscard]] static auto applyVelocity(
+        float velocityTime,
+        float minVeloicty,
+        float maxVelocity
+    )
+    {
+
+        return minVeloicty + (maxVelocity - minVeloicty) * velocityTime;
+
+    }
+
+    [[nodiscard]] static auto updateCurrentMoveTime(
+        float currentTime,
+        float period,
+        float dt
+    )
+    {
+
+        const auto newTime{ currentTime + dt };
+        const auto overflow{ std::min(newTime - period, period) };
+
+        if (overflow > 0.f)
+            return overflow;
+
+        return newTime;
+
+    }
 
     void Enemies::initImpl() noexcept
     {
@@ -17,30 +67,23 @@ namespace Game::ExecutionBlock
     void Enemies::updateImpl(float dt) noexcept
     {
 
-        constexpr auto offset{ 10.f };
-        const auto bullets{ Dod::SharedContext::get(this->collisionsInputContext).playerBullets };
-        for (int32_t bulletId{}; bulletId < Dod::BufferUtils::getNumFilledElements(bullets); ++bulletId)
+        const auto collisions{ Dod::SharedContext::get(this->collisionsInputContext).enemyIds };
+        Dod::BufferUtils::append(this->toHitContext.ids, Dod::BufferUtils::createImFromBuffer(collisions));
+
+        for (int32_t id{}; id < Dod::BufferUtils::getNumFilledElements(this->toHitContext.ids); ++id)
         {
-            const auto& bullet{ Dod::BufferUtils::get(bullets, bulletId) };
+            const auto enemyId{ Dod::BufferUtils::get(this->toHitContext.ids, id) };
+            Dod::BufferUtils::get(this->spidersContext.health, enemyId) -= 1;
+        }
 
-            for (int32_t enemyId{}; enemyId < Dod::BufferUtils::getNumFilledElements(this->spidersContext.position); ++enemyId)
-            {
-                constexpr auto enemyRadius{ 32.f };
-                const auto enemyPosition{ Dod::BufferUtils::get(this->spidersContext.position, enemyId) };
-                const auto vecX{ enemyPosition.x - bullet.x };
-                const auto vecY{ enemyPosition.y - bullet.y };
-                const auto distance{ std::sqrtf(vecX * vecX + vecY * vecY) };
-
-                const auto bCollide{ distance <= bullet.r + enemyRadius };
-
-                const auto dirX{ vecX / (distance + 0.01f) };
-                const auto dirY{ vecY / (distance + 0.01f) };
-
-                Dod::BufferUtils::get(this->spidersContext.position, enemyId).x += dirX * offset * bCollide;
-                Dod::BufferUtils::get(this->spidersContext.position, enemyId).y += dirY * offset * bCollide;
-                Dod::BufferUtils::get(this->spidersContext.health, enemyId) -= bCollide;
-
-            }
+        constexpr auto offset{ 10.f };
+        const auto hits{ Dod::SharedContext::get(this->collisionsInputContext).hitDirection };
+        for (int32_t id{}; id < Dod::BufferUtils::getNumFilledElements(hits); ++id)
+        {
+            const auto enemyId{ Dod::BufferUtils::get(this->toHitContext.ids, id) };
+            const auto hit{ Dod::BufferUtils::get(hits, id) };
+            Dod::BufferUtils::get(this->spidersContext.position, enemyId).x += hit.x * offset;
+            Dod::BufferUtils::get(this->spidersContext.position, enemyId).y += hit.y * offset;
         }
 
         for (int32_t id{}; id < Dod::BufferUtils::getNumFilledElements(this->spidersContext.health); ++id)
@@ -102,6 +145,24 @@ namespace Game::ExecutionBlock
 
         }
 
+        this->stateContext.currentTime = updateCurrentMoveTime(
+            this->stateContext.currentTime,
+            this->parametersContext.movePeriod,
+            dt
+        );
+
+        const auto velocity{ 
+            generateVelocityNorm(this->stateContext.currentTime, this->parametersContext.movePeriod, this->parametersContext.standTime) * 
+            this->parametersContext.topVelocity 
+        };
+
+        const auto dot = [](Types::Coord::Vec2f left, Types::Coord::Vec2f right) -> float {
+            return left.x * right.x + left.y * right.y;
+        };
+        const auto cross = [](Types::Coord::Vec2f left, Types::Coord::Vec2f right) -> float {
+            return left.x * right.y - left.y * right.x;
+        };
+
         for (int32_t enemyId{}; enemyId < Dod::BufferUtils::getNumFilledElements(this->spidersContext.position); ++enemyId)
         {
 
@@ -111,19 +172,21 @@ namespace Game::ExecutionBlock
             const auto vecY{ playerY - enemyPosition.y };
 
             const auto dist{ std::sqrtf(vecX * vecX + vecY * vecY) + 0.01f };
-            const auto dirX{ vecX / dist };
-            const auto dirY{ vecY / dist };
+            const auto needDirX{ vecX / dist };
+            const auto needDirY{ vecY / dist };
 
-            constexpr auto velocity{ 50.f };
+            const auto currentAngle{ Dod::BufferUtils::get(this->spidersContext.angle, enemyId) };
+            const auto currentDirX{ sinf(currentAngle) };
+            const auto currentDirY{ -cosf(currentAngle) };
 
-            const auto moveX{ dirX * velocity * dt };
-            const auto moveY{ dirY * velocity * dt };
+            const auto control{ cross({needDirX, needDirY}, {-currentDirX, -currentDirY}) };
+
+            const auto moveX{ currentDirX * velocity * dt };
+            const auto moveY{ currentDirY * velocity * dt };
 
             Dod::BufferUtils::get(this->spidersContext.position, enemyId).x += moveX;
             Dod::BufferUtils::get(this->spidersContext.position, enemyId).y += moveY;
-
-            const auto angle{ atanf(dirY / dirX) + pi / 2.f + pi * (dirX < 0) };
-            Dod::BufferUtils::get(this->spidersContext.angle, enemyId) = angle;
+            Dod::BufferUtils::get(this->spidersContext.angle, enemyId) += control * this->parametersContext.rotationSpeed * dt * (velocity > 0.f);
 
         }
 

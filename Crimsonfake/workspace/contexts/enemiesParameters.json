@@ -1,0 +1,36 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "movePeriod",
+            "initial": 1
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "standTime",
+            "initial": 0.25
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "minVelocity",
+            "initial": 100
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "topVelocity",
+            "initial": 120
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "rotationSpeed",
+            "initial": 2
+        }
+    ]
+}

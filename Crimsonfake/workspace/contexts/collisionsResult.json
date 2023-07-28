@@ -1,0 +1,24 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "bulletIds",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "enemyIds",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "Types::Coord::Vec2f",
+            "name": "hitDirection",
+            "capacity": 128
+        }
+    ]
+}

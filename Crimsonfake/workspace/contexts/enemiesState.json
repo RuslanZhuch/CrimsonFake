@@ -1,0 +1,12 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "currentTime",
+            "initial": 0
+        }
+    ]
+}

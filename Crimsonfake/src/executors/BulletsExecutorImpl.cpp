@@ -19,29 +19,8 @@ namespace Game::ExecutionBlock
     void Bullets::updateImpl(float dt) noexcept
     {
 
-        const auto enemies{ Dod::SharedContext::get(this->collisionsInputContext).enemies };
-        for (int32_t bulletId{}; bulletId < Dod::BufferUtils::getNumFilledElements(this->activeContext.position); ++bulletId)
-        {
-            const auto bulletPosition{ Dod::BufferUtils::get(this->activeContext.position, bulletId) };
-            const auto bulletRadius{ 16.f };
-
-            for (int32_t enemyId{}; enemyId < Dod::BufferUtils::getNumFilledElements(enemies); ++enemyId)
-            {
-                const auto& enemy{ Dod::BufferUtils::get(enemies, enemyId) };
-                const auto vecX{ enemy.x - bulletPosition.x };
-                const auto vecY{ enemy.y - bulletPosition.y };
-                const auto distance{ std::sqrtf(vecX * vecX + vecY * vecY) };
-
-                const auto bCollide{ distance <= bulletRadius + enemy.r };
-
-                Dod::BufferUtils::populate(this->toRemoveContext.ids, bulletId, bCollide);
-            }
-        }
-
-//        std::cout << std::format("act {}, new {}\n", 
-//            Dod::BufferUtils::getNumFilledElements(this->activeContext.position), 
-//            Dod::BufferUtils::getNumFilledElements(toCreateCoords)
-//        );
+        const auto collisions{ Dod::SharedContext::get(this->collisionsInputContext).bulletIds };
+        Dod::BufferUtils::append(this->toRemoveContext.ids, Dod::BufferUtils::createImFromBuffer(collisions));
 
         for (int32_t bulletId{}; bulletId < Dod::BufferUtils::getNumFilledElements(this->activeContext.timeLeft); ++bulletId)
         {

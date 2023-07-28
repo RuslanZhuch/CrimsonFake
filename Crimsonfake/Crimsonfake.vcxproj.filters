@@ -123,6 +123,24 @@
     <ClCompile Include="src\contexts\CollisionsDataContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
+    <ClCompile Include="src\contexts\CollisionsResultContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\CollisionsExecutorImpl.cpp">
+      <Filter>src\code</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\CollisionsExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\EnemiesParametersContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\EnemiesStateContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\SpawnerParametersContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\contexts\ApplicationContext.h">
@@ -204,6 +222,21 @@
       <Filter>src\internal\supportTypes</Filter>
     </ClInclude>
     <ClInclude Include="src\contexts\CollisionsDataContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\CollisionsResultContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\CollisionsExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\EnemiesParametersContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\EnemiesStateContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\SpawnerParametersContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
   </ItemGroup>

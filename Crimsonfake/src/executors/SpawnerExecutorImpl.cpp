@@ -20,7 +20,7 @@ namespace Game::ExecutionBlock
 
         this->stateContext.timeLeftToSpawn = std::max(0.f, this->stateContext.timeLeftToSpawn - dt);
 
-        const auto bNeedToSpawn{ this->stateContext.timeLeftToSpawn <= 0.f };
+        const auto bNeedToSpawn{ this->stateContext.timeLeftToSpawn <= 0.f && this->stateContext.spawnedSpiders < this->parametersContext.maxSpiders };
         this->stateContext.timeLeftToSpawn += this->stateContext.spawnPeriod * bNeedToSpawn;
 
         this->stateContext.spawnedSpiders += bNeedToSpawn;

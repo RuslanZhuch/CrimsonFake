@@ -1,6 +1,6 @@
 {
     "project_dest_folder": "src",
-    "application_context_path": "ws_applicationContext.json",
+    "runtime_path": "ws_applicationContext.json",
     "project_root_src_folder": "workspace",
     "project_root_src_types": "workspace/types",
     "project_contexts_src_folder": "workspace/contexts",
@@ -22,9 +22,13 @@
         "bullets.json",
         "elements.json",
         "enemies.json",
+        "enemiesParameters.json",
+        "enemiesState.json",
         "spawnerState.json",
+        "spawnerParameters.json",
         "playerWeaponState.json",
         "collisionsData.json",
+        "collisionsResult.json",
         "windowParameters.json"
     ],
     "executors_paths": [
@@ -32,6 +36,7 @@
         "player.json",
         "world.json",
         "bullets.json",
+        "collisions.json",
         "enemies.json",
         "spawner.json",
         "assets.json"

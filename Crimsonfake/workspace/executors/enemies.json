@@ -14,6 +14,18 @@
                 "toRemove",
                 "toHit"
             ]
+        },
+        {
+            "type": "enemiesParameters",
+            "list": [
+                "parameters"
+            ]
+        },
+        {
+            "type": "enemiesState",
+            "list": [
+                "state"
+            ]
         }
     ],
     "contextsShared": [
@@ -30,7 +42,7 @@
             ]
         },
         {
-            "type": "collisionsData",
+            "type": "collisionsResult",
             "list": [
                 "collisionsInput"
             ]
