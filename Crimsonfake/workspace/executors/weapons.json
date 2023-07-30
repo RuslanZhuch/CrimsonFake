@@ -1,0 +1,37 @@
+{
+    "whoIAm": "Executor",
+    "version": 1,
+    "contextsLocal": [
+        {
+            "type": "weaponState",
+            "list": [
+                "weaponState"
+            ]
+        },
+        {
+            "type": "weaponsConfig",
+            "list": [
+                "config"
+            ]
+        }
+    ],
+    "contextsShared": [
+        {
+            "type": "weaponCmds",
+            "list": [
+                "commands"
+            ]
+        }
+    ],
+    "contextsToFlush": [
+        "bulletsToCreate"
+    ],
+    "contextsWriteTo": [
+        {
+            "type": "bullets",
+            "list": [
+                "bulletsToCreate"
+            ]
+        }
+    ]
+}

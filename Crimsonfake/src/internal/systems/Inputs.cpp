@@ -131,3 +131,19 @@ Game::Inputs::MoveState Game::Inputs::computeMoveComponent(uint32_t currentInput
     return { rightComponent, forwardComponent };
 
 }
+
+int32_t Game::Inputs::computeWeaponSwitchComponent() noexcept
+{
+    
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+        return 0;
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+        return 1;
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
+        return 2;
+
+    return -1;
+
+}

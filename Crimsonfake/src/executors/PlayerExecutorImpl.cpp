@@ -100,25 +100,18 @@ namespace Game::ExecutionBlock
         this->renderCmdsContext.cameraX = this->worldStateContext.x;
         this->renderCmdsContext.cameraY = this->worldStateContext.y;
 
-        this->weaponStateContext.fireDelayLeft = std::max(0.f, this->weaponStateContext.fireDelayLeft - dt);
-
         const auto bNeedShoot{
-            Game::Inputs::computeFireComponent(this->inputsContext.inputs, this->inputsContext.prevInputs) > 0 &&
-            this->weaponStateContext.fireDelayLeft <= 0.f
+            Game::Inputs::computeFireComponent(this->inputsContext.inputs, this->inputsContext.prevInputs) > 0
         };
-//        std::cout << std::format("need shoot {}\n", bNeedShoot);
 
-        Dod::BufferUtils::populate(this->bulletsToCreateContext.angle, lookAngle, bNeedShoot);
-        Dod::BufferUtils::populate(this->bulletsToCreateContext.position, Types::Coord::Vec2f(
-            this->worldStateContext.x,
-            this->worldStateContext.y
-        ), bNeedShoot);
-        const auto bulletKey{ std::hash<std::string_view>{}("bullet.png")};
-        Dod::BufferUtils::populate(this->bulletsToCreateContext.textureNames, bulletKey, bNeedShoot);
-        Dod::BufferUtils::populate(this->bulletsToCreateContext.velocity, 1000.f, bNeedShoot);
-        Dod::BufferUtils::populate(this->bulletsToCreateContext.timeLeft, 2.f, bNeedShoot);
+        Game::Weapons::FireCmd fireCmd;
+        fireCmd.spawnCoord = { this->worldStateContext.x, this->worldStateContext.y };
+        fireCmd.angle = lookAngle;
+        Dod::BufferUtils::populate(this->weaponCmdsContext.commands, fireCmd, bNeedShoot);
 
-        this->weaponStateContext.fireDelayLeft += this->weaponStateContext.fireDelay * bNeedShoot;
+        const auto switchType{ Game::Inputs::computeWeaponSwitchComponent() };
+        const auto bNeedSwitch{ switchType >= 0 };
+        Dod::BufferUtils::populate(this->weaponCmdsContext.setWeaponType, switchType, bNeedSwitch);
 
     }
 

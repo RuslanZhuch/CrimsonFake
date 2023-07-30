@@ -8,6 +8,7 @@
                 "player",
                 "render",
                 "spawner",
+                "weapons",
                 "world"
             ]
         },
@@ -52,13 +53,18 @@
         {
             "contextName": "collisionsResult",
             "instanceName": "collisionsResult"
+        },
+        {
+            "contextName": "weaponCmds",
+            "instanceName": "weaponCmds"
         }
     ],
     "sharedContextsInstancesToFlush": [
         "renderCmds",
         "enemiesToSpawn",
         "bulletsToCreate",
-        "collisionsResult"
+        "collisionsResult",
+        "weaponCmds"
     ],
     "sharedContextsUsage": [
         {
@@ -100,6 +106,11 @@
             "instanceName": "collisionsResult",
             "executorName": "enemies",
             "executorSharedName": "collisionsInput"
+        },
+        {
+            "instanceName": "weaponCmds",
+            "executorName": "weapons",
+            "executorSharedName": "commands"
         }
     ],
     "sharedContextsMerge": [
@@ -139,11 +150,6 @@
             "executorContextName": "renderCmds"
         },
         {
-            "instanceName": "bulletsToCreate",
-            "executorName": "player",
-            "executorContextName": "bulletsToCreate"
-        },
-        {
             "instanceName": "enemiesToSpawn",
             "executorName": "spawner",
             "executorContextName": "toSpawn"
@@ -157,6 +163,16 @@
             "instanceName": "collisionsResult",
             "executorName": "collisions",
             "executorContextName": "output"
+        },
+        {
+            "instanceName": "weaponCmds",
+            "executorName": "player",
+            "executorContextName": "weaponCmds"
+        },
+        {
+            "instanceName": "bulletsToCreate",
+            "executorName": "weapons",
+            "executorContextName": "bulletsToCreate"
         }
     ],
     "poolContextsInstances": [

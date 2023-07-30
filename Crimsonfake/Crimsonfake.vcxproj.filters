@@ -96,9 +96,6 @@
     <ClCompile Include="src\contexts\BulletsContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
-    <ClCompile Include="src\contexts\PlayerWeaponStateContext.cpp">
-      <Filter>src\generated\contexts</Filter>
-    </ClCompile>
     <ClCompile Include="src\contexts\ElementsContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
@@ -139,6 +136,21 @@
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
     <ClCompile Include="src\contexts\SpawnerParametersContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\WeaponCmdsContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\WeaponsExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\WeaponsExecutorImpl.cpp">
+      <Filter>src\code</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\WeaponsConfigContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\WeaponStateContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
   </ItemGroup>
@@ -200,9 +212,6 @@
     <ClInclude Include="src\contexts\BulletsContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
-    <ClInclude Include="src\contexts\PlayerWeaponStateContext.h">
-      <Filter>src\generated\contexts</Filter>
-    </ClInclude>
     <ClInclude Include="src\contexts\ElementsContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
@@ -237,6 +246,21 @@
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
     <ClInclude Include="src\contexts\SpawnerParametersContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\WeaponCmdsContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\WeaponsExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\internal\systems\weapons.h">
+      <Filter>src\internal\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\WeaponsConfigContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\WeaponStateContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
   </ItemGroup>

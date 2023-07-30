@@ -26,9 +26,11 @@
         "enemiesState.json",
         "spawnerState.json",
         "spawnerParameters.json",
-        "playerWeaponState.json",
+        "weaponState.json",
         "collisionsData.json",
         "collisionsResult.json",
+        "weaponCmds.json",
+        "weaponsConfig.json",
         "windowParameters.json"
     ],
     "executors_paths": [
@@ -39,6 +41,7 @@
         "collisions.json",
         "enemies.json",
         "spawner.json",
+        "weapons.json",
         "assets.json"
     ]
 }

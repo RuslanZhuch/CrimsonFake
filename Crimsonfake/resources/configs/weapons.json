@@ -1,0 +1,34 @@
+{
+    "data":[
+        {
+            "type": 0,
+            "bulletTexture": "bullet.png",
+            "bulletVelocity": 1000,
+            "bulletLifetime": 2,
+            "damage": 2,
+            "spread": 0,
+            "bulletsPerShot": 1,
+            "fireDelay": 0.3 
+        },
+        {
+            "type": 1,
+            "bulletTexture": "bullet.png",
+            "bulletVelocity": 1000,
+            "bulletLifetime": 2,
+            "damage": 1,
+            "spread": 10,
+            "bulletsPerShot": 1,
+            "fireDelay": 0.1 
+        },
+        {
+            "type": 2,
+            "bulletTexture": "bullet.png",
+            "bulletVelocity": 1000,
+            "bulletLifetime": 2,
+            "damage": 2,
+            "spread": 40,
+            "bulletsPerShot": 5,
+            "fireDelay": 0.35
+        }
+    ]
+}

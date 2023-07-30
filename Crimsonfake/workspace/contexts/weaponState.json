@@ -5,14 +5,13 @@
         {
             "type": "object",
             "dataType": "float",
-            "name": "fireDelay",
-            "initial": 0.1
+            "name": "fireDelayLeft",
+            "initial": 0
         },
         {
             "type": "object",
-            "dataType": "float",
-            "name": "fireDelayLeft",
-            "initial": 0
+            "dataType": "Game::Weapons::Desc",
+            "name": "currentDesc"
         }
     ]
 }

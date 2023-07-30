@@ -6,7 +6,7 @@
             "type": "object",
             "dataType": "int32_t",
             "name": "maxSpiders",
-            "initial": 1
+            "initial": 512
         }
     ]
 }

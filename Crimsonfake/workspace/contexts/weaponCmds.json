@@ -1,0 +1,18 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "dbbuffer",
+            "dataType": "Game::Weapons::FireCmd",
+            "name": "commands",
+            "capacity": 4
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "setWeaponType",
+            "capacity": 4
+        }
+    ]
+}

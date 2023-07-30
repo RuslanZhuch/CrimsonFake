@@ -1,0 +1,24 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "Engine::String",
+            "name": "configName",
+            "initial": "weapons.json"
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "types",
+            "capacity": 16
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "Game::Weapons::Desc",
+            "name": "descriptions",
+            "capacity": 16
+        }
+    ]
+}

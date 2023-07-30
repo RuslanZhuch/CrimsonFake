@@ -19,12 +19,6 @@
             "list": [
                 "inputs"
             ]
-        },
-        {
-            "type": "playerWeaponState",
-            "list": [
-                "weaponState"
-            ]
         }
     ],
     "contextsShared": [
@@ -37,7 +31,7 @@
     ],
     "contextsToFlush": [
         "renderCmds",
-        "bulletsToCreate"
+        "weaponCmds"
     ],
     "contextsWriteTo": [
         {
@@ -47,15 +41,15 @@
             ]
         },
         {
-            "type": "bullets",
-            "list": [
-                "bulletsToCreate"
-            ]
-        },
-        {
             "type": "playerWorldState",
             "list": [
                 "worldState"
+            ]
+        },
+        {
+            "type": "weaponCmds",
+            "list": [
+                "weaponCmds"
             ]
         }
     ]
