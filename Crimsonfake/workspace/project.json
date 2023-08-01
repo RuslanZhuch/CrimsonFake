@@ -17,6 +17,7 @@
         "workspace/contexts/mouse.json",
         "workspace/contexts/world.json",
         "workspace/contexts/bullets.json",
+        "workspace/contexts/bulletsInternal.json",
         "workspace/contexts/elements.json",
         "workspace/contexts/enemies.json",
         "workspace/contexts/enemiesParameters.json",

@@ -8,4 +8,9 @@ namespace Types::Render
 	{
 		ProtoRenderer::transform_t transform;
 	};
+
+	struct BatchDesc
+	{
+		int32_t numOfCmds{};
+	};
 }

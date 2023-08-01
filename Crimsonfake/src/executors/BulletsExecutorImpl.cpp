@@ -53,7 +53,6 @@ namespace Game::ExecutionBlock
         Dod::BufferUtils::append(this->activeContext.position, Dod::BufferUtils::createImFromBuffer(toCreateCoords));
         Dod::BufferUtils::append(this->activeContext.timeLeft, Dod::BufferUtils::createImFromBuffer(toCreateTimeLeft));
 
-
         for (int32_t bulletId{}; bulletId < Dod::BufferUtils::getNumFilledElements(this->activeContext.textureNames); ++bulletId)
         {
 
@@ -70,18 +69,32 @@ namespace Game::ExecutionBlock
 
         Types::Render::Cmd cmd;
 
-        for (int32_t bulletId{}; bulletId < Dod::BufferUtils::getNumFilledElements(this->activeContext.textureNames); ++bulletId)
+        Dod::Algorithms::getSortedIndices(this->internalContext.sortedByMaterial, Dod::BufferUtils::createImFromBuffer(this->activeContext.textureNames));
+        
+        const auto sortedMaterials{ Dod::BufferUtils::createSortedImBuffer(
+            Dod::BufferUtils::createImFromBuffer(this->activeContext.textureNames),
+            Dod::BufferUtils::createImFromBuffer(this->internalContext.sortedByMaterial) 
+        )};
+        Dod::Algorithms::countUniques(this->internalContext.batchTotalElements, sortedMaterials);
+
+        for (int32_t batchElId{}, globalBulletId{}; globalBulletId < Dod::BufferUtils::getNumFilledElements(sortedMaterials); ++batchElId)
         {
+            const auto textureId{ Dod::BufferUtils::get(sortedMaterials, globalBulletId) };
+            const auto totalElements{ Dod::BufferUtils::get(this->internalContext.batchTotalElements, batchElId) };
 
-            cmd.transform = ProtoRenderer::transform_t();
-            const auto coord{ Dod::BufferUtils::get(this->activeContext.position, bulletId) };
-            cmd.transform.translate({ coord.x, coord.y });
-            cmd.transform.scale({ 32.f, 32.f });
-            cmd.transform.rotate(Dod::BufferUtils::get(this->activeContext.angle, bulletId) * 180.f / pi);
-            Dod::BufferUtils::populate(this->renderCmdsContext.commands, cmd, true);
-            Dod::BufferUtils::populate(this->renderCmdsContext.materialNames, Dod::BufferUtils::get(this->activeContext.textureNames, bulletId), true);
-            Dod::BufferUtils::populate(this->renderCmdsContext.depth, 2, true);
-
+            for (int32_t bulletElId{}; bulletElId < totalElements; ++bulletElId, ++globalBulletId)
+            {
+                const auto sortedBulletId{ Dod::BufferUtils::get(this->internalContext.sortedByMaterial, globalBulletId) };
+                cmd.transform = ProtoRenderer::transform_t();
+                const auto coord{ Dod::BufferUtils::get(this->activeContext.position, sortedBulletId) };
+                cmd.transform.translate({ coord.x, coord.y });
+                cmd.transform.scale({ 32.f, 32.f });
+                cmd.transform.rotate(Dod::BufferUtils::get(this->activeContext.angle, sortedBulletId) * 180.f / pi);
+                Dod::BufferUtils::populate(this->renderCmdsContext.commands, cmd, true);
+            }
+            Dod::BufferUtils::populate(this->renderCmdsContext.batchMaterial, textureId, true);
+            Dod::BufferUtils::populate(this->renderCmdsContext.batchDepth, 2, true);
+            Dod::BufferUtils::populate(this->renderCmdsContext.batches, { totalElements }, true);
         }
 
         Types::Collision::Circle collision;

@@ -29,10 +29,11 @@ namespace Game::ExecutionBlock
                 const auto scale{ this->worldContext.size / 2.f };
                 cmd.transform.scale({ scale, scale });
                 Dod::BufferUtils::populate(this->renderCmdsContext.commands, cmd, true);
-                Dod::BufferUtils::populate(this->renderCmdsContext.materialNames, textureNamekey, true);
-                Dod::BufferUtils::populate(this->renderCmdsContext.depth, -10, true);
             }
         }
+        Dod::BufferUtils::populate(this->renderCmdsContext.batchMaterial, textureNamekey, true);
+        Dod::BufferUtils::populate(this->renderCmdsContext.batchDepth, -10, true);
+        Dod::BufferUtils::populate(this->renderCmdsContext.batches, { numOfTiles * numOfTiles }, true);
 
     }
 

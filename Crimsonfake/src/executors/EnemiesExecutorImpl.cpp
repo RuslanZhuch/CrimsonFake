@@ -201,10 +201,11 @@ namespace Game::ExecutionBlock
             cmd.transform.scale({ 32.f, 32.f });
             cmd.transform.rotate(Dod::BufferUtils::get(this->spidersContext.angle, enemyId) * 180.f / pi);
             Dod::BufferUtils::populate(this->renderCmdsContext.commands, cmd, true);
-            Dod::BufferUtils::populate(this->renderCmdsContext.materialNames, textureKey, true);
-            Dod::BufferUtils::populate(this->renderCmdsContext.depth, 10, true);
 
         }
+        Dod::BufferUtils::populate(this->renderCmdsContext.batchMaterial, textureKey, true);
+        Dod::BufferUtils::populate(this->renderCmdsContext.batchDepth, 10, true);
+        Dod::BufferUtils::populate(this->renderCmdsContext.batches, { Dod::BufferUtils::getNumFilledElements(this->spidersContext.position) }, true);
 
         Types::Collision::Circle collision;
         collision.r = 32.f;

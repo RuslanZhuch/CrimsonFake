@@ -17,6 +17,12 @@
             "dataType": "int32_t",
             "name": "priority",
             "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "globalCmdOffsets",
+            "capacity": 128
         }
     ]
 }

@@ -53,27 +53,35 @@ namespace Game::ExecutionBlock
 
         this->internalContext.renderer->clear();
 
-        const auto depths{ Dod::SharedContext::get(this->cmdsContext).depth };
+        const auto depths{ Dod::SharedContext::get(this->cmdsContext).batchDepth };
+
+
         Dod::Algorithms::getSortedIndices(this->internalContext.priority, Dod::BufferUtils::createImFromBuffer(depths));
 
         const auto commands{ Dod::SharedContext::get(this->cmdsContext).commands };
-        const auto materialNames{ Dod::SharedContext::get(this->cmdsContext).materialNames };
+        const auto batchMaterials{ Dod::SharedContext::get(this->cmdsContext).batchMaterial };
+        const auto batches{ Dod::SharedContext::get(this->cmdsContext).batches };
+        for (int32_t globalOffset{}, batchElId{}; batchElId < Dod::BufferUtils::getNumFilledElements(batches); ++batchElId)
+        {
+            Dod::BufferUtils::populate(this->internalContext.globalCmdOffsets, globalOffset, true);
+            globalOffset += Dod::BufferUtils::get(batches, batchElId).numOfCmds;
+        }
 
-//        std::cout << std::format("render cmds {}\n", Dod::BufferUtils::getNumFilledElements(commands));
-
-        const auto totalCommands{ std::min(
-            Dod::BufferUtils::getNumFilledElements(commands),
-            Dod::BufferUtils::getNumFilledElements(materialNames)
-        ) };
+        const auto totalCommands{ Dod::BufferUtils::getNumFilledElements(commands) };
 
         const auto materialDataNames{ Dod::SharedContext::get(this->materialsContext).names };
         const auto materialDataTextures{ Dod::SharedContext::get(this->materialsContext).textures };
-        for (int32_t id{}; id < totalCommands; ++id) 
+
+        for (int32_t batchElId{}; batchElId < Dod::BufferUtils::getNumFilledElements(batches); ++batchElId)
         {
-            const auto cmdId{ Dod::BufferUtils::get(this->internalContext.priority, id) };
+            const auto batchId{ Dod::BufferUtils::get(this->internalContext.priority, batchElId) };
+
+            const auto batch{ Dod::BufferUtils::get(batches, batchId) };
+            const auto commandsInBatch{ batch.numOfCmds };
+
             const auto textureId{ getTexture(
                 Dod::BufferUtils::createImFromBuffer(materialDataNames),
-                Dod::BufferUtils::get(materialNames, cmdId)
+                Dod::BufferUtils::get(batchMaterials, batchId)
             ) };
             if (textureId < 0)
                 continue;
@@ -82,14 +90,40 @@ namespace Game::ExecutionBlock
             this->internalContext.renderer->setTexture(texture);
             const auto textureSize{ texture->getSize() };
             this->internalContext.spriteMesh[0].texCoords = { 0.f, 0.f };
-            this->internalContext.spriteMesh[1].texCoords = { static_cast<float>(textureSize.x), 0.f};
+            this->internalContext.spriteMesh[1].texCoords = { static_cast<float>(textureSize.x), 0.f };
             this->internalContext.spriteMesh[2].texCoords = { 0.f, static_cast<float>(textureSize.y) };
             this->internalContext.spriteMesh[3].texCoords = { static_cast<float>(textureSize.x), static_cast<float>(textureSize.y) };
 
-            this->internalContext.renderer->setTransform(Dod::BufferUtils::get(commands, cmdId).transform);
-
-            this->internalContext.renderer->draw(this->internalContext.spriteMesh);
+            const auto globalCmdOffset{ Dod::BufferUtils::get(this->internalContext.globalCmdOffsets, batchId) };
+            for (int32_t cmdElId{}; cmdElId < commandsInBatch; ++cmdElId)
+            {
+                this->internalContext.renderer->setTransform(Dod::BufferUtils::get(commands, cmdElId + globalCmdOffset).transform);
+                this->internalContext.renderer->draw(this->internalContext.spriteMesh);
+            }
         }
+
+//        for (int32_t id{}; id < totalCommands; ++id) 
+//        {
+//            const auto cmdId{ Dod::BufferUtils::get(this->internalContext.priority, id) };
+//            const auto textureId{ getTexture(
+//                Dod::BufferUtils::createImFromBuffer(materialDataNames),
+//                Dod::BufferUtils::get(materialNames, cmdId)
+//            ) };
+//            if (textureId < 0)
+//                continue;
+//
+//            const auto texture{ &Dod::BufferUtils::get(materialDataTextures, textureId) };
+//            this->internalContext.renderer->setTexture(texture);
+//            const auto textureSize{ texture->getSize() };
+//            this->internalContext.spriteMesh[0].texCoords = { 0.f, 0.f };
+//            this->internalContext.spriteMesh[1].texCoords = { static_cast<float>(textureSize.x), 0.f};
+//            this->internalContext.spriteMesh[2].texCoords = { 0.f, static_cast<float>(textureSize.y) };
+//            this->internalContext.spriteMesh[3].texCoords = { static_cast<float>(textureSize.x), static_cast<float>(textureSize.y) };
+//
+//            this->internalContext.renderer->setTransform(Dod::BufferUtils::get(commands, cmdId).transform);
+//
+//            this->internalContext.renderer->draw(this->internalContext.spriteMesh);
+//        }
 
         const auto mouseCoord{ this->internalContext.renderer->getMousePosition() };
         this->mouseContext.x = mouseCoord.x;

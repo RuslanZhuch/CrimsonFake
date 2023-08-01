@@ -93,9 +93,9 @@ namespace Game::ExecutionBlock
         
         const auto textureName{ std::string_view(this->initialContext.textureName.data.data()) };
         const auto key{ std::hash<std::string_view>{}(textureName)};
-        Dod::BufferUtils::populate(this->renderCmdsContext.materialNames, key, true);
-
-        Dod::BufferUtils::populate(this->renderCmdsContext.depth, 1, true);
+        Dod::BufferUtils::populate(this->renderCmdsContext.batchMaterial, key, true);
+        Dod::BufferUtils::populate(this->renderCmdsContext.batchDepth, 1, true);
+        Dod::BufferUtils::populate(this->renderCmdsContext.batches, { 1 }, true);
 
         this->renderCmdsContext.cameraX = this->worldStateContext.x;
         this->renderCmdsContext.cameraY = this->worldStateContext.y;

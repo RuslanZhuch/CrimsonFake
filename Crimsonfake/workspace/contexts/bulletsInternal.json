@@ -1,0 +1,30 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "sortedByMaterial",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "batchGlobalOffsets",
+            "capacity": 16
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "batchTotalElements",
+            "capacity": 16
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "uint64_t",
+            "name": "batchMaterialIds",
+            "capacity": 16
+        }
+    ]
+}

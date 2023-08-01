@@ -18,20 +18,26 @@
         },
         {
             "type": "dbbuffer",
+            "dataType": "Types::Render::Cmd",
+            "name": "commands",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
             "dataType": "uint64_t",
-            "name": "materialNames",
+            "name": "batchMaterial",
             "capacity": 128
         },
         {
             "type": "dbbuffer",
             "dataType": "int32_t",
-            "name": "depth",
+            "name": "batchDepth",
             "capacity": 128
         },
         {
             "type": "dbbuffer",
-            "dataType": "Types::Render::Cmd",
-            "name": "commands",
+            "dataType": "Types::Render::BatchDesc",
+            "name": "batches",
             "capacity": 128
         }
     ]

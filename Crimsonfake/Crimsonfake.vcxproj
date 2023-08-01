@@ -139,6 +139,7 @@
   <ItemGroup>
     <ClCompile Include="src\contexts\ApplicationContext.cpp" />
     <ClCompile Include="src\contexts\BulletsContext.cpp" />
+    <ClCompile Include="src\contexts\BulletsInternalContext.cpp" />
     <ClCompile Include="src\contexts\CollisionsDataContext.cpp" />
     <ClCompile Include="src\contexts\CollisionsResultContext.cpp" />
     <ClCompile Include="src\contexts\ElementsContext.cpp" />
@@ -183,6 +184,7 @@
   <ItemGroup>
     <ClInclude Include="src\contexts\ApplicationContext.h" />
     <ClInclude Include="src\contexts\BulletsContext.h" />
+    <ClInclude Include="src\contexts\BulletsInternalContext.h" />
     <ClInclude Include="src\contexts\CollisionsDataContext.h" />
     <ClInclude Include="src\contexts\CollisionsResultContext.h" />
     <ClInclude Include="src\contexts\ElementsContext.h" />

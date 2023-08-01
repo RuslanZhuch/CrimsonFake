@@ -153,6 +153,9 @@
     <ClCompile Include="src\contexts\WeaponStateContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
+    <ClCompile Include="src\contexts\BulletsInternalContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\contexts\ApplicationContext.h">
@@ -261,6 +264,9 @@
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
     <ClInclude Include="src\contexts\WeaponStateContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\BulletsInternalContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
   </ItemGroup>

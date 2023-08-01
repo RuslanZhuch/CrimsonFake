@@ -6,6 +6,7 @@
         "ProtoRenderer::mesh_t": "renderer.h",
         "ProtoRenderer::texture_t": "renderer.h",
         "Types::Render::Cmd": "internal/supportTypes/renderTypes.h",
+        "Types::Render::BatchDesc": "internal/supportTypes/renderTypes.h",
         "Types::Coord::Vec2f": "internal/supportTypes/coordTypes.h",
         "Types::Collision::Circle": "internal/supportTypes/collisionTypes.h",
         "Game::Inputs::MoveState": "internal/systems/inputs.h",
