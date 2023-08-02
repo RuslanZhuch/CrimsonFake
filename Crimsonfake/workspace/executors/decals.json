@@ -1,0 +1,24 @@
+{
+    "whoIAm": "Executor",
+    "version": 1,
+    "contextsLocal": [
+        {
+            "type": "world",
+            "list": [
+                "world"
+            ]
+        },
+        {
+            "type": "decalsInternal",
+            "list": [
+                "internal"
+            ]
+        }
+    ],
+    "contextsShared": [
+    ],
+    "contextsToFlush": [
+    ],
+    "contextsWriteTo": [
+    ]
+}

@@ -16,7 +16,7 @@ namespace Game::ExecutionBlock
         this->internalContext.renderer = std::make_unique<ProtoRenderer::Renderer>(
             this->windowParametersContext.width, 
             this->windowParametersContext.height, 
-            this->windowParametersContext.title.data.data());
+            this->windowParametersContext.title.internalData.data());
 
         constexpr auto textureSize{ 64.f };
 
@@ -51,6 +51,23 @@ namespace Game::ExecutionBlock
             Dod::BufferUtils::populate(this->applicationContext.commands, 1, event.type == sf::Event::Closed);
         }
 
+        const auto createTextureCmds{ Dod::SharedContext::get(this->cmdsContext).createTextureCmds };
+        for (int32_t elId{}; elId < Dod::BufferUtils::getNumFilledElements(createTextureCmds); ++elId)
+        {
+            ProtoRenderer::texture_t newTexture;
+            const auto cmd{ Dod::BufferUtils::get(createTextureCmds, elId) };
+            const auto bLoaded{ newTexture.loadFromFile("resources/textures/" + std::string(cmd.filename.internalData.data())) };
+
+            Dod::BufferUtils::emplaceBack(this->assetsContext.textures, std::move(newTexture), bLoaded);
+            auto texturePtr{ &Dod::BufferUtils::get(this->assetsContext.textures,
+                Dod::BufferUtils::getNumFilledElements(this->assetsContext.textures) - 1) };
+
+            const auto name{ std::string_view(cmd.filename.internalData.data()) };
+            const auto key{ std::hash<std::string_view>{}(name) };
+            Dod::BufferUtils::populate(this->assetsContext.loadedTextureIds, key, bLoaded);
+            Dod::BufferUtils::populate(this->assetsContext.loadedTextures, texturePtr, bLoaded);
+        }
+
         this->internalContext.renderer->clear();
 
         const auto depths{ Dod::SharedContext::get(this->cmdsContext).batchDepth };
@@ -69,9 +86,6 @@ namespace Game::ExecutionBlock
 
         const auto totalCommands{ Dod::BufferUtils::getNumFilledElements(commands) };
 
-        const auto materialDataNames{ Dod::SharedContext::get(this->materialsContext).names };
-        const auto materialDataTextures{ Dod::SharedContext::get(this->materialsContext).textures };
-
         for (int32_t batchElId{}; batchElId < Dod::BufferUtils::getNumFilledElements(batches); ++batchElId)
         {
             const auto batchId{ Dod::BufferUtils::get(this->internalContext.priority, batchElId) };
@@ -80,15 +94,15 @@ namespace Game::ExecutionBlock
             const auto commandsInBatch{ batch.numOfCmds };
 
             const auto textureId{ getTexture(
-                Dod::BufferUtils::createImFromBuffer(materialDataNames),
+                Dod::BufferUtils::createImFromBuffer(this->assetsContext.loadedTextureIds),
                 Dod::BufferUtils::get(batchMaterials, batchId)
             ) };
             if (textureId < 0)
                 continue;
 
-            const auto texture{ &Dod::BufferUtils::get(materialDataTextures, textureId) };
-            this->internalContext.renderer->setTexture(texture);
-            const auto textureSize{ texture->getSize() };
+            auto texturePtr{ Dod::BufferUtils::get(this->assetsContext.loadedTextures, textureId) };
+            this->internalContext.renderer->setTexture(texturePtr);
+            const auto textureSize{ texturePtr->getSize() };
             this->internalContext.spriteMesh[0].texCoords = { 0.f, 0.f };
             this->internalContext.spriteMesh[1].texCoords = { static_cast<float>(textureSize.x), 0.f };
             this->internalContext.spriteMesh[2].texCoords = { 0.f, static_cast<float>(textureSize.y) };

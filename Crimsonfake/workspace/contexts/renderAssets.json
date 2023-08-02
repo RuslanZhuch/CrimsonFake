@@ -1,0 +1,31 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "dbbuffer",
+            "dataType": "ProtoRenderer::texture_t",
+            "name": "textures",
+            "capacity": 64
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "ProtoRenderer::targetTexture_t",
+            "merge": "disabled",
+            "name": "renderTextures",
+            "capacity": 64
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "ProtoRenderer::texturePtr_t",
+            "name": "loadedTextures",
+            "capacity": 64
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "uint64_t",
+            "name": "loadedTextureIds",
+            "capacity": 64
+        }
+    ]
+}

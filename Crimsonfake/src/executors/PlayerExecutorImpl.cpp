@@ -91,7 +91,7 @@ namespace Game::ExecutionBlock
         cmd.transform.rotate(lookAngle * 180.f / pi);
         Dod::BufferUtils::populate(this->renderCmdsContext.commands, cmd, true);
         
-        const auto textureName{ std::string_view(this->initialContext.textureName.data.data()) };
+        const auto textureName{ std::string_view(this->initialContext.textureName.internalData.data()) };
         const auto key{ std::hash<std::string_view>{}(textureName)};
         Dod::BufferUtils::populate(this->renderCmdsContext.batchMaterial, key, true);
         Dod::BufferUtils::populate(this->renderCmdsContext.batchDepth, 1, true);

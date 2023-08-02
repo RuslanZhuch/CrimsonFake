@@ -192,7 +192,8 @@ namespace Game::ExecutionBlock
 
         const auto textureKey{ std::hash<std::string_view>{}("spider.png") };
         Types::Render::Cmd cmd;
-        for (int32_t enemyId{}; enemyId < Dod::BufferUtils::getNumFilledElements(this->spidersContext.position); ++enemyId)
+        const auto totalSpiders{ Dod::BufferUtils::getNumFilledElements(this->spidersContext.position) };
+        for (int32_t enemyId{}; enemyId < totalSpiders; ++enemyId)
         {
 
             cmd.transform = ProtoRenderer::transform_t();
@@ -203,9 +204,9 @@ namespace Game::ExecutionBlock
             Dod::BufferUtils::populate(this->renderCmdsContext.commands, cmd, true);
 
         }
-        Dod::BufferUtils::populate(this->renderCmdsContext.batchMaterial, textureKey, true);
-        Dod::BufferUtils::populate(this->renderCmdsContext.batchDepth, 10, true);
-        Dod::BufferUtils::populate(this->renderCmdsContext.batches, { Dod::BufferUtils::getNumFilledElements(this->spidersContext.position) }, true);
+        Dod::BufferUtils::populate(this->renderCmdsContext.batchMaterial, textureKey, totalSpiders > 0);
+        Dod::BufferUtils::populate(this->renderCmdsContext.batchDepth, 10, totalSpiders > 0);
+        Dod::BufferUtils::populate(this->renderCmdsContext.batches, { totalSpiders }, totalSpiders > 0);
 
         Types::Collision::Circle collision;
         collision.r = 32.f;

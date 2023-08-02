@@ -9,6 +9,12 @@
             ]
         },
         {
+            "type": "renderAssets",
+            "list": [
+                "assets"
+            ]
+        },
+        {
             "type": "windowParameters",
             "list": [
                 "windowParameters"
@@ -20,12 +26,6 @@
             "type": "renderCmds",
             "list": [
                 "cmds"
-            ]
-        },
-        {
-            "type": "materials",
-            "list": [
-                "materials"
             ]
         }
     ],

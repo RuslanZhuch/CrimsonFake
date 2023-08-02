@@ -11,7 +11,7 @@
         "workspace/contexts/playerInitial.json",
         "workspace/contexts/playerWorldState.json",
         "workspace/contexts/renderInternal.json",
-        "workspace/contexts/materials.json",
+        "workspace/contexts/renderAssets.json",
         "workspace/contexts/renderCmds.json",
         "workspace/contexts/inputs.json",
         "workspace/contexts/mouse.json",
@@ -29,12 +29,14 @@
         "workspace/contexts/collisionsResult.json",
         "workspace/contexts/weaponCmds.json",
         "workspace/contexts/weaponsConfig.json",
+        "workspace/contexts/decalsInternal.json",
         "workspace/contexts/windowParameters.json"
     ],
     "executors_paths": [
         "workspace/executors/render.json",
         "workspace/executors/player.json",
         "workspace/executors/world.json",
+        "workspace/executors/decals.json",
         "workspace/executors/bullets.json",
         "workspace/executors/collisions.json",
         "workspace/executors/enemies.json",

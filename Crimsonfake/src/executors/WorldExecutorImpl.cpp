@@ -14,7 +14,7 @@ namespace Game::ExecutionBlock
     {
         Types::Render::Cmd cmd;
 
-        const auto textureName{ std::string_view(this->worldContext.textureName.data.data()) };
+        const auto textureName{ std::string_view(this->worldContext.textureName.internalData.data()) };
         const auto textureNamekey{ std::hash<std::string_view>{}(textureName) };
 
         const auto numOfTiles{ this->worldContext.numOfTiles };

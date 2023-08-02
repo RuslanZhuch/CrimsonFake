@@ -9,7 +9,8 @@
                 "render",
                 "spawner",
                 "weapons",
-                "world"
+                "world",
+                "decals"
             ]
         },
         {
@@ -25,10 +26,6 @@
         {
             "contextName": "application",
             "instanceName": "sApplication"
-        },
-        {
-            "contextName": "materials",
-            "instanceName": "materials"
         },
         {
             "contextName": "renderCmds",
@@ -71,11 +68,6 @@
             "instanceName": "renderCmds",
             "executorName": "render",
             "executorSharedName": "cmds"
-        },
-        {
-            "instanceName": "materials",
-            "executorName": "render",
-            "executorSharedName": "materials"
         },
         {
             "instanceName": "mouse",
@@ -125,9 +117,9 @@
             "executorContextName": "mouse"
         },
         {
-            "instanceName": "materials",
+            "instanceName": "renderCmds",
             "executorName": "assets",
-            "executorContextName": "materials"
+            "executorContextName": "renderCmds"
         },
         {
             "instanceName": "renderCmds",

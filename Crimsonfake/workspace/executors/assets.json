@@ -6,13 +6,13 @@
     "contextsShared": [
     ],
     "contextsToFlush": [
-        "materials"
+        "renderCmds"
     ],
     "contextsWriteTo": [
         {
-            "type": "materials",
+            "type": "renderCmds",
             "list": [
-                "materials"
+                "renderCmds"
             ]
         }
     ]

@@ -18,7 +18,7 @@ namespace Game::ExecutionBlock
 
         char configFullPath[FILENAME_MAX];
         std::memset(configFullPath, 0, sizeof(configFullPath));
-        std::format_to_n(configFullPath, sizeof(configFullPath), "resources/configs/{}", this->configContext.configName.data.data());
+        std::format_to_n(configFullPath, sizeof(configFullPath), "resources/configs/{}", this->configContext.configName.internalData.data());
         const auto doc{ Engine::ContextUtils::loadFileDataRoot(configFullPath) };
 
         if (!doc.IsObject())
@@ -95,7 +95,7 @@ namespace Game::ExecutionBlock
                     cmd.spawnCoord.x,
                     cmd.spawnCoord.y
                 ), true);
-                const auto bulletKey{ std::hash<std::string_view>{}(this->weaponStateContext.currentDesc.bulletTextureName.data.data()) };
+                const auto bulletKey{ std::hash<std::string_view>{}(this->weaponStateContext.currentDesc.bulletTextureName.internalData.data()) };
                 Dod::BufferUtils::populate(this->bulletsToCreateContext.textureNames, bulletKey, true);
                 Dod::BufferUtils::populate(this->bulletsToCreateContext.velocity, this->weaponStateContext.currentDesc.bulletVelocity, true);
                 Dod::BufferUtils::populate(this->bulletsToCreateContext.timeLeft, this->weaponStateContext.currentDesc.bulletLifeTime, true);

@@ -51,9 +51,6 @@
     <ClCompile Include="src\contexts\WindowParametersContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
-    <ClCompile Include="src\contexts\MaterialsContext.cpp">
-      <Filter>src\generated\contexts</Filter>
-    </ClCompile>
     <ClCompile Include="src\executors\AssetsExecutor.cpp">
       <Filter>src\generated\executors</Filter>
     </ClCompile>
@@ -156,6 +153,18 @@
     <ClCompile Include="src\contexts\BulletsInternalContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
+    <ClCompile Include="src\executors\DecalsExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\DecalsExecutorImpl.cpp">
+      <Filter>src\code</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\DecalsInternalContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\RenderAssetsContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\contexts\ApplicationContext.h">
@@ -174,9 +183,6 @@
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
     <ClInclude Include="src\contexts\WindowParametersContext.h">
-      <Filter>src\generated\contexts</Filter>
-    </ClInclude>
-    <ClInclude Include="src\contexts\MaterialsContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
     <ClInclude Include="src\executors\AssetsExecutor.h">
@@ -267,6 +273,15 @@
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
     <ClInclude Include="src\contexts\BulletsInternalContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\DecalsExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\DecalsInternalContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\RenderAssetsContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
   </ItemGroup>

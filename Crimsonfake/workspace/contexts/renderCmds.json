@@ -24,6 +24,18 @@
         },
         {
             "type": "dbbuffer",
+            "dataType": "Types::Render::CreateTextureCmd",
+            "name": "createTextureCmds",
+            "capacity": 32
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "Types::Render::CreateTextureCmd",
+            "name": "createRenderTextureCmd",
+            "capacity": 32
+        },
+        {
+            "type": "dbbuffer",
             "dataType": "uint64_t",
             "name": "batchMaterial",
             "capacity": 128

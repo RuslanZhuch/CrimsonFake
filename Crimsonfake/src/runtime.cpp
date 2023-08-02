@@ -3,7 +3,6 @@
 #include <Contexts/CollisionsDataContext.h>
 #include <Contexts/CollisionsResultContext.h>
 #include <Contexts/EnemiesContext.h>
-#include <Contexts/MaterialsContext.h>
 #include <Contexts/MouseContext.h>
 #include <Contexts/PlayerWorldStateContext.h>
 #include <Contexts/RenderCmdsContext.h>
@@ -12,6 +11,7 @@
 #include <executors/RenderExecutor.h>
 #include <executors/PlayerExecutor.h>
 #include <executors/WorldExecutor.h>
+#include <executors/DecalsExecutor.h>
 #include <executors/BulletsExecutor.h>
 #include <executors/CollisionsExecutor.h>
 #include <executors/EnemiesExecutor.h>
@@ -26,7 +26,6 @@
 int main()
 {
     Dod::SharedContext::Controller<Game::Context::Application::Data> sApplicationContext;
-    Dod::SharedContext::Controller<Game::Context::Materials::Data> materialsContext;
     Dod::SharedContext::Controller<Game::Context::RenderCmds::Data> renderCmdsContext;
     Dod::SharedContext::Controller<Game::Context::Mouse::Data> mouseContext;
     Dod::SharedContext::Controller<Game::Context::Bullets::Data> bulletsToCreateContext;
@@ -39,7 +38,6 @@ int main()
     Game::ExecutionBlock::Render render;
     render.loadContext();
     render.cmdsContext = &renderCmdsContext;
-    render.materialsContext = &materialsContext;
     render.initiate();
     Game::ExecutionBlock::Player player;
     player.loadContext();
@@ -48,6 +46,9 @@ int main()
     Game::ExecutionBlock::World world;
     world.loadContext();
     world.initiate();
+    Game::ExecutionBlock::Decals decals;
+    decals.loadContext();
+    decals.initiate();
     Game::ExecutionBlock::Bullets bullets;
     bullets.loadContext();
     bullets.toCreateContext = &bulletsToCreateContext;
@@ -88,6 +89,7 @@ int main()
         spawner.update(deltaTime);
         weapons.update(deltaTime);
         world.update(deltaTime);
+        decals.update(deltaTime);
 
         Dod::SharedContext::merge(&collisionsDataContext, enemies.collisionsOutputContext);
         Dod::SharedContext::merge(&collisionsDataContext, bullets.collisionsOutputContext);
@@ -103,7 +105,7 @@ int main()
 
         Dod::SharedContext::merge(&sApplicationContext, render.applicationContext);
         Dod::SharedContext::merge(&mouseContext, render.mouseContext);
-        Dod::SharedContext::merge(&materialsContext, assets.materialsContext);
+        Dod::SharedContext::merge(&renderCmdsContext, assets.renderCmdsContext);
         Dod::SharedContext::merge(&renderCmdsContext, player.renderCmdsContext);
         Dod::SharedContext::merge(&renderCmdsContext, bullets.renderCmdsContext);
         Dod::SharedContext::merge(&renderCmdsContext, world.renderCmdsContext);
@@ -117,6 +119,7 @@ int main()
         render.flushSharedLocalContexts();
         player.flushSharedLocalContexts();
         world.flushSharedLocalContexts();
+        decals.flushSharedLocalContexts();
         bullets.flushSharedLocalContexts();
         collisions.flushSharedLocalContexts();
         enemies.flushSharedLocalContexts();

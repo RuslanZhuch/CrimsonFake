@@ -2,7 +2,9 @@
 
 #include <dod/BufferUtils.h>
 
+#include <internal/supportTypes/renderTypes.h>
 #include <filesystem>
+#include <engine/StringUtils.h>
 
 namespace Game::ExecutionBlock
 {
@@ -17,14 +19,11 @@ namespace Game::ExecutionBlock
                 continue;
             
             const auto pathName{ path.string()};
-                
-            ProtoRenderer::texture_t newTexture;
-            const auto bLoaded{ newTexture.loadFromFile(pathName) };
-            Dod::BufferUtils::constructBack(this->materialsContext.textures, newTexture, bLoaded);
-
+            
+            Types::Render::CreateTextureCmd cmd;
             const auto name{ path.filename().string() };
-            const auto key{ std::hash<std::string>{}(name) };
-            Dod::BufferUtils::populate(this->materialsContext.names, key, bLoaded);
+            Engine::StringUtils::assign(cmd.filename, name.c_str());
+            Dod::BufferUtils::populate(this->renderCmdsContext.createTextureCmds, cmd, true);
         }
 
     }
