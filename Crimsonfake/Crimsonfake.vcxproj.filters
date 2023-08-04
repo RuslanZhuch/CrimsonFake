@@ -165,6 +165,9 @@
     <ClCompile Include="src\contexts\RenderAssetsContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
+    <ClCompile Include="src\contexts\DecalsCmdsContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\contexts\ApplicationContext.h">
@@ -282,6 +285,12 @@
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
     <ClInclude Include="src\contexts\RenderAssetsContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\internal\supportTypes\decalsTypes.h">
+      <Filter>src\internal\supportTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\DecalsCmdsContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
   </ItemGroup>

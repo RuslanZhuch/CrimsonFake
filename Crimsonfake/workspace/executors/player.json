@@ -31,7 +31,8 @@
     ],
     "contextsToFlush": [
         "renderCmds",
-        "weaponCmds"
+        "weaponCmds",
+        "decalsCmds"
     ],
     "contextsWriteTo": [
         {
@@ -50,6 +51,12 @@
             "type": "weaponCmds",
             "list": [
                 "weaponCmds"
+            ]
+        },
+        {
+            "type": "decalsCmds",
+            "list": [
+                "decalsCmds"
             ]
         }
     ]

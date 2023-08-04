@@ -25,17 +25,23 @@ namespace Game::ExecutionBlock
 
         this->stateContext.spawnedSpiders += bNeedToSpawn;
 
-        const auto randX{ rand() % 500 };
-        const auto randY{ rand() % 500 };
+        const auto spawnAngle{ static_cast<float>(rand() % 360) };
+        const auto spawnDistance{ 750.f + rand() % 200 };
 
-        Dod::BufferUtils::populate(this->toSpawnContext.position, Types::Coord::Vec2f(randX, randY), bNeedToSpawn);
+        const auto localXOffset{ -cosf(spawnAngle) * spawnDistance };
+        const auto localYOffset{ -sinf(spawnAngle) * spawnDistance };
+
+        const auto playerX{ Dod::SharedContext::get(this->playerWorldStateContext).x };
+        const auto playerY{ Dod::SharedContext::get(this->playerWorldStateContext).y };
+
+        const auto spawnX{ playerX + localXOffset };
+        const auto spawnY{ playerY + localYOffset };
+
+        Dod::BufferUtils::populate(this->toSpawnContext.position, Types::Coord::Vec2f(spawnX, spawnY), bNeedToSpawn);
         Dod::BufferUtils::populate(this->toSpawnContext.angle, 0.f, bNeedToSpawn);
         Dod::BufferUtils::populate(this->toSpawnContext.health, 5, bNeedToSpawn);
         this->toSpawnContext.type = 1;
 
-//        if (bNeedToSpawn)
-//            std::cout << std::format("Spawn request: {}, x: {}, y: {}\n", bNeedToSpawn, randX, randY);
-        
     }
 
 }

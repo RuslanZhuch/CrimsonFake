@@ -16,9 +16,29 @@
         }
     ],
     "contextsShared": [
+        {
+            "type": "playerWorldState",
+            "list": [
+                "playerWorldState"
+            ]
+        },
+        {
+            "type": "decalsCmds",
+            "list": [
+                "commands"
+            ]
+        }
     ],
     "contextsToFlush": [
+        "renderCmds",
+        "internal"
     ],
     "contextsWriteTo": [
+        {
+            "type": "renderCmds",
+            "list": [
+                "renderCmds"
+            ]
+        }
     ]
 }

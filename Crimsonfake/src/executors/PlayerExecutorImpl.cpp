@@ -38,7 +38,6 @@ namespace Game::ExecutionBlock
         const auto deltaYNorm{ deltaY / deltaLen };
 
         const auto angle{ atanf(deltaYNorm / deltaXNorm) + pi / 2.f + pi * (deltaXNorm < 0) };
-//        std::cout << std::format("dx: {}, dy: {}, angle: {}", deltaXNorm, deltaYNorm, angle) << "\n";
 
         return angle;
 

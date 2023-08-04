@@ -2,6 +2,7 @@
 #include <Contexts/BulletsContext.h>
 #include <Contexts/CollisionsDataContext.h>
 #include <Contexts/CollisionsResultContext.h>
+#include <Contexts/DecalsCmdsContext.h>
 #include <Contexts/EnemiesContext.h>
 #include <Contexts/MouseContext.h>
 #include <Contexts/PlayerWorldStateContext.h>
@@ -33,6 +34,7 @@ int main()
     Dod::SharedContext::Controller<Game::Context::PlayerWorldState::Data> playerWorldStateContext;
     Dod::SharedContext::Controller<Game::Context::CollisionsResult::Data> collisionsResultContext;
     Dod::SharedContext::Controller<Game::Context::WeaponCmds::Data> weaponCmdsContext;
+    Dod::SharedContext::Controller<Game::Context::DecalsCmds::Data> decalsCmdsContext;
     Dod::SharedContext::Controller<Game::Context::CollisionsData::Data> collisionsDataContext;
 
     Game::ExecutionBlock::Render render;
@@ -48,6 +50,8 @@ int main()
     world.initiate();
     Game::ExecutionBlock::Decals decals;
     decals.loadContext();
+    decals.playerWorldStateContext = &playerWorldStateContext;
+    decals.commandsContext = &decalsCmdsContext;
     decals.initiate();
     Game::ExecutionBlock::Bullets bullets;
     bullets.loadContext();
@@ -66,6 +70,7 @@ int main()
     enemies.initiate();
     Game::ExecutionBlock::Spawner spawner;
     spawner.loadContext();
+    spawner.playerWorldStateContext = &playerWorldStateContext;
     spawner.initiate();
     Game::ExecutionBlock::Weapons weapons;
     weapons.loadContext();
@@ -102,6 +107,7 @@ int main()
         Dod::SharedContext::flush(&bulletsToCreateContext);
         Dod::SharedContext::flush(&collisionsResultContext);
         Dod::SharedContext::flush(&weaponCmdsContext);
+        Dod::SharedContext::flush(&decalsCmdsContext);
 
         Dod::SharedContext::merge(&sApplicationContext, render.applicationContext);
         Dod::SharedContext::merge(&mouseContext, render.mouseContext);
@@ -110,10 +116,13 @@ int main()
         Dod::SharedContext::merge(&renderCmdsContext, bullets.renderCmdsContext);
         Dod::SharedContext::merge(&renderCmdsContext, world.renderCmdsContext);
         Dod::SharedContext::merge(&renderCmdsContext, enemies.renderCmdsContext);
+        Dod::SharedContext::merge(&renderCmdsContext, decals.renderCmdsContext);
         Dod::SharedContext::merge(&enemiesToSpawnContext, spawner.toSpawnContext);
         Dod::SharedContext::merge(&playerWorldStateContext, player.worldStateContext);
         Dod::SharedContext::merge(&collisionsResultContext, collisions.outputContext);
         Dod::SharedContext::merge(&weaponCmdsContext, player.weaponCmdsContext);
+        Dod::SharedContext::merge(&decalsCmdsContext, player.decalsCmdsContext);
+        Dod::SharedContext::merge(&decalsCmdsContext, enemies.decalsCmdsContext);
         Dod::SharedContext::merge(&bulletsToCreateContext, weapons.bulletsToCreateContext);
 
         render.flushSharedLocalContexts();

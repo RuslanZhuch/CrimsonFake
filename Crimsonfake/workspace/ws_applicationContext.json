@@ -54,6 +54,10 @@
         {
             "contextName": "weaponCmds",
             "instanceName": "weaponCmds"
+        },
+        {
+            "contextName": "decalsCmds",
+            "instanceName": "decalsCmds"
         }
     ],
     "sharedContextsInstancesToFlush": [
@@ -61,7 +65,8 @@
         "enemiesToSpawn",
         "bulletsToCreate",
         "collisionsResult",
-        "weaponCmds"
+        "weaponCmds",
+        "decalsCmds"
     ],
     "sharedContextsUsage": [
         {
@@ -88,6 +93,21 @@
             "instanceName": "playerWorldState",
             "executorName": "enemies",
             "executorSharedName": "playerWorldState"
+        },
+        {
+            "instanceName": "playerWorldState",
+            "executorName": "decals",
+            "executorSharedName": "playerWorldState"
+        },
+        {
+            "instanceName": "playerWorldState",
+            "executorName": "spawner",
+            "executorSharedName": "playerWorldState"
+        },
+        {
+            "instanceName": "decalsCmds",
+            "executorName": "decals",
+            "executorSharedName": "commands"
         },
         {
             "instanceName": "collisionsResult",
@@ -142,6 +162,11 @@
             "executorContextName": "renderCmds"
         },
         {
+            "instanceName": "renderCmds",
+            "executorName": "decals",
+            "executorContextName": "renderCmds"
+        },
+        {
             "instanceName": "enemiesToSpawn",
             "executorName": "spawner",
             "executorContextName": "toSpawn"
@@ -160,6 +185,16 @@
             "instanceName": "weaponCmds",
             "executorName": "player",
             "executorContextName": "weaponCmds"
+        },
+        {
+            "instanceName": "decalsCmds",
+            "executorName": "player",
+            "executorContextName": "decalsCmds"
+        },
+        {
+            "instanceName": "decalsCmds",
+            "executorName": "enemies",
+            "executorContextName": "decalsCmds"
         },
         {
             "instanceName": "bulletsToCreate",

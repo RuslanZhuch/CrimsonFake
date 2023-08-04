@@ -30,6 +30,7 @@
         "workspace/contexts/weaponCmds.json",
         "workspace/contexts/weaponsConfig.json",
         "workspace/contexts/decalsInternal.json",
+        "workspace/contexts/decalsCmds.json",
         "workspace/contexts/windowParameters.json"
     ],
     "executors_paths": [

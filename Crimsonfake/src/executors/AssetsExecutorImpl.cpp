@@ -12,7 +12,7 @@ namespace Game::ExecutionBlock
     void Assets::initImpl() noexcept
     {
 
-        for (auto const& entry : std::filesystem::directory_iterator{ "resources/textures" })
+        for (auto const& entry : std::filesystem::recursive_directory_iterator{ "resources/textures" })
         {
             const auto path{ entry.path() };
             if (path.extension() != ".png")

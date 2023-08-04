@@ -18,21 +18,21 @@
         },
         {
             "type": "dbbuffer",
-            "dataType": "Types::Render::Cmd",
-            "name": "commands",
-            "capacity": 128
-        },
-        {
-            "type": "dbbuffer",
             "dataType": "Types::Render::CreateTextureCmd",
             "name": "createTextureCmds",
             "capacity": 32
         },
         {
             "type": "dbbuffer",
-            "dataType": "Types::Render::CreateTextureCmd",
+            "dataType": "Types::Render::CreateRenderTextureCmd",
             "name": "createRenderTextureCmd",
             "capacity": 32
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "Types::Render::Cmd",
+            "name": "commands",
+            "capacity": 128
         },
         {
             "type": "dbbuffer",
@@ -50,6 +50,36 @@
             "type": "dbbuffer",
             "dataType": "Types::Render::BatchDesc",
             "name": "batches",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "Types::Render::Cmd",
+            "name": "rtCommands",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "uint64_t",
+            "name": "rtBatchTarget",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "uint64_t",
+            "name": "rtbatchMaterial",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "rtbatchDepth",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "Types::Render::BatchDesc",
+            "name": "rtbatches",
             "capacity": 128
         }
     ]

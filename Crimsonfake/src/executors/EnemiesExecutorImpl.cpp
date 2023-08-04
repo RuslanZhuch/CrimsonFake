@@ -86,6 +86,24 @@ namespace Game::ExecutionBlock
             Dod::BufferUtils::get(this->spidersContext.position, enemyId).y += hit.y * offset;
         }
 
+        const auto bloodDecalName{ std::hash<std::string_view>{}("alienBlood01.png") };
+        for (int32_t id{}; id < Dod::BufferUtils::getNumFilledElements(toHitContext.ids); ++id)
+        {
+            const auto toRemoveId{ Dod::BufferUtils::get(toHitContext.ids, id) };
+            const auto position{ Dod::BufferUtils::get(this->spidersContext.position, toRemoveId) };
+
+            const auto randOffsetX{ rand() % 64 };
+            const auto randOffsetY{ rand() % 64 };
+
+            Types::Decals::Cmd cmd;
+            cmd.angle = rand() % 128;
+            cmd.scale = 32.f;
+            cmd.position.x = position.x - (randOffsetX - 64 / 2);
+            cmd.position.y = position.y - (randOffsetY - 64 / 2);
+            Dod::BufferUtils::populate(this->decalsCmdsContext.commands, cmd, true);
+            Dod::BufferUtils::populate(this->decalsCmdsContext.texture, bloodDecalName, true);
+        }
+
         for (int32_t id{}; id < Dod::BufferUtils::getNumFilledElements(this->spidersContext.health); ++id)
         {
             const auto health = Dod::BufferUtils::get(this->spidersContext.health, id);

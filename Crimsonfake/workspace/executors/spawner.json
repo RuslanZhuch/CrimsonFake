@@ -16,6 +16,12 @@
         }
     ],
     "contextsShared": [
+        {
+            "type": "playerWorldState",
+            "list": [
+                "playerWorldState"
+            ]
+        }
     ],
     "contextsToFlush": [
         "toSpawn"

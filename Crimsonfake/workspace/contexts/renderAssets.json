@@ -17,6 +17,13 @@
         },
         {
             "type": "dbbuffer",
+            "dataType": "uint64_t",
+            "merge": "disabled",
+            "name": "renderTextureNames",
+            "capacity": 64
+        },
+        {
+            "type": "dbbuffer",
             "dataType": "ProtoRenderer::texturePtr_t",
             "name": "loadedTextures",
             "capacity": 64
