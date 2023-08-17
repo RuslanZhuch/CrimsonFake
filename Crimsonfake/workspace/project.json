@@ -6,6 +6,7 @@
         "workspace/types/default.json",
         "workspace/types/framework.json"
     ],
+    "types_src_path": "src/",
     "contexts_paths": [
         "workspace/contexts/application.json",
         "workspace/contexts/playerInitial.json",

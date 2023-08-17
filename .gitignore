@@ -8,3 +8,5 @@ Crimsonfake/workspace/prev
 Crimsonfake/src/contexts
 Crimsonfake/src/executors/*Executor.*
 Crimsonfake/workspace/cache
+Crimsonfake/src/generated_types
+Crimsonfake/src/parsed_types

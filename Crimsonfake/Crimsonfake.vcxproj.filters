@@ -25,6 +25,9 @@
     <Filter Include="src\internal\supportTypes">
       <UniqueIdentifier>{234efd45-6cf6-4bf0-9a33-e57e05feb604}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\generated\types">
+      <UniqueIdentifier>{490ec793-b101-4991-a8ec-b35ec0567e85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\contexts\ApplicationContext.cpp">
@@ -167,6 +170,24 @@
     </ClCompile>
     <ClCompile Include="src\contexts\DecalsCmdsContext.cpp">
       <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\generated_types\collisionTypesGen.cpp">
+      <Filter>src\generated\types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\generated_types\coordTypesGen.cpp">
+      <Filter>src\generated\types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\generated_types\decalsTypesGen.cpp">
+      <Filter>src\generated\types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\generated_types\inputsGen.cpp">
+      <Filter>src\generated\types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\generated_types\renderTypesGen.cpp">
+      <Filter>src\generated\types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\generated_types\weaponsGen.cpp">
+      <Filter>src\generated\types</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

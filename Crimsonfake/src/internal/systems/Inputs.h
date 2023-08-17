@@ -2,11 +2,16 @@
 
 #include <cinttypes>
 
+#include <engine/types.h>
+
 namespace Game::Inputs
 {
 
 	struct MoveState
 	{
+
+		ENGINE_TYPES_DESERIALIZE;
+
 		float right{};
 		float forward{};
 	};
