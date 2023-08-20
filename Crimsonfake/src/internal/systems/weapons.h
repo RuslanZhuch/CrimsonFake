@@ -5,17 +5,25 @@
 
 #include <inttypes.h>
 
+#include <engine/types.h>
+
 namespace Game::Weapons
 {
 
 	struct FireCmd
 	{
+
+		ENGINE_TYPES_DESERIALIZE;
+
 		Types::Coord::Vec2f spawnCoord;
 		float angle{};
 	};
 
 	struct Desc
 	{
+
+		ENGINE_TYPES_DESERIALIZE;
+
 		float bulletVelocity{};
 		float bulletLifeTime{ 2 };
 		float damage{ 1 };

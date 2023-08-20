@@ -182,6 +182,12 @@
     <ClCompile Include="src\executors\WeaponsExecutorImpl.cpp" />
     <ClCompile Include="src\executors\WorldExecutor.cpp" />
     <ClCompile Include="src\executors\WorldExecutorImpl.cpp" />
+    <ClCompile Include="src\generated_types\collisionTypesGen.cpp" />
+    <ClCompile Include="src\generated_types\coordTypesGen.cpp" />
+    <ClCompile Include="src\generated_types\decalsTypesGen.cpp" />
+    <ClCompile Include="src\generated_types\inputsGen.cpp" />
+    <ClCompile Include="src\generated_types\renderTypesGen.cpp" />
+    <ClCompile Include="src\generated_types\weaponsGen.cpp" />
     <ClCompile Include="src\internal\systems\Inputs.cpp" />
     <ClCompile Include="src\runtime.cpp" />
   </ItemGroup>
