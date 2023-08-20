@@ -27,7 +27,7 @@ namespace Game::ExecutionBlock
 
     }
 
-    void Decals::updateImpl(float dt) noexcept
+    void Decals::updateImpl([[maybe_unused]] float dt) noexcept
     {
 
         const auto cmds{ Dod::SharedContext::get(this->commandsContext).commands };
@@ -68,8 +68,8 @@ namespace Game::ExecutionBlock
 
                     ProtoRenderer::transform_t transform1;
 
-                    const auto offsetX{ (tileId % this->worldContext.numOfTiles) * tileSize };
-                    const auto offsetY{ (tileId / this->worldContext.numOfTiles) * tileSize };
+                    const auto offsetX{ static_cast<float>((tileId % this->worldContext.numOfTiles) * tileSize) };
+                    const auto offsetY{ static_cast<float>((tileId / this->worldContext.numOfTiles) * tileSize) };
 
                     transform1.translate({ cmd.position.x - offsetX, cmd.position.y - offsetY });
                     transform1.rotate(cmd.angle);
@@ -88,10 +88,11 @@ namespace Game::ExecutionBlock
         {
 
             ProtoRenderer::transform_t transform2;
-            const auto offsetX{ (tileId % this->worldContext.numOfTiles) * tileSize };
-            const auto offsetY{ (tileId / this->worldContext.numOfTiles) * tileSize };
+            const auto offsetX{ static_cast<float>((tileId % this->worldContext.numOfTiles) * tileSize) };
+            const auto offsetY{ static_cast<float>((tileId / this->worldContext.numOfTiles) * tileSize) };
             transform2.translate({ offsetX, offsetY });
-            transform2.scale({ this->worldContext.size / 2, this->worldContext.size / 2 });
+            const auto scale{ static_cast<float>(this->worldContext.size / 2) };
+            transform2.scale({ scale, scale });
             Dod::BufferUtils::populate(this->renderCmdsContext.commands, Types::Render::Cmd(transform2), true);
 
             char name[64]{};

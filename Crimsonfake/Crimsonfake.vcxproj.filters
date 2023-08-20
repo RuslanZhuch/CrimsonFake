@@ -203,9 +203,6 @@
     <ClInclude Include="src\executors\RenderExecutor.h">
       <Filter>src\generated\executors</Filter>
     </ClInclude>
-    <ClInclude Include="src\contexts\RenderInternalContext.h">
-      <Filter>src\generated\contexts</Filter>
-    </ClInclude>
     <ClInclude Include="src\contexts\WindowParametersContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
@@ -312,6 +309,9 @@
       <Filter>src\internal\supportTypes</Filter>
     </ClInclude>
     <ClInclude Include="src\contexts\DecalsCmdsContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\RenderInternalContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
   </ItemGroup>

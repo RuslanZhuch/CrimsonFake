@@ -48,7 +48,7 @@ namespace Game::ExecutionBlock
             if (const auto& val{ weaponData.FindMember("bulletVelocity") }; (val != weaponData.end()) && val->value.IsNumber())
                 desc.bulletVelocity = val->value.GetFloat();
             if (const auto& val{ weaponData.FindMember("damage") }; (val != weaponData.end()) && val->value.IsNumber())
-                desc.damage = val->value.GetInt();
+                desc.damage = val->value.GetFloat();
             if (const auto& val{ weaponData.FindMember("spread") }; (val != weaponData.end()) && val->value.IsNumber())
                 desc.spread = val->value.GetFloat();
             if (const auto& val{ weaponData.FindMember("fireDelay") }; (val != weaponData.end()) && val->value.IsNumber())
@@ -67,7 +67,7 @@ namespace Game::ExecutionBlock
 
     }
 
-    void Weapons::updateImpl(float dt) noexcept
+    void Weapons::updateImpl([[maybe_unused]] float dt) noexcept
     {
 
         this->weaponStateContext.fireDelayLeft = std::max(0.f, this->weaponStateContext.fireDelayLeft - dt);

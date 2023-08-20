@@ -16,7 +16,7 @@ namespace Game::ExecutionBlock
 
     }
 
-    void Bullets::updateImpl(float dt) noexcept
+    void Bullets::updateImpl([[maybe_unused]] float dt) noexcept
     {
 
         const auto collisions{ Dod::SharedContext::get(this->collisionsInputContext).bulletIds };

@@ -15,7 +15,7 @@ namespace Game::ExecutionBlock
 
     }
 
-    void Spawner::updateImpl(float dt) noexcept
+    void Spawner::updateImpl([[maybe_unused]] float dt) noexcept
     {
 
         this->stateContext.timeLeftToSpawn = std::max(0.f, this->stateContext.timeLeftToSpawn - dt);
@@ -26,7 +26,7 @@ namespace Game::ExecutionBlock
         this->stateContext.spawnedSpiders += bNeedToSpawn;
 
         const auto spawnAngle{ static_cast<float>(rand() % 360) };
-        const auto spawnDistance{ 750.f + rand() % 200 };
+        const auto spawnDistance{ 750.f + static_cast<float>(rand() % 200) };
 
         const auto localXOffset{ -cosf(spawnAngle) * spawnDistance };
         const auto localYOffset{ -sinf(spawnAngle) * spawnDistance };

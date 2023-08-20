@@ -49,7 +49,7 @@ namespace Game::ExecutionBlock
         this->worldStateContext.y = this->initialContext.y;
     }
 
-    void Player::updateImpl(float dt) noexcept
+    void Player::updateImpl([[maybe_unused]] float dt) noexcept
     {
         this->inputsContext.prevInputs = this->inputsContext.inputs;
         this->inputsContext.inputs = Game::Inputs::gatherInputs();
@@ -81,8 +81,8 @@ namespace Game::ExecutionBlock
         cmd.transform.translate({ this->worldStateContext.x, this->worldStateContext.y });
         cmd.transform.scale({ this->initialContext.size, this->initialContext.size });
         const auto lookAngle{ computeLookAngle(
-            this->windowParametersContext.width / 2.f,
-            this->windowParametersContext.height / 2.f,
+            static_cast<float>(this->windowParametersContext.width / 2),
+            static_cast<float>(this->windowParametersContext.height / 2),
             mouseX,
             mouseY,
             0

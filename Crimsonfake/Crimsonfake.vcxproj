@@ -107,6 +107,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>$(SolutionDir)frameworks\RisingCore\RisingCore\src;$(ProjectDir)src;%(AdditionalIncludeDirectories);$(SolutionDir)frameworks\ProtoRender\ProtoRender\src;$(SolutionDir)frameworks\ProtoRender\ProtoRender\thirdparty</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>5045</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

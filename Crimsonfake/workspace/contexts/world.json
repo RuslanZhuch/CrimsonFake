@@ -4,7 +4,7 @@
     "data": [
         {
             "type": "object",
-            "dataType": "float",
+            "dataType": "int32_t",
             "name": "size",
             "initial": 512
         },

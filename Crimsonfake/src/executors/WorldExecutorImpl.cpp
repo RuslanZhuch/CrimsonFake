@@ -10,7 +10,7 @@ namespace Game::ExecutionBlock
 
     }
 
-    void World::updateImpl(float dt) noexcept
+    void World::updateImpl([[maybe_unused]] float dt) noexcept
     {
         Types::Render::Cmd cmd;
 
@@ -20,13 +20,13 @@ namespace Game::ExecutionBlock
         const auto numOfTiles{ this->worldContext.numOfTiles };
         for (int32_t tileYId{}; tileYId < numOfTiles; ++tileYId)
         {
-            const auto yCoord{ tileYId * this->worldContext.size };
+            const auto yCoord{ static_cast<float>(tileYId * this->worldContext.size) };
             for (int32_t tileXId{}; tileXId < numOfTiles; ++tileXId)
             {
-                const auto xCoord{ tileXId * this->worldContext.size };
+                const auto xCoord{ static_cast<float>(tileXId * this->worldContext.size) };
                 cmd.transform = ProtoRenderer::transform_t();
                 cmd.transform.translate({ xCoord, yCoord });
-                const auto scale{ this->worldContext.size / 2.f };
+                const auto scale{ static_cast<float>(this->worldContext.size / 2) };
                 cmd.transform.scale({ scale, scale });
                 Dod::BufferUtils::populate(this->renderCmdsContext.commands, cmd, true);
             }

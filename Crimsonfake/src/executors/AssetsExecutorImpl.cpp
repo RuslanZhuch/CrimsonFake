@@ -28,7 +28,7 @@ namespace Game::ExecutionBlock
 
     }
 
-    void Assets::updateImpl(float dt) noexcept
+    void Assets::updateImpl([[maybe_unused]] float dt) noexcept
     {
 
     }

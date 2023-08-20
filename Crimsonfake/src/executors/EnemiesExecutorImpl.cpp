@@ -21,24 +21,11 @@ namespace Game::ExecutionBlock
         const auto moveTime{ period - standTime };
         const auto bNeedMove{ currentTime <= moveTime };
 
-        const auto normMoveTime{ currentTime / moveTime };
-
         const auto scale{ moveTime / 2.f };
 
         const auto time{ currentTime - scale };
         const auto output{ 4.f / scale * (-time * time + scale * scale) * bNeedMove };
         return std::min(output, 1.f);
-
-    }
-
-    [[nodiscard]] static auto applyVelocity(
-        float velocityTime,
-        float minVeloicty,
-        float maxVelocity
-    )
-    {
-
-        return minVeloicty + (maxVelocity - minVeloicty) * velocityTime;
 
     }
 
@@ -64,7 +51,7 @@ namespace Game::ExecutionBlock
 
     }
 
-    void Enemies::updateImpl(float dt) noexcept
+    void Enemies::updateImpl([[maybe_unused]] float dt) noexcept
     {
 
         const auto collisions{ Dod::SharedContext::get(this->collisionsInputContext).enemyIds };
@@ -92,14 +79,16 @@ namespace Game::ExecutionBlock
             const auto toRemoveId{ Dod::BufferUtils::get(toHitContext.ids, id) };
             const auto position{ Dod::BufferUtils::get(this->spidersContext.position, toRemoveId) };
 
-            const auto randOffsetX{ rand() % 64 };
-            const auto randOffsetY{ rand() % 64 };
+            constexpr auto diameter{ 64 };
+
+            const auto randOffsetX{ static_cast<float>(rand() % diameter) };
+            const auto randOffsetY{ static_cast<float>(rand() % diameter) };
 
             Types::Decals::Cmd cmd;
-            cmd.angle = rand() % 128;
+            cmd.angle = static_cast<float>(rand() % 128);
             cmd.scale = 32.f;
-            cmd.position.x = position.x - (randOffsetX - 64 / 2);
-            cmd.position.y = position.y - (randOffsetY - 64 / 2);
+            cmd.position.x = position.x - (randOffsetX - diameter / 2);
+            cmd.position.y = position.y - (randOffsetY - diameter / 2);
             Dod::BufferUtils::populate(this->decalsCmdsContext.commands, cmd, true);
             Dod::BufferUtils::populate(this->decalsCmdsContext.texture, bloodDecalName, true);
         }
@@ -119,7 +108,7 @@ namespace Game::ExecutionBlock
 
         const auto toSpawnPosition{ Dod::SharedContext::get(this->toSpawnContext).position };
         const auto toSpawnAngle{ Dod::SharedContext::get(this->toSpawnContext).angle };
-        const auto toSpawnType{ Dod::SharedContext::get(this->toSpawnContext).type };
+        [[maybe_unused]] const auto toSpawnType{ Dod::SharedContext::get(this->toSpawnContext).type };
         const auto toSpawnHealth{ Dod::SharedContext::get(this->toSpawnContext).health };
 
         Dod::BufferUtils::append(this->spidersContext.position, Dod::BufferUtils::createImFromBuffer(toSpawnPosition));

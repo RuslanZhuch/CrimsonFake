@@ -27,7 +27,7 @@ namespace Game::ExecutionBlock
         this->internalContext.spriteMesh.append(sf::Vertex({ 1.f, 1.f }, { textureSize, textureSize }));
     }
 
-    [[nodisard]] auto getTexture(
+    [[nodiscard]] auto getTexture(
         Dod::ImBuffer<uint64_t> names,
         uint64_t nameToFind
     )
@@ -77,7 +77,10 @@ namespace Game::ExecutionBlock
             auto renderTexturePtr{ &Dod::BufferUtils::get(render->assetsContext.renderTextures,
                 Dod::BufferUtils::getNumFilledElements(render->assetsContext.renderTextures) - 1) };
 
-            const auto bCreated{ renderTexturePtr->create(cmd.width, cmd.height) };
+            const auto bCreated{ renderTexturePtr->create(
+                static_cast<uint32_t>(cmd.width), 
+                static_cast<uint32_t>(cmd.height)
+            ) };
 
             const auto name{ std::string_view(cmd.textureName.internalData.data()) };
             const auto key{ std::hash<std::string_view>{}(name) };
@@ -87,7 +90,7 @@ namespace Game::ExecutionBlock
         }
     }
 
-    void Render::updateImpl(float dt) noexcept
+    void Render::updateImpl([[maybe_unused]] float dt) noexcept
     {
 
         ProtoRenderer::event_t event;
@@ -115,7 +118,6 @@ namespace Game::ExecutionBlock
             }
 
             const auto commands{ Dod::SharedContext::get(this->cmdsContext).rtCommands };
-            const auto totalCommands{ Dod::BufferUtils::getNumFilledElements(commands) };
 
             const auto batchMaterials{ Dod::SharedContext::get(this->cmdsContext).rtbatchMaterial };
             const auto depths{ Dod::SharedContext::get(this->cmdsContext).rtbatchDepth };
@@ -179,7 +181,6 @@ namespace Game::ExecutionBlock
             }
 
             const auto commands{ Dod::SharedContext::get(this->cmdsContext).commands };
-            const auto totalCommands{ Dod::BufferUtils::getNumFilledElements(commands) };
 
             const auto batchMaterials{ Dod::SharedContext::get(this->cmdsContext).batchMaterial };
             const auto depths{ Dod::SharedContext::get(this->cmdsContext).batchDepth };
@@ -224,7 +225,10 @@ namespace Game::ExecutionBlock
         const auto camX{ Dod::SharedContext::get(this->cmdsContext).cameraX };
         const auto camY{ Dod::SharedContext::get(this->cmdsContext).cameraY };
 
-        this->internalContext.renderer->setCameraParameters(this->windowParametersContext.width, this->windowParametersContext.height);
+        this->internalContext.renderer->setCameraParameters(
+            this->windowParametersContext.width, 
+            this->windowParametersContext.height
+        );
         this->internalContext.renderer->setCameraCoord(camX, camY);
 
         this->internalContext.renderer->display();
