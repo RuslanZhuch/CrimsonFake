@@ -144,6 +144,9 @@ int32_t Game::Inputs::computeWeaponSwitchComponent() noexcept
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
         return 2;
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4))
+        return 3;
+
     return -1;
 
 }

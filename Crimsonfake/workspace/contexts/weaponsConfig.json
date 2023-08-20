@@ -3,22 +3,60 @@
     "version": 1,
     "data": [
         {
-            "type": "object",
-            "dataType": "Engine::String",
-            "name": "configName",
-            "initial": "weapons.json"
-        },
-        {
             "type": "dbbuffer",
             "dataType": "int32_t",
             "name": "types",
-            "capacity": 16
+            "capacity": 16,
+            "initial": [
+                0,
+                1,
+                2,
+                3
+            ]
         },
         {
             "type": "dbbuffer",
             "dataType": "Game::Weapons::Desc",
             "name": "descriptions",
-            "capacity": 16
+            "capacity": 16,
+            "initial": [
+                {
+                    "bulletTextureName": "bullet.png",
+                    "bulletVelocity": 1000,
+                    "bulletLifetime": 2,
+                    "damage": 2,
+                    "spread": 0,
+                    "bulletsPerShot": 1,
+                    "fireDelay": 0.3 
+                },
+                {
+                    "bulletTextureName": "bullet.png",
+                    "bulletVelocity": 1000,
+                    "bulletLifetime": 2,
+                    "damage": 1,
+                    "spread": 10,
+                    "bulletsPerShot": 1,
+                    "fireDelay": 0.1 
+                },
+                {
+                    "bulletTextureName": "bullet.png",
+                    "bulletVelocity": 1000,
+                    "bulletLifetime": 2,
+                    "damage": 2,
+                    "spread": 40,
+                    "bulletsPerShot": 5,
+                    "fireDelay": 0.35
+                },
+                {
+                    "bulletTextureName": "bullet.png",
+                    "bulletVelocity": 1000,
+                    "bulletLifetime": 2,
+                    "damage": 4,
+                    "spread": 30,
+                    "bulletsPerShot": 2,
+                    "fireDelay": 0.25
+                }
+            ]
         }
     ]
 }

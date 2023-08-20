@@ -16,52 +16,6 @@ namespace Game::ExecutionBlock
     void Weapons::initImpl() noexcept
     {
 
-        char configFullPath[FILENAME_MAX];
-        std::memset(configFullPath, 0, sizeof(configFullPath));
-        std::format_to_n(configFullPath, sizeof(configFullPath), "resources/configs/{}", this->configContext.configName.internalData.data());
-        const auto doc{ Engine::ContextUtils::loadFileDataRoot(configFullPath) };
-
-        if (!doc.IsObject())
-            return;
-
-        const auto& root{ doc.GetObject() };
-        const auto& data{ root["data"] };
-        if (!data.IsArray())
-            return;
-
-        const auto& weapons{ data.GetArray() };
-
-        for (int32_t weaponId{}; const auto& weapon : weapons)
-        {
-            if (weaponId++ >= Dod::BufferUtils::getCapacity(this->configContext.descriptions) || !weapon.IsObject())
-                continue;
-
-            const auto& weaponData{ weapon.GetObject() };
-
-            Game::Weapons::Desc desc;
-            if (const auto& val{ weaponData.FindMember("bulletTexture") }; (val != weaponData.end()) && val->value.IsString())
-                Engine::StringUtils::assign(desc.bulletTextureName, val->value.GetString());
-            if (const auto& val{ weaponData.FindMember("bulletLifetime") }; (val != weaponData.end()) && val->value.IsNumber())
-                desc.bulletLifeTime = val->value.GetFloat();
-            if (const auto& val{ weaponData.FindMember("bulletsPerShot") }; (val != weaponData.end()) && val->value.IsNumber())
-                desc.bulletsPerShot = val->value.GetInt();
-            if (const auto& val{ weaponData.FindMember("bulletVelocity") }; (val != weaponData.end()) && val->value.IsNumber())
-                desc.bulletVelocity = val->value.GetFloat();
-            if (const auto& val{ weaponData.FindMember("damage") }; (val != weaponData.end()) && val->value.IsNumber())
-                desc.damage = val->value.GetFloat();
-            if (const auto& val{ weaponData.FindMember("spread") }; (val != weaponData.end()) && val->value.IsNumber())
-                desc.spread = val->value.GetFloat();
-            if (const auto& val{ weaponData.FindMember("fireDelay") }; (val != weaponData.end()) && val->value.IsNumber())
-                desc.fireDelay = val->value.GetFloat();
-
-            int32_t configType{ -1 };
-            if (const auto& val{ weaponData.FindMember("type") }; (val != weaponData.end()) && val->value.IsNumber())
-                configType = val->value.GetInt();
-
-            Dod::BufferUtils::populate(this->configContext.types, configType, configType >= 0);
-            Dod::BufferUtils::populate(this->configContext.descriptions, desc, configType >= 0);
-        }
-
         if (Dod::BufferUtils::getNumFilledElements(this->configContext.descriptions) > 0)
             this->weaponStateContext.currentDesc = Dod::BufferUtils::get(this->configContext.descriptions, 0);
 
