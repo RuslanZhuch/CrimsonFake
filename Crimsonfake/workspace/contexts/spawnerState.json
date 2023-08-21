@@ -19,6 +19,18 @@
             "dataType": "float",
             "name": "spawnPeriod",
             "initial": 1
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "timeLeftToItemSpawn",
+            "initial": 0
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "itemSpawnPeriod",
+            "initial": 1
         }
     ]
 }

@@ -1,0 +1,29 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "int32_t",
+            "name": "maxIntems",
+            "initial": 4
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "radius",
+            "initial": 8
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "Game::Items::Desc",
+            "name": "descriptions",
+            "capacity": 16,
+            "initial": [
+                {
+                    "itemTexture": "bomb.png"
+                }
+            ]
+        }
+    ]
+}

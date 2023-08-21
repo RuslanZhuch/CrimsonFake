@@ -3,19 +3,31 @@
     "version": 1,
     "contextsLocal": [
         {
-            "type": "spawnerState",
+            "type": "itemsConfig",
             "list": [
-                "state"
+                "config"
             ]
         },
         {
-            "type": "spawnerParameters",
+            "type": "itemsInternal",
             "list": [
-                "parameters"
+                "internal"
+            ]
+        },
+        {
+            "type": "itemsTemp",
+            "list": [
+                "temp"
             ]
         }
     ],
     "contextsShared": [
+        {
+            "type": "itemsCmds",
+            "list": [
+                "commands"
+            ]
+        },
         {
             "type": "playerWorldState",
             "list": [
@@ -24,20 +36,15 @@
         }
     ],
     "contextsToFlush": [
-        "toSpawn",
-        "itemsCmds"
+        "config",
+        "renderCmds",
+        "temp"
     ],
     "contextsWriteTo": [
         {
-            "type": "enemies",
+            "type": "renderCmds",
             "list": [
-                "toSpawn"
-            ]
-        },
-        {
-            "type": "itemsCmds",
-            "list": [
-                "itemsCmds"
+                "renderCmds"
             ]
         }
     ]

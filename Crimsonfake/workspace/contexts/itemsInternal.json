@@ -1,0 +1,30 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "int32_t",
+            "name": "totalTypes",
+            "initial": 0
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "Types::Coord::Vec2f",
+            "name": "positions",
+            "capacity": 16
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "types",
+            "capacity": 16
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "uint64_t",
+            "name": "materialIds",
+            "capacity": 16
+        }
+    ]
+}

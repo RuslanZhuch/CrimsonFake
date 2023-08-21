@@ -1,0 +1,12 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "dbbuffer",
+            "dataType": "Types::Coord::Vec2f",
+            "name": "spawnPositions",
+            "capacity": 4
+        }
+    ]
+}

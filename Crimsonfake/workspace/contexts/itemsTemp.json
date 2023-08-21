@@ -1,0 +1,30 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "sortedIds",
+            "capacity": 16
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "uint64_t",
+            "name": "batchedMaterials",
+            "capacity": 16
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "elementsPerBatch",
+            "capacity": 16
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "pickupIds",
+            "capacity": 16
+        }
+    ]
+}

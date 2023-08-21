@@ -32,6 +32,10 @@
         "workspace/contexts/weaponsConfig.json",
         "workspace/contexts/decalsInternal.json",
         "workspace/contexts/decalsCmds.json",
+        "workspace/contexts/itemsConfig.json",
+        "workspace/contexts/itemsCmds.json",
+        "workspace/contexts/itemsInternal.json",
+        "workspace/contexts/itemsTemp.json",
         "workspace/contexts/windowParameters.json"
     ],
     "executors_paths": [
@@ -44,6 +48,7 @@
         "workspace/executors/enemies.json",
         "workspace/executors/spawner.json",
         "workspace/executors/weapons.json",
+        "workspace/executors/items.json",
         "workspace/executors/assets.json"
     ]
 }

@@ -16,6 +16,7 @@
         "Types::Collision::Circle": "internal/supportTypes/collisionTypes.h",
         "Game::Inputs::MoveState": "internal/systems/inputs.h",
         "Game::Weapons::FireCmd": "internal/systems/weapons.h",
-        "Game::Weapons::Desc": "internal/systems/weapons.h"
+        "Game::Weapons::Desc": "internal/systems/weapons.h",
+        "Game::Items::Desc": "internal/systems/items.h"
     }
 }

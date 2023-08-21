@@ -10,6 +10,7 @@
                 "spawner",
                 "weapons",
                 "world",
+                "items",
                 "decals"
             ]
         },
@@ -56,6 +57,10 @@
             "instanceName": "weaponCmds"
         },
         {
+            "contextName": "itemsCmds",
+            "instanceName": "itemsCmds"
+        },
+        {
             "contextName": "decalsCmds",
             "instanceName": "decalsCmds"
         }
@@ -66,6 +71,7 @@
         "bulletsToCreate",
         "collisionsResult",
         "weaponCmds",
+        "itemsCmds",
         "decalsCmds"
     ],
     "sharedContextsUsage": [
@@ -105,6 +111,11 @@
             "executorSharedName": "playerWorldState"
         },
         {
+            "instanceName": "playerWorldState",
+            "executorName": "items",
+            "executorSharedName": "playerWorldState"
+        },
+        {
             "instanceName": "decalsCmds",
             "executorName": "decals",
             "executorSharedName": "commands"
@@ -118,6 +129,11 @@
             "instanceName": "collisionsResult",
             "executorName": "enemies",
             "executorSharedName": "collisionsInput"
+        },
+        {
+            "instanceName": "itemsCmds",
+            "executorName": "items",
+            "executorSharedName": "commands"
         },
         {
             "instanceName": "weaponCmds",
@@ -167,9 +183,19 @@
             "executorContextName": "renderCmds"
         },
         {
+            "instanceName": "renderCmds",
+            "executorName": "items",
+            "executorContextName": "renderCmds"
+        },
+        {
             "instanceName": "enemiesToSpawn",
             "executorName": "spawner",
             "executorContextName": "toSpawn"
+        },
+        {
+            "instanceName": "itemsCmds",
+            "executorName": "spawner",
+            "executorContextName": "itemsCmds"
         },
         {
             "instanceName": "playerWorldState",

@@ -189,6 +189,27 @@
     <ClCompile Include="src\generated_types\weaponsGen.cpp">
       <Filter>src\generated\types</Filter>
     </ClCompile>
+    <ClCompile Include="src\generated_types\itemsGen.cpp">
+      <Filter>src\generated\types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\ItemsConfigContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\ItemsCmdsContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\ItemsExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\ItemsExecutorImpl.cpp">
+      <Filter>src\code</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\ItemsInternalContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\ItemsTempContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\contexts\ApplicationContext.h">
@@ -312,6 +333,24 @@
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
     <ClInclude Include="src\contexts\RenderInternalContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\internal\systems\items.h">
+      <Filter>src\internal\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\ItemsConfigContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\ItemsCmdsContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\ItemsExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\ItemsInternalContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\ItemsTempContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
   </ItemGroup>

@@ -38,6 +38,7 @@ namespace Game::ExecutionBlock
             if (nameToFind == currName)
                 return id;
         }
+        std::cout << std::format("Failed to find texture {}\n", nameToFind);
         return -1;
     }
 

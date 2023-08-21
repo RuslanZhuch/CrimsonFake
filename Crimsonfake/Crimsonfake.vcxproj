@@ -150,6 +150,10 @@
     <ClCompile Include="src\contexts\EnemiesParametersContext.cpp" />
     <ClCompile Include="src\contexts\EnemiesStateContext.cpp" />
     <ClCompile Include="src\contexts\InputsContext.cpp" />
+    <ClCompile Include="src\contexts\ItemsCmdsContext.cpp" />
+    <ClCompile Include="src\contexts\ItemsConfigContext.cpp" />
+    <ClCompile Include="src\contexts\ItemsInternalContext.cpp" />
+    <ClCompile Include="src\contexts\ItemsTempContext.cpp" />
     <ClCompile Include="src\contexts\MouseContext.cpp" />
     <ClCompile Include="src\contexts\PlayerInitialContext.cpp" />
     <ClCompile Include="src\contexts\PlayerWorldStateContext.cpp" />
@@ -173,6 +177,8 @@
     <ClCompile Include="src\executors\DecalsExecutorImpl.cpp" />
     <ClCompile Include="src\executors\EnemiesExecutor.cpp" />
     <ClCompile Include="src\executors\EnemiesExecutorImpl.cpp" />
+    <ClCompile Include="src\executors\ItemsExecutor.cpp" />
+    <ClCompile Include="src\executors\ItemsExecutorImpl.cpp" />
     <ClCompile Include="src\executors\PlayerExecutor.cpp" />
     <ClCompile Include="src\executors\PlayerExecutorImpl.cpp" />
     <ClCompile Include="src\executors\RenderExecutor.cpp" />
@@ -187,6 +193,7 @@
     <ClCompile Include="src\generated_types\coordTypesGen.cpp" />
     <ClCompile Include="src\generated_types\decalsTypesGen.cpp" />
     <ClCompile Include="src\generated_types\inputsGen.cpp" />
+    <ClCompile Include="src\generated_types\itemsGen.cpp" />
     <ClCompile Include="src\generated_types\renderTypesGen.cpp" />
     <ClCompile Include="src\generated_types\weaponsGen.cpp" />
     <ClCompile Include="src\internal\systems\Inputs.cpp" />
@@ -205,6 +212,10 @@
     <ClInclude Include="src\contexts\EnemiesParametersContext.h" />
     <ClInclude Include="src\contexts\EnemiesStateContext.h" />
     <ClInclude Include="src\contexts\InputsContext.h" />
+    <ClInclude Include="src\contexts\ItemsCmdsContext.h" />
+    <ClInclude Include="src\contexts\ItemsConfigContext.h" />
+    <ClInclude Include="src\contexts\ItemsInternalContext.h" />
+    <ClInclude Include="src\contexts\ItemsTempContext.h" />
     <ClInclude Include="src\contexts\MouseContext.h" />
     <ClInclude Include="src\contexts\PlayerInitialContext.h" />
     <ClInclude Include="src\contexts\PlayerWorldStateContext.h" />
@@ -223,6 +234,7 @@
     <ClInclude Include="src\executors\CollisionsExecutor.h" />
     <ClInclude Include="src\executors\DecalsExecutor.h" />
     <ClInclude Include="src\executors\EnemiesExecutor.h" />
+    <ClInclude Include="src\executors\ItemsExecutor.h" />
     <ClInclude Include="src\executors\PlayerExecutor.h" />
     <ClInclude Include="src\executors\RenderExecutor.h" />
     <ClInclude Include="src\executors\SpawnerExecutor.h" />
@@ -233,6 +245,7 @@
     <ClInclude Include="src\internal\supportTypes\decalsTypes.h" />
     <ClInclude Include="src\internal\supportTypes\renderTypes.h" />
     <ClInclude Include="src\internal\systems\Inputs.h" />
+    <ClInclude Include="src\internal\systems\items.h" />
     <ClInclude Include="src\internal\systems\weapons.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
