@@ -149,6 +149,11 @@
     <ClCompile Include="src\contexts\EnemiesContext.cpp" />
     <ClCompile Include="src\contexts\EnemiesParametersContext.cpp" />
     <ClCompile Include="src\contexts\EnemiesStateContext.cpp" />
+    <ClCompile Include="src\contexts\ExplosionsCmdsContext.cpp" />
+    <ClCompile Include="src\contexts\ExplosionsConfigContext.cpp" />
+    <ClCompile Include="src\contexts\ExplosionsInternalContext.cpp" />
+    <ClCompile Include="src\contexts\ExplosionsSharedContext.cpp" />
+    <ClCompile Include="src\contexts\ExplosionsTempContext.cpp" />
     <ClCompile Include="src\contexts\InputsContext.cpp" />
     <ClCompile Include="src\contexts\ItemsCmdsContext.cpp" />
     <ClCompile Include="src\contexts\ItemsConfigContext.cpp" />
@@ -177,6 +182,8 @@
     <ClCompile Include="src\executors\DecalsExecutorImpl.cpp" />
     <ClCompile Include="src\executors\EnemiesExecutor.cpp" />
     <ClCompile Include="src\executors\EnemiesExecutorImpl.cpp" />
+    <ClCompile Include="src\executors\ExplosionsExecutor.cpp" />
+    <ClCompile Include="src\executors\ExplosionsExecutorImpl.cpp" />
     <ClCompile Include="src\executors\ItemsExecutor.cpp" />
     <ClCompile Include="src\executors\ItemsExecutorImpl.cpp" />
     <ClCompile Include="src\executors\PlayerExecutor.cpp" />
@@ -192,6 +199,7 @@
     <ClCompile Include="src\generated_types\collisionTypesGen.cpp" />
     <ClCompile Include="src\generated_types\coordTypesGen.cpp" />
     <ClCompile Include="src\generated_types\decalsTypesGen.cpp" />
+    <ClCompile Include="src\generated_types\explosionsGen.cpp" />
     <ClCompile Include="src\generated_types\inputsGen.cpp" />
     <ClCompile Include="src\generated_types\itemsGen.cpp" />
     <ClCompile Include="src\generated_types\renderTypesGen.cpp" />
@@ -211,6 +219,11 @@
     <ClInclude Include="src\contexts\EnemiesContext.h" />
     <ClInclude Include="src\contexts\EnemiesParametersContext.h" />
     <ClInclude Include="src\contexts\EnemiesStateContext.h" />
+    <ClInclude Include="src\contexts\ExplosionsCmdsContext.h" />
+    <ClInclude Include="src\contexts\ExplosionsConfigContext.h" />
+    <ClInclude Include="src\contexts\ExplosionsInternalContext.h" />
+    <ClInclude Include="src\contexts\ExplosionsSharedContext.h" />
+    <ClInclude Include="src\contexts\ExplosionsTempContext.h" />
     <ClInclude Include="src\contexts\InputsContext.h" />
     <ClInclude Include="src\contexts\ItemsCmdsContext.h" />
     <ClInclude Include="src\contexts\ItemsConfigContext.h" />
@@ -234,6 +247,7 @@
     <ClInclude Include="src\executors\CollisionsExecutor.h" />
     <ClInclude Include="src\executors\DecalsExecutor.h" />
     <ClInclude Include="src\executors\EnemiesExecutor.h" />
+    <ClInclude Include="src\executors\ExplosionsExecutor.h" />
     <ClInclude Include="src\executors\ItemsExecutor.h" />
     <ClInclude Include="src\executors\PlayerExecutor.h" />
     <ClInclude Include="src\executors\RenderExecutor.h" />
@@ -244,6 +258,7 @@
     <ClInclude Include="src\internal\supportTypes\coordTypes.h" />
     <ClInclude Include="src\internal\supportTypes\decalsTypes.h" />
     <ClInclude Include="src\internal\supportTypes\renderTypes.h" />
+    <ClInclude Include="src\internal\systems\explosions.h" />
     <ClInclude Include="src\internal\systems\Inputs.h" />
     <ClInclude Include="src\internal\systems\items.h" />
     <ClInclude Include="src\internal\systems\weapons.h" />

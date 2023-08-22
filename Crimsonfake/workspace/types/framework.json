@@ -17,6 +17,8 @@
         "Game::Inputs::MoveState": "internal/systems/inputs.h",
         "Game::Weapons::FireCmd": "internal/systems/weapons.h",
         "Game::Weapons::Desc": "internal/systems/weapons.h",
-        "Game::Items::Desc": "internal/systems/items.h"
+        "Game::Items::Desc": "internal/systems/items.h",
+        "Game::Explosions::Cmd": "internal/systems/explosions.h",
+        "Game::Explosions::Desc": "internal/systems/explosions.h"
     }
 }

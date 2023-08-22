@@ -31,6 +31,12 @@
             "dataType": "float",
             "name": "rotationSpeed",
             "initial": 2
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "itemSpawnProbability",
+            "initial": 0.1
         }
     ]
 }

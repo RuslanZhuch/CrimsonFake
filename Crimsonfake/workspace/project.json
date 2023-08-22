@@ -36,6 +36,11 @@
         "workspace/contexts/itemsCmds.json",
         "workspace/contexts/itemsInternal.json",
         "workspace/contexts/itemsTemp.json",
+        "workspace/contexts/explosionsCmds.json",
+        "workspace/contexts/explosionsShared.json",
+        "workspace/contexts/explosionsInternal.json",
+        "workspace/contexts/explosionsConfig.json",
+        "workspace/contexts/explosionsTemp.json",
         "workspace/contexts/windowParameters.json"
     ],
     "executors_paths": [
@@ -49,6 +54,7 @@
         "workspace/executors/spawner.json",
         "workspace/executors/weapons.json",
         "workspace/executors/items.json",
+        "workspace/executors/explosions.json",
         "workspace/executors/assets.json"
     ]
 }

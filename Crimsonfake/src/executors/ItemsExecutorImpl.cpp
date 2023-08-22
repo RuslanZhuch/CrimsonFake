@@ -47,12 +47,26 @@ namespace Game::ExecutionBlock
 
             const auto distSqrt{
                 (playerX - itemPosition.x) * (playerX - itemPosition.x) +
-                (playerY - itemPosition.y) + (playerY - itemPosition.y)
+                (playerY - itemPosition.y) * (playerY - itemPosition.y)
             };
 
             const auto bCanPickup{ distSqrt <= this->configContext.radius * this->configContext.radius };
 
             Dod::BufferUtils::populate(this->tempContext.pickupIds, elId, bCanPickup);
+
+        }
+
+        for (int32_t elId{}; elId < Dod::BufferUtils::getNumFilledElements(this->tempContext.pickupIds); ++elId)
+        {
+
+            const auto itemId{ Dod::BufferUtils::get(this->tempContext.pickupIds, elId) };
+
+            Game::Explosions::Cmd cmd;
+            cmd.desc.position = Dod::BufferUtils::get(this->internalContext.positions, itemId);
+            cmd.desc.radius = 128;
+            cmd.magnitude = 1.f;
+
+            Dod::BufferUtils::populate(this->explosionsCmdsContext.spawn, cmd, true);
 
         }
 

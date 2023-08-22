@@ -10,3 +10,4 @@ Crimsonfake/src/executors/*Executor.*
 Crimsonfake/workspace/cache
 Crimsonfake/src/generated_types
 Crimsonfake/src/parsed_types
+Crimsonfake/src/runtime.cpp

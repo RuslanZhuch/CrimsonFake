@@ -27,20 +27,6 @@ namespace Game::ExecutionBlock
         toSpawnContext.type = 1;
     }
 
-    static void spawnItems(Context::ItemsCmds::Data& toSpawnContext, float playerX, float playerY, bool bNeedToSpawn)
-    {
-        const auto spawnAngle{ static_cast<float>(rand() % 360) };
-        const auto spawnDistance{ 450.f + static_cast<float>(rand() % 100) };
-
-        const auto localXOffset{ -cosf(spawnAngle) * spawnDistance };
-        const auto localYOffset{ -sinf(spawnAngle) * spawnDistance };
-
-        const auto spawnX{ playerX + localXOffset };
-        const auto spawnY{ playerY + localYOffset };
-
-        Dod::BufferUtils::populate(toSpawnContext.spawnPositions, Types::Coord::Vec2f(spawnX, spawnY), bNeedToSpawn);
-    }
-
     void Spawner::initImpl() noexcept
     {
 
@@ -63,18 +49,6 @@ namespace Game::ExecutionBlock
             playerX,
             playerY,
             bNeedToSpawnSpider
-        );
-
-        this->stateContext.timeLeftToItemSpawn = std::max(0.f, this->stateContext.timeLeftToItemSpawn - dt);
-
-        const auto bNeedToSpawnItem{ this->stateContext.timeLeftToItemSpawn <= 0.f };
-        this->stateContext.timeLeftToItemSpawn += this->stateContext.itemSpawnPeriod * bNeedToSpawnItem;
-
-        spawnItems(
-            this->itemsCmdsContext,
-            playerX,
-            playerY,
-            bNeedToSpawnItem
         );
 
     }

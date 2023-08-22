@@ -1,0 +1,18 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "Engine::String",
+            "name": "texture",
+            "initial": "explosion.png"
+        },
+        {
+            "type": "object",
+            "dataType": "float",
+            "name": "explosionTime",
+            "initial": 0.2
+        }
+    ]
+}

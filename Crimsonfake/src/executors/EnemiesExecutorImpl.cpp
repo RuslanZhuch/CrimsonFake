@@ -54,6 +54,40 @@ namespace Game::ExecutionBlock
     void Enemies::updateImpl([[maybe_unused]] float dt) noexcept
     {
 
+        const auto explosionDescs{ Dod::SharedContext::get(this->explosionsSharedContext).descs };
+        const auto explosionMagnitudes{ Dod::SharedContext::get(this->explosionsSharedContext).magnitudes };
+
+        for (int32_t enemyElId{}; enemyElId < Dod::BufferUtils::getNumFilledElements(this->spidersContext.position); ++enemyElId)
+        {
+
+            const auto enemyPosition{ Dod::BufferUtils::get(this->spidersContext.position, enemyElId) };
+
+            for (int32_t explosionElId{}; explosionElId < Dod::BufferUtils::getNumFilledElements(explosionDescs); ++explosionElId)
+            {
+
+                const auto explosionDesc{ Dod::BufferUtils::get(explosionDescs, explosionElId) };
+
+                const auto distanceSignedX{ enemyPosition.x - explosionDesc.position.x };
+                const auto distanceSignedY{ enemyPosition.y - explosionDesc.position.y };
+
+                const auto distanceToCenter{ std::sqrtf(distanceSignedX * distanceSignedX + distanceSignedY * distanceSignedY) };
+
+                const auto bAffected{ distanceToCenter < explosionDesc.radius };
+
+                Dod::BufferUtils::populate(this->toHitContext.ids, enemyElId, bAffected);
+
+            }
+
+        }
+
+        for (int32_t id{}; id < Dod::BufferUtils::getNumFilledElements(this->toHitContext.ids); ++id)
+        {
+            const auto enemyId{ Dod::BufferUtils::get(this->toHitContext.ids, id) };
+            Dod::BufferUtils::get(this->spidersContext.health, enemyId) -= 10;
+        }
+
+        this->toHitContext.reset();
+
         const auto collisions{ Dod::SharedContext::get(this->collisionsInputContext).enemyIds };
         Dod::BufferUtils::append(this->toHitContext.ids, Dod::BufferUtils::createImFromBuffer(collisions));
 
@@ -101,6 +135,16 @@ namespace Game::ExecutionBlock
         }
 
         Dod::Algorithms::leftUniques(this->toRemoveContext.ids);
+
+        for (int32_t id{}; id < Dod::BufferUtils::getNumFilledElements(toRemoveContext.ids); ++id)
+        {
+            const auto toRemoveId{ Dod::BufferUtils::get(toRemoveContext.ids, id) };
+            const auto position{ Dod::BufferUtils::get(this->spidersContext.position, toRemoveId) };
+
+            const auto bAllowToSpawn{ (rand() % 100) <= static_cast<int32_t>(100 * this->parametersContext.itemSpawnProbability) };
+
+            Dod::BufferUtils::populate(this->itemsCmdsContext.spawnPositions, position, bAllowToSpawn);
+        }
 
         Dod::BufferUtils::remove(this->spidersContext.position, Dod::BufferUtils::createImFromBuffer(this->toRemoveContext.ids));
         Dod::BufferUtils::remove(this->spidersContext.angle, Dod::BufferUtils::createImFromBuffer(this->toRemoveContext.ids));

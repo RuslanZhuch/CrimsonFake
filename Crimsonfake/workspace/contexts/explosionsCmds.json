@@ -1,0 +1,12 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "dbbuffer",
+            "dataType": "Game::Explosions::Cmd",
+            "name": "spawn",
+            "capacity": 16
+        }
+    ]
+}

@@ -46,6 +46,12 @@
             "list": [
                 "collisionsInput"
             ]
+        },
+        {
+            "type": "explosionsShared",
+            "list": [
+                "explosionsShared"
+            ]
         }
     ],
     "contextsToFlush": [
@@ -53,7 +59,8 @@
         "collisionsOutput",
         "toRemove",
         "toHit",
-        "decalsCmds"
+        "decalsCmds",
+        "itemsCmds"
     ],
     "contextsWriteTo": [
         {
@@ -72,6 +79,12 @@
             "type": "decalsCmds",
             "list": [
                 "decalsCmds"
+            ]
+        },
+        {
+            "type": "itemsCmds",
+            "list": [
+                "itemsCmds"
             ]
         }
     ]

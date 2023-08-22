@@ -3,19 +3,19 @@
     "version": 1,
     "contextsLocal": [
         {
-            "type": "itemsConfig",
-            "list": [
-                "config"
-            ]
-        },
-        {
-            "type": "itemsInternal",
+            "type": "explosionsInternal",
             "list": [
                 "internal"
             ]
         },
         {
-            "type": "itemsTemp",
+            "type": "explosionsConfig",
+            "list": [
+                "config"
+            ]
+        },
+        {
+            "type": "explosionsTemp",
             "list": [
                 "temp"
             ]
@@ -23,23 +23,15 @@
     ],
     "contextsShared": [
         {
-            "type": "itemsCmds",
+            "type": "explosionsCmds",
             "list": [
                 "commands"
-            ]
-        },
-        {
-            "type": "playerWorldState",
-            "list": [
-                "playerWorldState"
             ]
         }
     ],
     "contextsToFlush": [
-        "config",
         "renderCmds",
-        "temp",
-        "explosionsCmds"
+        "temp"
     ],
     "contextsWriteTo": [
         {
@@ -49,9 +41,9 @@
             ]
         },
         {
-            "type": "explosionsCmds",
+            "type": "explosionsShared",
             "list": [
-                "explosionsCmds"
+                "active"
             ]
         }
     ]

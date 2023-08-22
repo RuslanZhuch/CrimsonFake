@@ -1,0 +1,18 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "object",
+            "dataType": "uint64_t",
+            "name": "materialId",
+            "initial": 0
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "float",
+            "name": "maxRadius",
+            "capacity": 32
+        }
+    ]
+}

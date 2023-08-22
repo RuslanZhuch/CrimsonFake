@@ -1,0 +1,18 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "dbbuffer",
+            "dataType": "Game::Explosions::Desc",
+            "name": "descs",
+            "capacity": 32
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "float",
+            "name": "magnitudes",
+            "capacity": 32
+        }
+    ]
+}

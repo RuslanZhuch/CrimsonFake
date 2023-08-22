@@ -11,6 +11,7 @@
                 "weapons",
                 "world",
                 "items",
+                "explosions",
                 "decals"
             ]
         },
@@ -63,6 +64,14 @@
         {
             "contextName": "decalsCmds",
             "instanceName": "decalsCmds"
+        },
+        {
+            "contextName": "explosionsCmds",
+            "instanceName": "explosionsCmds"
+        },
+        {
+            "contextName": "explosionsShared",
+            "instanceName": "explosionsShared"
         }
     ],
     "sharedContextsInstancesToFlush": [
@@ -72,7 +81,9 @@
         "collisionsResult",
         "weaponCmds",
         "itemsCmds",
-        "decalsCmds"
+        "decalsCmds",
+        "explosionsCmds",
+        "explosionsShared"
     ],
     "sharedContextsUsage": [
         {
@@ -139,6 +150,16 @@
             "instanceName": "weaponCmds",
             "executorName": "weapons",
             "executorSharedName": "commands"
+        },
+        {
+            "instanceName": "explosionsCmds",
+            "executorName": "explosions",
+            "executorSharedName": "commands"
+        },
+        {
+            "instanceName": "explosionsShared",
+            "executorName": "enemies",
+            "executorSharedName": "explosionsShared"
         }
     ],
     "sharedContextsMerge": [
@@ -188,13 +209,28 @@
             "executorContextName": "renderCmds"
         },
         {
+            "instanceName": "explosionsCmds",
+            "executorName": "items",
+            "executorContextName": "explosionsCmds"
+        },
+        {
+            "instanceName": "renderCmds",
+            "executorName": "explosions",
+            "executorContextName": "renderCmds"
+        },
+        {
+            "instanceName": "explosionsShared",
+            "executorName": "explosions",
+            "executorContextName": "active"
+        },
+        {
             "instanceName": "enemiesToSpawn",
             "executorName": "spawner",
             "executorContextName": "toSpawn"
         },
         {
             "instanceName": "itemsCmds",
-            "executorName": "spawner",
+            "executorName": "enemies",
             "executorContextName": "itemsCmds"
         },
         {

@@ -24,8 +24,7 @@
         }
     ],
     "contextsToFlush": [
-        "toSpawn",
-        "itemsCmds"
+        "toSpawn"
     ],
     "contextsWriteTo": [
         {

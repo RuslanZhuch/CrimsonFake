@@ -210,6 +210,30 @@
     <ClCompile Include="src\contexts\ItemsTempContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
+    <ClCompile Include="src\contexts\ExplosionsCmdsContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\ExplosionsExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\ExplosionsExecutorImpl.cpp">
+      <Filter>src\code</Filter>
+    </ClCompile>
+    <ClCompile Include="src\generated_types\explosionsGen.cpp">
+      <Filter>src\generated\types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\ExplosionsSharedContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\ExplosionsInternalContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\ExplosionsConfigContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\ExplosionsTempContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\contexts\ApplicationContext.h">
@@ -351,6 +375,27 @@
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
     <ClInclude Include="src\contexts\ItemsTempContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\internal\systems\explosions.h">
+      <Filter>src\internal\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\ExplosionsCmdsContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\ExplosionsExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\ExplosionsSharedContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\ExplosionsInternalContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\ExplosionsConfigContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\ExplosionsTempContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
   </ItemGroup>

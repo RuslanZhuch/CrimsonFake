@@ -12,7 +12,7 @@
             "type": "object",
             "dataType": "float",
             "name": "radius",
-            "initial": 8
+            "initial": 32
         },
         {
             "type": "dbbuffer",
