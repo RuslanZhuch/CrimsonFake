@@ -11,6 +11,7 @@
         "workspace/contexts/application.json",
         "workspace/contexts/playerInitial.json",
         "workspace/contexts/playerWorldState.json",
+        "workspace/contexts/playerLocal.json",
         "workspace/contexts/renderInternal.json",
         "workspace/contexts/renderAssets.json",
         "workspace/contexts/renderCmds.json",
@@ -41,6 +42,7 @@
         "workspace/contexts/explosionsInternal.json",
         "workspace/contexts/explosionsConfig.json",
         "workspace/contexts/explosionsTemp.json",
+        "workspace/contexts/perksCmds.json",
         "workspace/contexts/windowParameters.json"
     ],
     "executors_paths": [
@@ -55,6 +57,7 @@
         "workspace/executors/weapons.json",
         "workspace/executors/items.json",
         "workspace/executors/explosions.json",
+        "workspace/executors/perks.json",
         "workspace/executors/assets.json"
     ]
 }

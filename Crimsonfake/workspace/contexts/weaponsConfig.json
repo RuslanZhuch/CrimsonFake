@@ -36,7 +36,8 @@
                     "damage": 1,
                     "spread": 10,
                     "bulletsPerShot": 1,
-                    "fireDelay": 0.1 
+                    "fireDelay": 0.1,
+                    "totalShots": 50
                 },
                 {
                     "bulletTextureName": "bullet.png",
@@ -45,7 +46,8 @@
                     "damage": 2,
                     "spread": 40,
                     "bulletsPerShot": 5,
-                    "fireDelay": 0.35
+                    "fireDelay": 0.35,
+                    "totalShots": 40
                 },
                 {
                     "bulletTextureName": "bullet.png",
@@ -54,7 +56,8 @@
                     "damage": 4,
                     "spread": 30,
                     "bulletsPerShot": 2,
-                    "fireDelay": 0.25
+                    "fireDelay": 0.25,
+                    "totalShots": 80
                 }
             ]
         }

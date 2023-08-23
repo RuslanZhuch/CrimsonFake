@@ -12,6 +12,7 @@
                 "world",
                 "items",
                 "explosions",
+                "perks",
                 "decals"
             ]
         },
@@ -72,6 +73,10 @@
         {
             "contextName": "explosionsShared",
             "instanceName": "explosionsShared"
+        },
+        {
+            "contextName": "perksCmds",
+            "instanceName": "perksCmds"
         }
     ],
     "sharedContextsInstancesToFlush": [
@@ -83,7 +88,8 @@
         "itemsCmds",
         "decalsCmds",
         "explosionsCmds",
-        "explosionsShared"
+        "explosionsShared",
+        "perksCmds"
     ],
     "sharedContextsUsage": [
         {
@@ -160,6 +166,11 @@
             "instanceName": "explosionsShared",
             "executorName": "enemies",
             "executorSharedName": "explosionsShared"
+        },
+        {
+            "instanceName": "perksCmds",
+            "executorName": "perks",
+            "executorSharedName": "commands"
         }
     ],
     "sharedContextsMerge": [
@@ -207,11 +218,6 @@
             "instanceName": "renderCmds",
             "executorName": "items",
             "executorContextName": "renderCmds"
-        },
-        {
-            "instanceName": "explosionsCmds",
-            "executorName": "items",
-            "executorContextName": "explosionsCmds"
         },
         {
             "instanceName": "renderCmds",
@@ -262,6 +268,26 @@
             "instanceName": "bulletsToCreate",
             "executorName": "weapons",
             "executorContextName": "bulletsToCreate"
+        },
+        {
+            "instanceName": "explosionsCmds",
+            "executorName": "perks",
+            "executorContextName": "explosionsCmds"
+        },
+        {
+            "instanceName": "weaponCmds",
+            "executorName": "perks",
+            "executorContextName": "weaponCmds"
+        },
+        {
+            "instanceName": "perksCmds",
+            "executorName": "items",
+            "executorContextName": "perksCmds"
+        },
+        {
+            "instanceName": "perksCmds",
+            "executorName": "player",
+            "executorContextName": "perksCmds"
         }
     ],
     "poolContextsInstances": [

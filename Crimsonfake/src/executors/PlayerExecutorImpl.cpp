@@ -108,9 +108,21 @@ namespace Game::ExecutionBlock
         fireCmd.angle = lookAngle;
         Dod::BufferUtils::populate(this->weaponCmdsContext.commands, fireCmd, bNeedShoot);
 
-        const auto switchType{ Game::Inputs::computeWeaponSwitchComponent() };
-        const auto bNeedSwitch{ switchType >= 0 };
-        Dod::BufferUtils::populate(this->weaponCmdsContext.setWeaponType, switchType, bNeedSwitch);
+//        const auto switchType{ Game::Inputs::computeWeaponSwitchComponent() };
+//        const auto bNeedSwitch{ switchType >= 0 };
+//        Dod::BufferUtils::populate(this->weaponCmdsContext.setWeaponType, switchType, bNeedSwitch);
+
+        this->localContext.perkCheatCooldownLeft = std::max(0.f, this->localContext.perkCheatCooldownLeft - dt);
+        const auto bAllowUsePerk{ this->localContext.perkCheatCooldownLeft <= 0 };
+
+        const auto selectedPerk{ Game::Inputs::perkSelectComponent() };
+        const auto bIsPerkSelected{ (selectedPerk >= 0) && bAllowUsePerk };
+        Game::Perks::Desc perk;
+        perk.type = selectedPerk + 1;
+        perk.coord = { this->worldStateContext.x, this->worldStateContext.y };
+        Dod::BufferUtils::populate(this->perksCmdsContext.perksToActivate, perk, bIsPerkSelected);
+
+        this->localContext.perkCheatCooldownLeft += this->localContext.perkCheatDelay * bIsPerkSelected;
 
     }
 

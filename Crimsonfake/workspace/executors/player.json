@@ -19,6 +19,12 @@
             "list": [
                 "inputs"
             ]
+        },
+        {
+            "type": "playerLocal",
+            "list": [
+                "local"
+            ]
         }
     ],
     "contextsShared": [
@@ -32,7 +38,8 @@
     "contextsToFlush": [
         "renderCmds",
         "weaponCmds",
-        "decalsCmds"
+        "decalsCmds",
+        "perksCmds"
     ],
     "contextsWriteTo": [
         {
@@ -57,6 +64,12 @@
             "type": "decalsCmds",
             "list": [
                 "decalsCmds"
+            ]
+        },
+        {
+            "type": "perksCmds",
+            "list": [
+                "perksCmds"
             ]
         }
     ]

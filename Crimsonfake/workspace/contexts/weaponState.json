@@ -10,6 +10,12 @@
         },
         {
             "type": "object",
+            "dataType": "int32_t",
+            "name": "shotsLeft",
+            "initial": 0
+        },
+        {
+            "type": "object",
             "dataType": "Game::Weapons::Desc",
             "name": "currentDesc"
         }

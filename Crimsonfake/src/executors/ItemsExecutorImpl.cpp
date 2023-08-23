@@ -34,6 +34,7 @@ namespace Game::ExecutionBlock
             Dod::BufferUtils::populate(this->internalContext.positions, spawnCoord, bAllowSpawn);
             Dod::BufferUtils::populate(this->internalContext.types, itemTypeId, bAllowSpawn);
             Dod::BufferUtils::populate(this->internalContext.materialIds, materialId, bAllowSpawn);
+            Dod::BufferUtils::populate(this->internalContext.timeLeft, this->configContext.lifetime, bAllowSpawn);
 
         }
 
@@ -61,18 +62,27 @@ namespace Game::ExecutionBlock
 
             const auto itemId{ Dod::BufferUtils::get(this->tempContext.pickupIds, elId) };
 
-            Game::Explosions::Cmd cmd;
-            cmd.desc.position = Dod::BufferUtils::get(this->internalContext.positions, itemId);
-            cmd.desc.radius = 128;
-            cmd.magnitude = 1.f;
+            Game::Perks::Desc perk;
+            perk.type = 1;
+            perk.coord = Dod::BufferUtils::get(this->internalContext.positions, itemId);
 
-            Dod::BufferUtils::populate(this->explosionsCmdsContext.spawn, cmd, true);
+            Dod::BufferUtils::populate(this->perksCmdsContext.perksToActivate, perk, true);
 
         }
+
+        for (int32_t elId{}; elId < Dod::BufferUtils::getNumFilledElements(this->internalContext.timeLeft); ++elId)
+        {
+            Dod::BufferUtils::get(this->internalContext.timeLeft, elId) -= dt;
+            const auto bExpired{ Dod::BufferUtils::get(this->internalContext.timeLeft, elId) <= 0.f };
+            Dod::BufferUtils::populate(this->tempContext.pickupIds, elId, bExpired);
+        }
+
+        Dod::Algorithms::leftUniques(this->tempContext.pickupIds);
 
         Dod::BufferUtils::remove(this->internalContext.materialIds, Dod::BufferUtils::createImFromBuffer(this->tempContext.pickupIds));
         Dod::BufferUtils::remove(this->internalContext.types, Dod::BufferUtils::createImFromBuffer(this->tempContext.pickupIds));
         Dod::BufferUtils::remove(this->internalContext.positions, Dod::BufferUtils::createImFromBuffer(this->tempContext.pickupIds));
+        Dod::BufferUtils::remove(this->internalContext.timeLeft, Dod::BufferUtils::createImFromBuffer(this->tempContext.pickupIds));
 
         Dod::Algorithms::getSortedIndices(this->tempContext.sortedIds, Dod::BufferUtils::createImFromBuffer(this->internalContext.materialIds));
         const auto sortedMaterials{ Dod::BufferUtils::createSortedImBuffer(

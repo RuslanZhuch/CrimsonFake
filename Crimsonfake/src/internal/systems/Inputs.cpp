@@ -150,3 +150,28 @@ int32_t Game::Inputs::computeWeaponSwitchComponent() noexcept
     return -1;
 
 }
+
+int32_t Game::Inputs::perkSelectComponent() noexcept
+{
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+        return 0;
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+        return 1;
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
+        return 2;
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4))
+        return 3;
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4))
+        return 4;
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num5))
+        return 5;
+
+    return -1;
+
+}

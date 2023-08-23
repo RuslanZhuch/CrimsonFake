@@ -17,7 +17,10 @@ namespace Game::ExecutionBlock
     {
 
         if (Dod::BufferUtils::getNumFilledElements(this->configContext.descriptions) > 0)
+        {
             this->weaponStateContext.currentDesc = Dod::BufferUtils::get(this->configContext.descriptions, 0);
+            this->weaponStateContext.shotsLeft = this->weaponStateContext.currentDesc.totalShots;
+        }
 
     }
 
@@ -55,7 +58,14 @@ namespace Game::ExecutionBlock
                 Dod::BufferUtils::populate(this->bulletsToCreateContext.timeLeft, this->weaponStateContext.currentDesc.bulletLifeTime, true);
             }
             this->weaponStateContext.fireDelayLeft += this->weaponStateContext.currentDesc.fireDelay * bCanShoot;
+            this->weaponStateContext.shotsLeft -= bCanShoot;
 
+        }
+
+        if (this->weaponStateContext.shotsLeft <= 0)
+        {
+            this->weaponStateContext.currentDesc = Dod::BufferUtils::get(this->configContext.descriptions, 0);
+            this->weaponStateContext.shotsLeft = this->weaponStateContext.currentDesc.totalShots;
         }
 
         const auto switchCmds{ Dod::SharedContext::get(this->commandsContext).setWeaponType };
@@ -68,6 +78,7 @@ namespace Game::ExecutionBlock
                 if (switchType != type)
                     continue;
                 this->weaponStateContext.currentDesc = Dod::BufferUtils::get(this->configContext.descriptions, descId);
+                this->weaponStateContext.shotsLeft = this->weaponStateContext.currentDesc.totalShots;
                 break;
             }
             this->weaponStateContext.fireDelayLeft = 0.f;

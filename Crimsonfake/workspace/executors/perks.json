@@ -1,0 +1,32 @@
+{
+    "whoIAm": "Executor",
+    "version": 1,
+    "contextsLocal": [
+    ],
+    "contextsShared": [
+        {
+            "type": "perksCmds",
+            "list": [
+                "commands"
+            ]
+        }
+    ],
+    "contextsToFlush": [
+        "explosionsCmds",
+        "weaponCmds"
+    ],
+    "contextsWriteTo": [
+        {
+            "type": "explosionsCmds",
+            "list": [
+                "explosionsCmds"
+            ]
+        },
+        {
+            "type": "weaponCmds",
+            "list": [
+                "weaponCmds"
+            ]
+        }
+    ]
+}

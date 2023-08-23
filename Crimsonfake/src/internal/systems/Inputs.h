@@ -21,5 +21,6 @@ namespace Game::Inputs
 	[[nodiscard]] int32_t computeFireComponent(uint32_t currentInputs, uint32_t prevInputs) noexcept;
 	[[nodiscard]] MoveState computeMoveComponent(uint32_t currentInputs, uint32_t prevInputs, MoveState prevMovement) noexcept;
 	[[nodiscard]] int32_t computeWeaponSwitchComponent() noexcept;
+	[[nodiscard]] int32_t perkSelectComponent() noexcept;
 
 }

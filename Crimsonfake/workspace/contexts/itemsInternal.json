@@ -25,6 +25,12 @@
             "dataType": "uint64_t",
             "name": "materialIds",
             "capacity": 16
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "float",
+            "name": "timeLeft",
+            "capacity": 16
         }
     ]
 }

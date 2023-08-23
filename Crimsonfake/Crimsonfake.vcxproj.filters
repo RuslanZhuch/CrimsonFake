@@ -42,9 +42,6 @@
     <ClCompile Include="src\contexts\PlayerWorldStateContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
-    <ClCompile Include="src\executors\RenderExecutor.cpp">
-      <Filter>src\generated\executors</Filter>
-    </ClCompile>
     <ClCompile Include="src\executors\RenderExecutorImpl.cpp">
       <Filter>src\code</Filter>
     </ClCompile>
@@ -54,17 +51,11 @@
     <ClCompile Include="src\contexts\WindowParametersContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
-    <ClCompile Include="src\executors\AssetsExecutor.cpp">
-      <Filter>src\generated\executors</Filter>
-    </ClCompile>
     <ClCompile Include="src\executors\AssetsExecutorImpl.cpp">
       <Filter>src\code</Filter>
     </ClCompile>
     <ClCompile Include="src\contexts\RenderCmdsContext.cpp">
       <Filter>src\generated\contexts</Filter>
-    </ClCompile>
-    <ClCompile Include="src\executors\PlayerExecutor.cpp">
-      <Filter>src\generated\executors</Filter>
     </ClCompile>
     <ClCompile Include="src\executors\PlayerExecutorImpl.cpp">
       <Filter>src\code</Filter>
@@ -84,12 +75,6 @@
     <ClCompile Include="src\executors\WorldExecutorImpl.cpp">
       <Filter>src\code</Filter>
     </ClCompile>
-    <ClCompile Include="src\executors\WorldExecutor.cpp">
-      <Filter>src\generated\executors</Filter>
-    </ClCompile>
-    <ClCompile Include="src\executors\BulletsExecutor.cpp">
-      <Filter>src\generated\executors</Filter>
-    </ClCompile>
     <ClCompile Include="src\executors\BulletsExecutorImpl.cpp">
       <Filter>src\code</Filter>
     </ClCompile>
@@ -104,12 +89,6 @@
     </ClCompile>
     <ClCompile Include="src\contexts\SpawnerStateContext.cpp">
       <Filter>src\generated\contexts</Filter>
-    </ClCompile>
-    <ClCompile Include="src\executors\EnemiesExecutor.cpp">
-      <Filter>src\generated\executors</Filter>
-    </ClCompile>
-    <ClCompile Include="src\executors\SpawnerExecutor.cpp">
-      <Filter>src\generated\executors</Filter>
     </ClCompile>
     <ClCompile Include="src\executors\EnemiesExecutorImpl.cpp">
       <Filter>src\code</Filter>
@@ -126,9 +105,6 @@
     <ClCompile Include="src\executors\CollisionsExecutorImpl.cpp">
       <Filter>src\code</Filter>
     </ClCompile>
-    <ClCompile Include="src\executors\CollisionsExecutor.cpp">
-      <Filter>src\generated\executors</Filter>
-    </ClCompile>
     <ClCompile Include="src\contexts\EnemiesParametersContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
@@ -141,9 +117,6 @@
     <ClCompile Include="src\contexts\WeaponCmdsContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
-    <ClCompile Include="src\executors\WeaponsExecutor.cpp">
-      <Filter>src\generated\executors</Filter>
-    </ClCompile>
     <ClCompile Include="src\executors\WeaponsExecutorImpl.cpp">
       <Filter>src\code</Filter>
     </ClCompile>
@@ -155,9 +128,6 @@
     </ClCompile>
     <ClCompile Include="src\contexts\BulletsInternalContext.cpp">
       <Filter>src\generated\contexts</Filter>
-    </ClCompile>
-    <ClCompile Include="src\executors\DecalsExecutor.cpp">
-      <Filter>src\generated\executors</Filter>
     </ClCompile>
     <ClCompile Include="src\executors\DecalsExecutorImpl.cpp">
       <Filter>src\code</Filter>
@@ -198,9 +168,6 @@
     <ClCompile Include="src\contexts\ItemsCmdsContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
-    <ClCompile Include="src\executors\ItemsExecutor.cpp">
-      <Filter>src\generated\executors</Filter>
-    </ClCompile>
     <ClCompile Include="src\executors\ItemsExecutorImpl.cpp">
       <Filter>src\code</Filter>
     </ClCompile>
@@ -212,9 +179,6 @@
     </ClCompile>
     <ClCompile Include="src\contexts\ExplosionsCmdsContext.cpp">
       <Filter>src\generated\contexts</Filter>
-    </ClCompile>
-    <ClCompile Include="src\executors\ExplosionsExecutor.cpp">
-      <Filter>src\generated\executors</Filter>
     </ClCompile>
     <ClCompile Include="src\executors\ExplosionsExecutorImpl.cpp">
       <Filter>src\code</Filter>
@@ -234,6 +198,57 @@
     <ClCompile Include="src\contexts\ExplosionsTempContext.cpp">
       <Filter>src\generated\contexts</Filter>
     </ClCompile>
+    <ClCompile Include="src\generated_types\perksGen.cpp">
+      <Filter>src\generated\types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\PerksExecutorImpl.cpp">
+      <Filter>src\code</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\PerksCmdsContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contexts\PlayerLocalContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\PlayerExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\PerksExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\ItemsExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\EnemiesExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\ExplosionsExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\SpawnerExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\AssetsExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\WeaponsExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\CollisionsExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\BulletsExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\DecalsExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\WorldExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\executors\RenderExecutor.cpp">
+      <Filter>src\generated\executors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\contexts\ApplicationContext.h">
@@ -245,20 +260,11 @@
     <ClInclude Include="src\contexts\PlayerWorldStateContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
-    <ClInclude Include="src\executors\RenderExecutor.h">
-      <Filter>src\generated\executors</Filter>
-    </ClInclude>
     <ClInclude Include="src\contexts\WindowParametersContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
-    <ClInclude Include="src\executors\AssetsExecutor.h">
-      <Filter>src\generated\executors</Filter>
-    </ClInclude>
     <ClInclude Include="src\contexts\RenderCmdsContext.h">
       <Filter>src\generated\contexts</Filter>
-    </ClInclude>
-    <ClInclude Include="src\executors\PlayerExecutor.h">
-      <Filter>src\generated\executors</Filter>
     </ClInclude>
     <ClInclude Include="src\contexts\InputsContext.h">
       <Filter>src\generated\contexts</Filter>
@@ -275,14 +281,8 @@
     <ClInclude Include="src\contexts\WorldContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
-    <ClInclude Include="src\executors\WorldExecutor.h">
-      <Filter>src\generated\executors</Filter>
-    </ClInclude>
     <ClInclude Include="src\internal\supportTypes\coordTypes.h">
       <Filter>src\internal\supportTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\executors\BulletsExecutor.h">
-      <Filter>src\generated\executors</Filter>
     </ClInclude>
     <ClInclude Include="src\contexts\BulletsContext.h">
       <Filter>src\generated\contexts</Filter>
@@ -296,12 +296,6 @@
     <ClInclude Include="src\contexts\SpawnerStateContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
-    <ClInclude Include="src\executors\EnemiesExecutor.h">
-      <Filter>src\generated\executors</Filter>
-    </ClInclude>
-    <ClInclude Include="src\executors\SpawnerExecutor.h">
-      <Filter>src\generated\executors</Filter>
-    </ClInclude>
     <ClInclude Include="src\Internal\supportTypes\collisionTypes.h">
       <Filter>src\internal\supportTypes</Filter>
     </ClInclude>
@@ -310,9 +304,6 @@
     </ClInclude>
     <ClInclude Include="src\contexts\CollisionsResultContext.h">
       <Filter>src\generated\contexts</Filter>
-    </ClInclude>
-    <ClInclude Include="src\executors\CollisionsExecutor.h">
-      <Filter>src\generated\executors</Filter>
     </ClInclude>
     <ClInclude Include="src\contexts\EnemiesParametersContext.h">
       <Filter>src\generated\contexts</Filter>
@@ -326,9 +317,6 @@
     <ClInclude Include="src\contexts\WeaponCmdsContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
-    <ClInclude Include="src\executors\WeaponsExecutor.h">
-      <Filter>src\generated\executors</Filter>
-    </ClInclude>
     <ClInclude Include="src\internal\systems\weapons.h">
       <Filter>src\internal\systems</Filter>
     </ClInclude>
@@ -340,9 +328,6 @@
     </ClInclude>
     <ClInclude Include="src\contexts\BulletsInternalContext.h">
       <Filter>src\generated\contexts</Filter>
-    </ClInclude>
-    <ClInclude Include="src\executors\DecalsExecutor.h">
-      <Filter>src\generated\executors</Filter>
     </ClInclude>
     <ClInclude Include="src\contexts\DecalsInternalContext.h">
       <Filter>src\generated\contexts</Filter>
@@ -368,9 +353,6 @@
     <ClInclude Include="src\contexts\ItemsCmdsContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
-    <ClInclude Include="src\executors\ItemsExecutor.h">
-      <Filter>src\generated\executors</Filter>
-    </ClInclude>
     <ClInclude Include="src\contexts\ItemsInternalContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
@@ -383,9 +365,6 @@
     <ClInclude Include="src\contexts\ExplosionsCmdsContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
-    <ClInclude Include="src\executors\ExplosionsExecutor.h">
-      <Filter>src\generated\executors</Filter>
-    </ClInclude>
     <ClInclude Include="src\contexts\ExplosionsSharedContext.h">
       <Filter>src\generated\contexts</Filter>
     </ClInclude>
@@ -397,6 +376,51 @@
     </ClInclude>
     <ClInclude Include="src\contexts\ExplosionsTempContext.h">
       <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\PerksCmdsContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\PlayerLocalContext.h">
+      <Filter>src\generated\contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\WeaponsExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\BulletsExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\CollisionsExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\DecalsExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\WorldExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\RenderExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\PlayerExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\PerksExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\ItemsExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\EnemiesExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\ExplosionsExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\SpawnerExecutor.h">
+      <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\executors\AssetsExecutor.h">
+      <Filter>src\generated\executors</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

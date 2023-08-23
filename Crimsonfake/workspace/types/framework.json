@@ -18,6 +18,7 @@
         "Game::Weapons::FireCmd": "internal/systems/weapons.h",
         "Game::Weapons::Desc": "internal/systems/weapons.h",
         "Game::Items::Desc": "internal/systems/items.h",
+        "Game::Perks::Desc": "internal/systems/perks.h",
         "Game::Explosions::Cmd": "internal/systems/explosions.h",
         "Game::Explosions::Desc": "internal/systems/explosions.h"
     }

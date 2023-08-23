@@ -15,6 +15,12 @@
             "initial": 32
         },
         {
+            "type": "object",
+            "dataType": "float",
+            "name": "lifetime",
+            "initial": 15
+        },
+        {
             "type": "dbbuffer",
             "dataType": "Game::Items::Desc",
             "name": "descriptions",

@@ -39,7 +39,7 @@
         "config",
         "renderCmds",
         "temp",
-        "explosionsCmds"
+        "perksCmds"
     ],
     "contextsWriteTo": [
         {
@@ -49,9 +49,9 @@
             ]
         },
         {
-            "type": "explosionsCmds",
+            "type": "perksCmds",
             "list": [
-                "explosionsCmds"
+                "perksCmds"
             ]
         }
     ]

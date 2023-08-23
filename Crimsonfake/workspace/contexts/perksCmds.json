@@ -1,0 +1,12 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "dbbuffer",
+            "dataType": "Game::Perks::Desc",
+            "name": "perksToActivate",
+            "capacity": 4
+        }
+    ]
+}

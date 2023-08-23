@@ -30,6 +30,7 @@ namespace Game::Weapons
 		float spread{ 0 };
 		float fireDelay{ 0 };
 		int32_t bulletsPerShot{ 1 };
+		int32_t totalShots{ INT_MAX };
 		Engine::String bulletTextureName;
 	};
 
