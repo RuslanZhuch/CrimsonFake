@@ -46,8 +46,32 @@ namespace Game::ExecutionBlock
 
     }
 
+    [[nodiscard]] auto getBulletDamage(
+        int32_t bulletType, 
+        Dod::ImBuffer<int32_t> bulletTypes,
+        Dod::ImBuffer<int32_t> bulletDamage
+    )
+    {
+        int32_t damage{};
+        for (int32_t elId{}; elId < Dod::BufferUtils::getNumFilledElements(bulletTypes); ++elId)
+        {
+            const auto bMatch{ Dod::BufferUtils::get(bulletTypes, elId) == bulletType };
+            damage += Dod::BufferUtils::get(bulletDamage, elId) * bMatch;
+        }
+        return damage;
+    }
+
     void Enemies::initImpl() noexcept
     {
+
+        for (int32_t elId{}; elId < Dod::BufferUtils::getNumFilledElements(this->weaponsConfigContext.descriptions); ++elId)
+        {
+
+            const auto weaponConfig{ Dod::BufferUtils::get(this->weaponsConfigContext.descriptions, elId) };
+            Dod::BufferUtils::populate(this->internalContext.bulletsDamage, weaponConfig.damage, true);
+            Dod::BufferUtils::populate(this->internalContext.weaponTypes, weaponConfig.type, true);
+
+        }
 
     }
 
@@ -90,11 +114,17 @@ namespace Game::ExecutionBlock
 
         const auto collisions{ Dod::SharedContext::get(this->collisionsInputContext).enemyIds };
         Dod::BufferUtils::append(this->toHitContext.ids, Dod::BufferUtils::createImFromBuffer(collisions));
+        const auto bulletTypes{ Dod::SharedContext::get(this->collisionsInputContext).bulletTypes };
 
         for (int32_t id{}; id < Dod::BufferUtils::getNumFilledElements(this->toHitContext.ids); ++id)
         {
             const auto enemyId{ Dod::BufferUtils::get(this->toHitContext.ids, id) };
-            Dod::BufferUtils::get(this->spidersContext.health, enemyId) -= 1;
+            const auto bulletType{ Dod::BufferUtils::get(bulletTypes, id) };
+            Dod::BufferUtils::get(this->spidersContext.health, enemyId) -= getBulletDamage(
+                bulletType,
+                Dod::BufferUtils::createImFromBuffer(this->internalContext.weaponTypes),
+                Dod::BufferUtils::createImFromBuffer(this->internalContext.bulletsDamage)
+            );
         }
 
         constexpr auto offset{ 10.f };

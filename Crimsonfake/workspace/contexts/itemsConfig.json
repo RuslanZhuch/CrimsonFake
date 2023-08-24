@@ -27,7 +27,16 @@
             "capacity": 16,
             "initial": [
                 {
+                    "size": 16,
                     "itemTexture": "bomb.png"
+                },
+                {
+                    "size": 64,
+                    "itemTexture": "shotgun.png"
+                },
+                {
+                    "size": 64,
+                    "itemTexture": "machinegun.png"
                 }
             ]
         }

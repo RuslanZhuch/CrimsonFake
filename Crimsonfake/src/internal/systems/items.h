@@ -14,6 +14,7 @@ namespace Game::Items
 	{
 		ENGINE_TYPES_DESERIALIZE;
 
+		float size{ 1.f };
 		Engine::String itemTexture;
 	};
 

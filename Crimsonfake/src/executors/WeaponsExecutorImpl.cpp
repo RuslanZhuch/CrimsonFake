@@ -56,6 +56,7 @@ namespace Game::ExecutionBlock
                 Dod::BufferUtils::populate(this->bulletsToCreateContext.textureNames, bulletKey, true);
                 Dod::BufferUtils::populate(this->bulletsToCreateContext.velocity, this->weaponStateContext.currentDesc.bulletVelocity, true);
                 Dod::BufferUtils::populate(this->bulletsToCreateContext.timeLeft, this->weaponStateContext.currentDesc.bulletLifeTime, true);
+                Dod::BufferUtils::populate(this->bulletsToCreateContext.type, this->weaponStateContext.currentDesc.type, true);
             }
             this->weaponStateContext.fireDelayLeft += this->weaponStateContext.currentDesc.fireDelay * bCanShoot;
             this->weaponStateContext.shotsLeft -= bCanShoot;
@@ -72,9 +73,9 @@ namespace Game::ExecutionBlock
         for (int32_t commandId{}; commandId < Dod::BufferUtils::getNumFilledElements(switchCmds); ++commandId)
         {
             const auto switchType{ Dod::BufferUtils::get(switchCmds, commandId) };
-            for (int32_t descId{}; descId < Dod::BufferUtils::getNumFilledElements(this->configContext.types); ++descId)
+            for (int32_t descId{}; descId < Dod::BufferUtils::getNumFilledElements(this->configContext.descriptions); ++descId)
             {
-                const auto type{ Dod::BufferUtils::get(this->configContext.types, descId) };
+                const auto type{ Dod::BufferUtils::get(this->configContext.descriptions, descId).type };
                 if (switchType != type)
                     continue;
                 this->weaponStateContext.currentDesc = Dod::BufferUtils::get(this->configContext.descriptions, descId);

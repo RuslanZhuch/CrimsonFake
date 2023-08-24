@@ -24,9 +24,10 @@ namespace Game::Weapons
 
 		ENGINE_TYPES_DESERIALIZE;
 
+		int32_t type{};
 		float bulletVelocity{};
 		float bulletLifeTime{ 2 };
-		float damage{ 1 };
+		int32_t damage{ 1 };
 		float spread{ 0 };
 		float fireDelay{ 0 };
 		int32_t bulletsPerShot{ 1 };

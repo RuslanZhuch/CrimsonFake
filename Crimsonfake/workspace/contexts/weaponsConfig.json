@@ -4,32 +4,22 @@
     "data": [
         {
             "type": "dbbuffer",
-            "dataType": "int32_t",
-            "name": "types",
-            "capacity": 16,
-            "initial": [
-                0,
-                1,
-                2,
-                3
-            ]
-        },
-        {
-            "type": "dbbuffer",
             "dataType": "Game::Weapons::Desc",
             "name": "descriptions",
             "capacity": 16,
             "initial": [
                 {
+                    "type": 0,
                     "bulletTextureName": "bullet.png",
                     "bulletVelocity": 1000,
                     "bulletLifetime": 2,
-                    "damage": 2,
+                    "damage": 3,
                     "spread": 0,
                     "bulletsPerShot": 1,
-                    "fireDelay": 0.3 
+                    "fireDelay": 0.5 
                 },
                 {
+                    "type": 1,
                     "bulletTextureName": "bullet.png",
                     "bulletVelocity": 1000,
                     "bulletLifetime": 2,
@@ -40,6 +30,7 @@
                     "totalShots": 50
                 },
                 {
+                    "type": 2,
                     "bulletTextureName": "bullet.png",
                     "bulletVelocity": 1000,
                     "bulletLifetime": 2,
@@ -50,13 +41,14 @@
                     "totalShots": 40
                 },
                 {
+                    "type": 3,
                     "bulletTextureName": "bullet.png",
                     "bulletVelocity": 1000,
                     "bulletLifetime": 2,
-                    "damage": 4,
+                    "damage": 2,
                     "spread": 30,
                     "bulletsPerShot": 2,
-                    "fireDelay": 0.25,
+                    "fireDelay": 0.15,
                     "totalShots": 80
                 }
             ]

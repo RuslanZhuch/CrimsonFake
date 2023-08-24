@@ -1,0 +1,18 @@
+{
+    "whoIAm": "Context",
+    "version": 1,
+    "data": [
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "bulletsDamage",
+            "capacity": 16
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "weaponTypes",
+            "capacity": 16
+        }
+    ]
+}

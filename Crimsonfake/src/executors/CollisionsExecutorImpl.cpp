@@ -15,10 +15,12 @@ namespace Game::ExecutionBlock
     void Collisions::updateImpl([[maybe_unused]] float dt) noexcept
     {;
         const auto bullets{ Dod::SharedContext::get(this->inputContext).playerBullets };
+        const auto types{ Dod::SharedContext::get(this->inputContext).bulletType };
         const auto enemies{ Dod::SharedContext::get(this->inputContext).enemies };
         for (int32_t bulletId{}; bulletId < Dod::BufferUtils::getNumFilledElements(bullets); ++bulletId)
         {
             const auto& bullet{ Dod::BufferUtils::get(bullets, bulletId) };
+            const auto type{ Dod::BufferUtils::get(types, bulletId) };
 
             for (int32_t enemyId{}; enemyId < Dod::BufferUtils::getNumFilledElements(enemies); ++enemyId)
             {
@@ -33,9 +35,11 @@ namespace Game::ExecutionBlock
                 const auto dirX{ vecX / (distance + 0.01f) };
                 const auto dirY{ vecY / (distance + 0.01f) };
 
+
                 Dod::BufferUtils::populate(this->outputContext.enemyIds, enemyId, bCollide);
                 Dod::BufferUtils::populate(this->outputContext.hitDirection, Types::Coord::Vec2f(dirX, dirY), bCollide);
                 Dod::BufferUtils::populate(this->outputContext.bulletIds, bulletId, bCollide);
+                Dod::BufferUtils::populate(this->outputContext.bulletTypes, type, bCollide);
             }
         }
     }

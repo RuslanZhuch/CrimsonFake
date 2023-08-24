@@ -23,6 +23,7 @@
         "workspace/contexts/elements.json",
         "workspace/contexts/enemies.json",
         "workspace/contexts/enemiesParameters.json",
+        "workspace/contexts/enemiesInternal.json",
         "workspace/contexts/enemiesState.json",
         "workspace/contexts/spawnerState.json",
         "workspace/contexts/spawnerParameters.json",

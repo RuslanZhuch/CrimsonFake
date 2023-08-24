@@ -26,6 +26,18 @@
             "list": [
                 "state"
             ]
+        },
+        {
+            "type": "enemiesInternal",
+            "list": [
+                "internal"
+            ]
+        },
+        {
+            "type": "weaponsConfig",
+            "list": [
+                "weaponsConfig"
+            ]
         }
     ],
     "contextsShared": [

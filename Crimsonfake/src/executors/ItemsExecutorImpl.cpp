@@ -23,7 +23,8 @@ namespace Game::ExecutionBlock
 
             const int32_t itemTypeId{ rand() % this->internalContext.totalTypes };
             const auto spawnCoord{ Dod::BufferUtils::get(toSpawnCoords, elId) };
-            const auto texture{ Dod::BufferUtils::get(this->configContext.descriptions, elId).itemTexture };
+            const auto texture{ Dod::BufferUtils::get(this->configContext.descriptions, itemTypeId).itemTexture };
+            const auto size{ Dod::BufferUtils::get(this->configContext.descriptions, itemTypeId).size };
             const auto materialId{ std::hash<std::string_view>{}(texture.internalData.data()) };
 
             const auto bAllowSpawn{
@@ -35,6 +36,7 @@ namespace Game::ExecutionBlock
             Dod::BufferUtils::populate(this->internalContext.types, itemTypeId, bAllowSpawn);
             Dod::BufferUtils::populate(this->internalContext.materialIds, materialId, bAllowSpawn);
             Dod::BufferUtils::populate(this->internalContext.timeLeft, this->configContext.lifetime, bAllowSpawn);
+            Dod::BufferUtils::populate(this->internalContext.sizes, size, bAllowSpawn);
 
         }
 
@@ -63,7 +65,7 @@ namespace Game::ExecutionBlock
             const auto itemId{ Dod::BufferUtils::get(this->tempContext.pickupIds, elId) };
 
             Game::Perks::Desc perk;
-            perk.type = 1;
+            perk.type = Dod::BufferUtils::get(this->internalContext.types, itemId) + 1;
             perk.coord = Dod::BufferUtils::get(this->internalContext.positions, itemId);
 
             Dod::BufferUtils::populate(this->perksCmdsContext.perksToActivate, perk, true);
@@ -83,6 +85,7 @@ namespace Game::ExecutionBlock
         Dod::BufferUtils::remove(this->internalContext.types, Dod::BufferUtils::createImFromBuffer(this->tempContext.pickupIds));
         Dod::BufferUtils::remove(this->internalContext.positions, Dod::BufferUtils::createImFromBuffer(this->tempContext.pickupIds));
         Dod::BufferUtils::remove(this->internalContext.timeLeft, Dod::BufferUtils::createImFromBuffer(this->tempContext.pickupIds));
+        Dod::BufferUtils::remove(this->internalContext.sizes, Dod::BufferUtils::createImFromBuffer(this->tempContext.pickupIds));
 
         Dod::Algorithms::getSortedIndices(this->tempContext.sortedIds, Dod::BufferUtils::createImFromBuffer(this->internalContext.materialIds));
         const auto sortedMaterials{ Dod::BufferUtils::createSortedImBuffer(
@@ -105,10 +108,11 @@ namespace Game::ExecutionBlock
                 const auto sortedId{ Dod::BufferUtils::get(this->tempContext.sortedIds, globalElId) };
 
                 const auto position{ Dod::BufferUtils::get(this->internalContext.positions, sortedId) };
+                const auto size{ Dod::BufferUtils::get(this->internalContext.sizes, sortedId) };
 
                 ProtoRenderer::transform_t transform;
                 transform.translate({ position.x, position.y });
-                transform.scale({ 16.f, 16.f });
+                transform.scale({ size, size });
 
                 Dod::BufferUtils::populate(this->renderCmdsContext.commands, { transform }, true);
 

@@ -150,6 +150,7 @@
     <ClCompile Include="src\contexts\DecalsInternalContext.cpp" />
     <ClCompile Include="src\contexts\ElementsContext.cpp" />
     <ClCompile Include="src\contexts\EnemiesContext.cpp" />
+    <ClCompile Include="src\contexts\EnemiesInternalContext.cpp" />
     <ClCompile Include="src\contexts\EnemiesParametersContext.cpp" />
     <ClCompile Include="src\contexts\EnemiesStateContext.cpp" />
     <ClCompile Include="src\contexts\ExplosionsCmdsContext.cpp" />
@@ -225,6 +226,7 @@
     <ClInclude Include="src\contexts\DecalsInternalContext.h" />
     <ClInclude Include="src\contexts\ElementsContext.h" />
     <ClInclude Include="src\contexts\EnemiesContext.h" />
+    <ClInclude Include="src\contexts\EnemiesInternalContext.h" />
     <ClInclude Include="src\contexts\EnemiesParametersContext.h" />
     <ClInclude Include="src\contexts\EnemiesStateContext.h" />
     <ClInclude Include="src\contexts\ExplosionsCmdsContext.h" />

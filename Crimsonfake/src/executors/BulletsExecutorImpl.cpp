@@ -40,18 +40,21 @@ namespace Game::ExecutionBlock
         Dod::BufferUtils::remove(this->activeContext.textureNames, Dod::BufferUtils::createImFromBuffer(this->toRemoveContext.ids));
         Dod::BufferUtils::remove(this->activeContext.timeLeft, Dod::BufferUtils::createImFromBuffer(this->toRemoveContext.ids));
         Dod::BufferUtils::remove(this->activeContext.velocity, Dod::BufferUtils::createImFromBuffer(this->toRemoveContext.ids));
+        Dod::BufferUtils::remove(this->activeContext.type, Dod::BufferUtils::createImFromBuffer(this->toRemoveContext.ids));
 
         const auto toCreateTextureIds{ Dod::SharedContext::get(this->toCreateContext).textureNames };
         const auto toCreateVelocitys{ Dod::SharedContext::get(this->toCreateContext).velocity };
         const auto toCreateAngles{ Dod::SharedContext::get(this->toCreateContext).angle };
         const auto toCreateCoords{ Dod::SharedContext::get(this->toCreateContext).position };
         const auto toCreateTimeLeft{ Dod::SharedContext::get(this->toCreateContext).timeLeft };
+        const auto toCreateTypes{ Dod::SharedContext::get(this->toCreateContext).type };
 
         Dod::BufferUtils::append(this->activeContext.textureNames, Dod::BufferUtils::createImFromBuffer(toCreateTextureIds));
         Dod::BufferUtils::append(this->activeContext.velocity, Dod::BufferUtils::createImFromBuffer(toCreateVelocitys));
         Dod::BufferUtils::append(this->activeContext.angle, Dod::BufferUtils::createImFromBuffer(toCreateAngles));
         Dod::BufferUtils::append(this->activeContext.position, Dod::BufferUtils::createImFromBuffer(toCreateCoords));
         Dod::BufferUtils::append(this->activeContext.timeLeft, Dod::BufferUtils::createImFromBuffer(toCreateTimeLeft));
+        Dod::BufferUtils::append(this->activeContext.type, Dod::BufferUtils::createImFromBuffer(toCreateTypes));
 
         for (int32_t bulletId{}; bulletId < Dod::BufferUtils::getNumFilledElements(this->activeContext.textureNames); ++bulletId)
         {
@@ -104,7 +107,9 @@ namespace Game::ExecutionBlock
 
             collision.x = Dod::BufferUtils::get(this->activeContext.position, bulletId).x;
             collision.y = Dod::BufferUtils::get(this->activeContext.position, bulletId).y;
+            const auto type{ Dod::BufferUtils::get(this->activeContext.type, bulletId) };
             Dod::BufferUtils::populate(this->collisionsOutputContext.playerBullets, collision, true);
+            Dod::BufferUtils::populate(this->collisionsOutputContext.bulletType, type, true);
 
         }
 

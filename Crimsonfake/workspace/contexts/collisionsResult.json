@@ -19,6 +19,12 @@
             "dataType": "Types::Coord::Vec2f",
             "name": "hitDirection",
             "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "bulletTypes",
+            "capacity": 128
         }
     ]
 }

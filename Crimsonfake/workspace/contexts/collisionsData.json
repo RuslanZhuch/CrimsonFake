@@ -10,6 +10,12 @@
         },
         {
             "type": "dbbuffer",
+            "dataType": "int32_t",
+            "name": "bulletType",
+            "capacity": 128
+        },
+        {
+            "type": "dbbuffer",
             "dataType": "Types::Collision::Circle",
             "name": "enemies",
             "capacity": 128

@@ -249,6 +249,9 @@
     <ClCompile Include="src\executors\RenderExecutor.cpp">
       <Filter>src\generated\executors</Filter>
     </ClCompile>
+    <ClCompile Include="src\contexts\EnemiesInternalContext.cpp">
+      <Filter>src\generated\contexts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\contexts\ApplicationContext.h">
@@ -421,6 +424,9 @@
     </ClInclude>
     <ClInclude Include="src\executors\AssetsExecutor.h">
       <Filter>src\generated\executors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\contexts\EnemiesInternalContext.h">
+      <Filter>src\generated\contexts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

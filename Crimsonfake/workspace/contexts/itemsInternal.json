@@ -29,6 +29,12 @@
         {
             "type": "dbbuffer",
             "dataType": "float",
+            "name": "sizes",
+            "capacity": 16
+        },
+        {
+            "type": "dbbuffer",
+            "dataType": "float",
             "name": "timeLeft",
             "capacity": 16
         }
