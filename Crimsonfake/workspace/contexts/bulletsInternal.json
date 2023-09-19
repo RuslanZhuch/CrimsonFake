@@ -11,20 +11,18 @@
         {
             "type": "dbbuffer",
             "dataType": "int32_t",
-            "name": "batchGlobalOffsets",
-            "capacity": 16
-        },
-        {
-            "type": "dbbuffer",
-            "dataType": "int32_t",
             "name": "batchTotalElements",
             "capacity": 16
         },
         {
-            "type": "dbbuffer",
-            "dataType": "uint64_t",
-            "name": "batchMaterialIds",
-            "capacity": 16
+            "type": "data",
+            "dataTypeList": {
+                "textureNames": "uint64_t",
+                "batchGlobalOffsets": "int32_t",
+                "batchMaterialIds": "uint64_t"             
+            },
+            "capacity": 16,
+            "name": "batchData"
         }
     ]
 }

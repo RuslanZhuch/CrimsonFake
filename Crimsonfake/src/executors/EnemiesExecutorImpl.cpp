@@ -68,8 +68,7 @@ namespace Game::ExecutionBlock
         {
 
             const auto weaponConfig{ Dod::DataUtils::get(this->weaponsConfigContext.descriptions, elId) };
-            Dod::DataUtils::populate(this->internalContext.bulletsDamage, weaponConfig.damage, true);
-            Dod::DataUtils::populate(this->internalContext.weaponTypes, weaponConfig.type, true);
+            Game::Context::EnemiesInternal::addData(this->internalContext, weaponConfig.damage, weaponConfig.type);
 
         }
 
@@ -116,14 +115,16 @@ namespace Game::ExecutionBlock
         Dod::DataUtils::append(this->toHitContext.ids, Dod::DataUtils::createImFromBuffer(collisions));
         const auto bulletTypes{ Dod::SharedContext::get(this->collisionsInputContext).bulletTypes };
 
+        const auto configData{ Game::Context::EnemiesInternal::getData(this->internalContext) };
+
         for (int32_t id{}; id < Dod::DataUtils::getNumFilledElements(this->toHitContext.ids); ++id)
         {
             const auto enemyId{ Dod::DataUtils::get(this->toHitContext.ids, id) };
             const auto bulletType{ Dod::DataUtils::get(bulletTypes, id) };
             Dod::DataUtils::get(this->spidersContext.health, enemyId) -= getBulletDamage(
                 bulletType,
-                Dod::DataUtils::createImFromBuffer(this->internalContext.weaponTypes),
-                Dod::DataUtils::createImFromBuffer(this->internalContext.bulletsDamage)
+                Dod::DataUtils::createImFromBuffer(configData.weaponTypes),
+                Dod::DataUtils::createImFromBuffer(configData.bulletsDamage)
             );
         }
 

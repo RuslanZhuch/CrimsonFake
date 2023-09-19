@@ -47,16 +47,15 @@ namespace Game::ExecutionBlock
                 const auto randSpread{ static_cast<float>(rand() % (spreadInGrad + 1)) * pi / 180.f };
                 const auto spreadAngle{ initialAngle + randSpread - randSpread / 2.f };
 
-                Dod::DataUtils::populate(this->bulletsToCreateContext.angle, spreadAngle, true);
-                Dod::DataUtils::populate(this->bulletsToCreateContext.position, Types::Coord::Vec2f(
-                    cmd.spawnCoord.x,
-                    cmd.spawnCoord.y
-                ), true);
                 const auto bulletKey{ std::hash<std::string_view>{}(this->weaponStateContext.currentDesc.bulletTextureName.internalData.data()) };
-                Dod::DataUtils::populate(this->bulletsToCreateContext.textureNames, bulletKey, true);
-                Dod::DataUtils::populate(this->bulletsToCreateContext.velocity, this->weaponStateContext.currentDesc.bulletVelocity, true);
-                Dod::DataUtils::populate(this->bulletsToCreateContext.timeLeft, this->weaponStateContext.currentDesc.bulletLifeTime, true);
-                Dod::DataUtils::populate(this->bulletsToCreateContext.type, this->weaponStateContext.currentDesc.type, true);
+                Game::Context::Bullets::addStates(this->bulletsToCreateContext,
+                    bulletKey,
+                    this->weaponStateContext.currentDesc.bulletVelocity,
+                    Types::Coord::Vec2f(cmd.spawnCoord.x, cmd.spawnCoord.y),
+                    spreadAngle,
+                    this->weaponStateContext.currentDesc.bulletLifeTime,
+                    this->weaponStateContext.currentDesc.type
+                );
             }
             this->weaponStateContext.fireDelayLeft += this->weaponStateContext.currentDesc.fireDelay * bCanShoot;
             this->weaponStateContext.shotsLeft -= bCanShoot;

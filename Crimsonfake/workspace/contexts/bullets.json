@@ -3,40 +3,17 @@
     "version": 1,
     "data": [
         {
-            "type": "dbbuffer",
-            "dataType": "uint64_t",
-            "name": "textureNames",
-            "capacity": 128
-        },
-        {
-            "type": "dbbuffer",
-            "dataType": "float",
-            "name": "velocity",
-            "capacity": 128
-        },
-        {
-            "type": "dbbuffer",
-            "dataType": "Types::Coord::Vec2f",
-            "name": "position",
-            "capacity": 128
-        },
-        {
-            "type": "dbbuffer",
-            "dataType": "float",
-            "name": "angle",
-            "capacity": 128
-        },
-        {
-            "type": "dbbuffer",
-            "dataType": "float",
-            "name": "timeLeft",
-            "capacity": 128
-        },
-        {
-            "type": "dbbuffer",
-            "dataType": "int32_t",
-            "name": "type",
-            "capacity": 128
+            "type": "data",
+            "dataTypeList": {
+                "textureNames": "uint64_t",
+                "velocity": "float",
+                "position": "Types::Coord::Vec2f",
+                "angle": "float",
+                "timeLeft": "float",
+                "type": "int32_t"                
+            },
+            "capacity": 128,
+            "name": "states"
         }
     ]
 }

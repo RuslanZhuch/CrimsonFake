@@ -3,15 +3,12 @@
     "version": 1,
     "data": [
         {
-            "type": "dbbuffer",
-            "dataType": "int32_t",
-            "name": "bulletsDamage",
-            "capacity": 16
-        },
-        {
-            "type": "dbbuffer",
-            "dataType": "int32_t",
-            "name": "weaponTypes",
+            "type": "data",
+            "dataTypeList": {
+                "bulletsDamage": "int32_t",
+                "weaponTypes": "int32_t"
+            },
+            "name": "data",
             "capacity": 16
         }
     ]

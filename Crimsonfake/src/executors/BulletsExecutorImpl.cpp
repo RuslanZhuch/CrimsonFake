@@ -22,62 +22,48 @@ namespace Game::ExecutionBlock
         const auto collisions{ Dod::SharedContext::get(this->collisionsInputContext).bulletIds };
         Dod::DataUtils::append(this->toRemoveContext.ids, Dod::DataUtils::createImFromBuffer(collisions));
 
-        for (int32_t bulletId{}; bulletId < Dod::DataUtils::getNumFilledElements(this->activeContext.timeLeft); ++bulletId)
+        const auto prevActiveBullets{ Game::Context::Bullets::getStates(this->activeContext) };
+
+        for (int32_t bulletId{}; bulletId < Dod::DataUtils::getNumFilledElements(prevActiveBullets.timeLeft); ++bulletId)
         {
-            Dod::DataUtils::get(this->activeContext.timeLeft, bulletId) -= dt;
+            Dod::DataUtils::get(prevActiveBullets.timeLeft, bulletId) -= dt;
         }
 
-        for (int32_t bulletId{}; bulletId < Dod::DataUtils::getNumFilledElements(this->activeContext.timeLeft); ++bulletId)
+        for (int32_t bulletId{}; bulletId < Dod::DataUtils::getNumFilledElements(prevActiveBullets.timeLeft); ++bulletId)
         {
-            const auto timeLeft{ Dod::DataUtils::get(this->activeContext.timeLeft, bulletId) };
+            const auto timeLeft{ Dod::DataUtils::get(prevActiveBullets.timeLeft, bulletId) };
             Dod::DataUtils::populate(this->toRemoveContext.ids, bulletId, timeLeft <= 0.f);
         }
 
         Dod::Algorithms::leftUniques(this->toRemoveContext.ids);
 
-        Dod::DataUtils::remove(this->activeContext.angle, Dod::DataUtils::createImFromBuffer(this->toRemoveContext.ids));
-        Dod::DataUtils::remove(this->activeContext.position, Dod::DataUtils::createImFromBuffer(this->toRemoveContext.ids));
-        Dod::DataUtils::remove(this->activeContext.textureNames, Dod::DataUtils::createImFromBuffer(this->toRemoveContext.ids));
-        Dod::DataUtils::remove(this->activeContext.timeLeft, Dod::DataUtils::createImFromBuffer(this->toRemoveContext.ids));
-        Dod::DataUtils::remove(this->activeContext.velocity, Dod::DataUtils::createImFromBuffer(this->toRemoveContext.ids));
-        Dod::DataUtils::remove(this->activeContext.type, Dod::DataUtils::createImFromBuffer(this->toRemoveContext.ids));
+        Dod::DataUtils::remove(this->activeContext.states, Dod::DataUtils::createImFromBuffer(this->toRemoveContext.ids));
+        Dod::DataUtils::append(this->activeContext.states, this->toCreateContext->context.states);
 
-        const auto toCreateTextureIds{ Dod::SharedContext::get(this->toCreateContext).textureNames };
-        const auto toCreateVelocitys{ Dod::SharedContext::get(this->toCreateContext).velocity };
-        const auto toCreateAngles{ Dod::SharedContext::get(this->toCreateContext).angle };
-        const auto toCreateCoords{ Dod::SharedContext::get(this->toCreateContext).position };
-        const auto toCreateTimeLeft{ Dod::SharedContext::get(this->toCreateContext).timeLeft };
-        const auto toCreateTypes{ Dod::SharedContext::get(this->toCreateContext).type };
-
-        Dod::DataUtils::append(this->activeContext.textureNames, Dod::DataUtils::createImFromBuffer(toCreateTextureIds));
-        Dod::DataUtils::append(this->activeContext.velocity, Dod::DataUtils::createImFromBuffer(toCreateVelocitys));
-        Dod::DataUtils::append(this->activeContext.angle, Dod::DataUtils::createImFromBuffer(toCreateAngles));
-        Dod::DataUtils::append(this->activeContext.position, Dod::DataUtils::createImFromBuffer(toCreateCoords));
-        Dod::DataUtils::append(this->activeContext.timeLeft, Dod::DataUtils::createImFromBuffer(toCreateTimeLeft));
-        Dod::DataUtils::append(this->activeContext.type, Dod::DataUtils::createImFromBuffer(toCreateTypes));
-
-        for (int32_t bulletId{}; bulletId < Dod::DataUtils::getNumFilledElements(this->activeContext.textureNames); ++bulletId)
+        const auto activeBullets{ Game::Context::Bullets::getStates(this->activeContext) };
+        for (int32_t bulletId{}; bulletId < Dod::DataUtils::getNumFilledElements(activeBullets.textureNames); ++bulletId)
         {
 
-            const auto angle{ Dod::DataUtils::get(this->activeContext.angle, bulletId) };
-            const auto velocity{ Dod::DataUtils::get(this->activeContext.velocity, bulletId) };
+            const auto angle{ Dod::DataUtils::get(activeBullets.angle, bulletId) };
+            const auto velocity{ Dod::DataUtils::get(activeBullets.velocity, bulletId) };
 
             const auto dx{ sinf(angle) * velocity * dt };
             const auto dy{ -cosf(angle) * velocity * dt };
 
-            Dod::DataUtils::get(this->activeContext.position, bulletId).x += dx;
-            Dod::DataUtils::get(this->activeContext.position, bulletId).y += dy;
+            Dod::DataUtils::get(activeBullets.position, bulletId).x += dx;
+            Dod::DataUtils::get(activeBullets.position, bulletId).y += dy;
 
         }
 
         Types::Render::Cmd cmd;
 
-        Dod::Algorithms::getSortedIndices(this->internalContext.sortedByMaterial, Dod::DataUtils::createImFromBuffer(this->activeContext.textureNames));
+        Dod::Algorithms::getSortedIndices(this->internalContext.sortedByMaterial, Dod::DataUtils::createImFromBuffer(activeBullets.textureNames));
         
         const auto sortedMaterials{ Dod::DataUtils::createSortedImBuffer(
-            Dod::DataUtils::createImFromBuffer(this->activeContext.textureNames),
+            Dod::DataUtils::createImFromBuffer(activeBullets.textureNames),
             Dod::DataUtils::createImFromBuffer(this->internalContext.sortedByMaterial) 
         )};
+
         Dod::Algorithms::countUniques(this->internalContext.batchTotalElements, sortedMaterials);
 
         for (int32_t batchElId{}, globalBulletId{}; globalBulletId < Dod::DataUtils::getNumFilledElements(sortedMaterials); ++batchElId)
@@ -89,10 +75,10 @@ namespace Game::ExecutionBlock
             {
                 const auto sortedBulletId{ Dod::DataUtils::get(this->internalContext.sortedByMaterial, globalBulletId) };
                 cmd.transform = ProtoRenderer::transform_t();
-                const auto coord{ Dod::DataUtils::get(this->activeContext.position, sortedBulletId) };
+                const auto coord{ Dod::DataUtils::get(activeBullets.position, sortedBulletId) };
                 cmd.transform.translate({ coord.x, coord.y });
                 cmd.transform.scale({ 32.f, 32.f });
-                cmd.transform.rotate(Dod::DataUtils::get(this->activeContext.angle, sortedBulletId) * 180.f / pi);
+                cmd.transform.rotate(Dod::DataUtils::get(activeBullets.angle, sortedBulletId) * 180.f / pi);
                 Dod::DataUtils::populate(this->renderCmdsContext.commands, cmd, true);
             }
             Dod::DataUtils::populate(this->renderCmdsContext.batchMaterial, textureId, true);
@@ -102,12 +88,12 @@ namespace Game::ExecutionBlock
 
         Types::Collision::Circle collision;
         collision.r = 16.f;
-        for (int32_t bulletId{}; bulletId < Dod::DataUtils::getNumFilledElements(this->activeContext.textureNames); ++bulletId)
+        for (int32_t bulletId{}; bulletId < Dod::DataUtils::getNumFilledElements(this->activeContext.states); ++bulletId)
         {
 
-            collision.x = Dod::DataUtils::get(this->activeContext.position, bulletId).x;
-            collision.y = Dod::DataUtils::get(this->activeContext.position, bulletId).y;
-            const auto type{ Dod::DataUtils::get(this->activeContext.type, bulletId) };
+            collision.x = Dod::DataUtils::get(activeBullets.position, bulletId).x;
+            collision.y = Dod::DataUtils::get(activeBullets.position, bulletId).y;
+            const auto type{ Dod::DataUtils::get(activeBullets.type, bulletId) };
             Dod::DataUtils::populate(this->collisionsOutputContext.playerBullets, collision, true);
             Dod::DataUtils::populate(this->collisionsOutputContext.bulletType, type, true);
 
