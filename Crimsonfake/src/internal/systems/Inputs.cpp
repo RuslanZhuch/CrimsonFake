@@ -62,7 +62,7 @@ int32_t Game::Inputs::computeFireComponent(uint32_t currentInputs, uint32_t prev
 
     std::array<int32_t, 16> qValuesMem;
     Dod::DBBuffer<int32_t> qValues;
-    Dod::BufferUtils::initFromArray(qValues, qValuesMem);
+    Dod::DataUtils::initFromArray(qValues, qValuesMem);
 
     Dod::CondTable::populateQuery(qValues, inputs, table);
 
@@ -73,7 +73,7 @@ int32_t Game::Inputs::computeFireComponent(uint32_t currentInputs, uint32_t prev
     }) };
 
     int32_t fireComponent{};
-    Dod::CondTable::applyTransform<int32_t, int32_t>(fireComponent, transformOutputs, Dod::BufferUtils::createImFromBuffer(qValues));
+    Dod::CondTable::applyTransform<int32_t, int32_t>(fireComponent, transformOutputs, Dod::DataUtils::createImFromBuffer(qValues));
 
     return fireComponent;
 
@@ -104,7 +104,7 @@ float computePartialMoveComponent(uint32_t currentInputs, uint32_t prevInputs, f
 
     std::array<int32_t, 16> qValuesMem;
     Dod::DBBuffer<int32_t> qValues;
-    Dod::BufferUtils::initFromArray(qValues, qValuesMem);
+    Dod::DataUtils::initFromArray(qValues, qValuesMem);
 
     Dod::CondTable::populateQuery(qValues, inputs, table);
 
@@ -116,7 +116,7 @@ float computePartialMoveComponent(uint32_t currentInputs, uint32_t prevInputs, f
     }) };
 
     float moveComponent{ prevMovement };
-    Dod::CondTable::applyTransform<int32_t, float>(moveComponent, transformOutputs, Dod::BufferUtils::createImFromBuffer(qValues));
+    Dod::CondTable::applyTransform<int32_t, float>(moveComponent, transformOutputs, Dod::DataUtils::createImFromBuffer(qValues));
 
     return moveComponent;
 

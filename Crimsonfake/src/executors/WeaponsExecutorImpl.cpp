@@ -16,9 +16,9 @@ namespace Game::ExecutionBlock
     void Weapons::initImpl() noexcept
     {
 
-        if (Dod::BufferUtils::getNumFilledElements(this->configContext.descriptions) > 0)
+        if (Dod::DataUtils::getNumFilledElements(this->configContext.descriptions) > 0)
         {
-            this->weaponStateContext.currentDesc = Dod::BufferUtils::get(this->configContext.descriptions, 0);
+            this->weaponStateContext.currentDesc = Dod::DataUtils::get(this->configContext.descriptions, 0);
             this->weaponStateContext.shotsLeft = this->weaponStateContext.currentDesc.totalShots;
         }
 
@@ -33,10 +33,10 @@ namespace Game::ExecutionBlock
         };
 
         const auto commands{ Dod::SharedContext::get(this->commandsContext).commands };
-        for (int32_t commandId{}; commandId < Dod::BufferUtils::getNumFilledElements(commands); ++commandId)
+        for (int32_t commandId{}; commandId < Dod::DataUtils::getNumFilledElements(commands); ++commandId)
         {
 
-            const auto cmd{ Dod::BufferUtils::get(commands, commandId) };
+            const auto cmd{ Dod::DataUtils::get(commands, commandId) };
 
             const auto numOfBullets{ weaponStateContext.currentDesc.bulletsPerShot };
             const auto initialAngle{ cmd.angle };
@@ -47,16 +47,16 @@ namespace Game::ExecutionBlock
                 const auto randSpread{ static_cast<float>(rand() % (spreadInGrad + 1)) * pi / 180.f };
                 const auto spreadAngle{ initialAngle + randSpread - randSpread / 2.f };
 
-                Dod::BufferUtils::populate(this->bulletsToCreateContext.angle, spreadAngle, true);
-                Dod::BufferUtils::populate(this->bulletsToCreateContext.position, Types::Coord::Vec2f(
+                Dod::DataUtils::populate(this->bulletsToCreateContext.angle, spreadAngle, true);
+                Dod::DataUtils::populate(this->bulletsToCreateContext.position, Types::Coord::Vec2f(
                     cmd.spawnCoord.x,
                     cmd.spawnCoord.y
                 ), true);
                 const auto bulletKey{ std::hash<std::string_view>{}(this->weaponStateContext.currentDesc.bulletTextureName.internalData.data()) };
-                Dod::BufferUtils::populate(this->bulletsToCreateContext.textureNames, bulletKey, true);
-                Dod::BufferUtils::populate(this->bulletsToCreateContext.velocity, this->weaponStateContext.currentDesc.bulletVelocity, true);
-                Dod::BufferUtils::populate(this->bulletsToCreateContext.timeLeft, this->weaponStateContext.currentDesc.bulletLifeTime, true);
-                Dod::BufferUtils::populate(this->bulletsToCreateContext.type, this->weaponStateContext.currentDesc.type, true);
+                Dod::DataUtils::populate(this->bulletsToCreateContext.textureNames, bulletKey, true);
+                Dod::DataUtils::populate(this->bulletsToCreateContext.velocity, this->weaponStateContext.currentDesc.bulletVelocity, true);
+                Dod::DataUtils::populate(this->bulletsToCreateContext.timeLeft, this->weaponStateContext.currentDesc.bulletLifeTime, true);
+                Dod::DataUtils::populate(this->bulletsToCreateContext.type, this->weaponStateContext.currentDesc.type, true);
             }
             this->weaponStateContext.fireDelayLeft += this->weaponStateContext.currentDesc.fireDelay * bCanShoot;
             this->weaponStateContext.shotsLeft -= bCanShoot;
@@ -65,20 +65,20 @@ namespace Game::ExecutionBlock
 
         if (this->weaponStateContext.shotsLeft <= 0)
         {
-            this->weaponStateContext.currentDesc = Dod::BufferUtils::get(this->configContext.descriptions, 0);
+            this->weaponStateContext.currentDesc = Dod::DataUtils::get(this->configContext.descriptions, 0);
             this->weaponStateContext.shotsLeft = this->weaponStateContext.currentDesc.totalShots;
         }
 
         const auto switchCmds{ Dod::SharedContext::get(this->commandsContext).setWeaponType };
-        for (int32_t commandId{}; commandId < Dod::BufferUtils::getNumFilledElements(switchCmds); ++commandId)
+        for (int32_t commandId{}; commandId < Dod::DataUtils::getNumFilledElements(switchCmds); ++commandId)
         {
-            const auto switchType{ Dod::BufferUtils::get(switchCmds, commandId) };
-            for (int32_t descId{}; descId < Dod::BufferUtils::getNumFilledElements(this->configContext.descriptions); ++descId)
+            const auto switchType{ Dod::DataUtils::get(switchCmds, commandId) };
+            for (int32_t descId{}; descId < Dod::DataUtils::getNumFilledElements(this->configContext.descriptions); ++descId)
             {
-                const auto type{ Dod::BufferUtils::get(this->configContext.descriptions, descId).type };
+                const auto type{ Dod::DataUtils::get(this->configContext.descriptions, descId).type };
                 if (switchType != type)
                     continue;
-                this->weaponStateContext.currentDesc = Dod::BufferUtils::get(this->configContext.descriptions, descId);
+                this->weaponStateContext.currentDesc = Dod::DataUtils::get(this->configContext.descriptions, descId);
                 this->weaponStateContext.shotsLeft = this->weaponStateContext.currentDesc.totalShots;
                 break;
             }

@@ -21,9 +21,9 @@ namespace Game::ExecutionBlock
         const auto spawnX{ playerX + localXOffset };
         const auto spawnY{ playerY + localYOffset };
 
-        Dod::BufferUtils::populate(toSpawnContext.position, Types::Coord::Vec2f(spawnX, spawnY), bNeedToSpawn);
-        Dod::BufferUtils::populate(toSpawnContext.angle, 0.f, bNeedToSpawn);
-        Dod::BufferUtils::populate(toSpawnContext.health, 5, bNeedToSpawn);
+        Dod::DataUtils::populate(toSpawnContext.position, Types::Coord::Vec2f(spawnX, spawnY), bNeedToSpawn);
+        Dod::DataUtils::populate(toSpawnContext.angle, 0.f, bNeedToSpawn);
+        Dod::DataUtils::populate(toSpawnContext.health, 5, bNeedToSpawn);
         toSpawnContext.type = 1;
     }
 

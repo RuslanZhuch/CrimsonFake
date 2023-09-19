@@ -17,14 +17,14 @@ namespace Game::ExecutionBlock
         const auto bullets{ Dod::SharedContext::get(this->inputContext).playerBullets };
         const auto types{ Dod::SharedContext::get(this->inputContext).bulletType };
         const auto enemies{ Dod::SharedContext::get(this->inputContext).enemies };
-        for (int32_t bulletId{}; bulletId < Dod::BufferUtils::getNumFilledElements(bullets); ++bulletId)
+        for (int32_t bulletId{}; bulletId < Dod::DataUtils::getNumFilledElements(bullets); ++bulletId)
         {
-            const auto& bullet{ Dod::BufferUtils::get(bullets, bulletId) };
-            const auto type{ Dod::BufferUtils::get(types, bulletId) };
+            const auto& bullet{ Dod::DataUtils::get(bullets, bulletId) };
+            const auto type{ Dod::DataUtils::get(types, bulletId) };
 
-            for (int32_t enemyId{}; enemyId < Dod::BufferUtils::getNumFilledElements(enemies); ++enemyId)
+            for (int32_t enemyId{}; enemyId < Dod::DataUtils::getNumFilledElements(enemies); ++enemyId)
             {
-                const auto& enemy{ Dod::BufferUtils::get(enemies, enemyId) };
+                const auto& enemy{ Dod::DataUtils::get(enemies, enemyId) };
 
                 const auto vecX{ enemy.x - bullet.x };
                 const auto vecY{ enemy.y - bullet.y };
@@ -36,10 +36,10 @@ namespace Game::ExecutionBlock
                 const auto dirY{ vecY / (distance + 0.01f) };
 
 
-                Dod::BufferUtils::populate(this->outputContext.enemyIds, enemyId, bCollide);
-                Dod::BufferUtils::populate(this->outputContext.hitDirection, Types::Coord::Vec2f(dirX, dirY), bCollide);
-                Dod::BufferUtils::populate(this->outputContext.bulletIds, bulletId, bCollide);
-                Dod::BufferUtils::populate(this->outputContext.bulletTypes, type, bCollide);
+                Dod::DataUtils::populate(this->outputContext.enemyIds, enemyId, bCollide);
+                Dod::DataUtils::populate(this->outputContext.hitDirection, Types::Coord::Vec2f(dirX, dirY), bCollide);
+                Dod::DataUtils::populate(this->outputContext.bulletIds, bulletId, bCollide);
+                Dod::DataUtils::populate(this->outputContext.bulletTypes, type, bCollide);
             }
         }
     }

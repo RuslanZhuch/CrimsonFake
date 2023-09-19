@@ -23,7 +23,7 @@ namespace Game::ExecutionBlock
             Types::Render::CreateTextureCmd cmd;
             const auto name{ path.filename().string() };
             Engine::StringUtils::assign(cmd.filename, name.c_str());
-            Dod::BufferUtils::populate(this->renderCmdsContext.createTextureCmds, cmd, true);
+            Dod::DataUtils::populate(this->renderCmdsContext.createTextureCmds, cmd, true);
         }
 
     }

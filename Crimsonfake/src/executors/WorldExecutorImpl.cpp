@@ -28,12 +28,12 @@ namespace Game::ExecutionBlock
                 cmd.transform.translate({ xCoord, yCoord });
                 const auto scale{ static_cast<float>(this->worldContext.size / 2) };
                 cmd.transform.scale({ scale, scale });
-                Dod::BufferUtils::populate(this->renderCmdsContext.commands, cmd, true);
+                Dod::DataUtils::populate(this->renderCmdsContext.commands, cmd, true);
             }
         }
-        Dod::BufferUtils::populate(this->renderCmdsContext.batchMaterial, textureNamekey, true);
-        Dod::BufferUtils::populate(this->renderCmdsContext.batchDepth, -10, true);
-        Dod::BufferUtils::populate(this->renderCmdsContext.batches, { numOfTiles * numOfTiles }, true);
+        Dod::DataUtils::populate(this->renderCmdsContext.batchMaterial, textureNamekey, true);
+        Dod::DataUtils::populate(this->renderCmdsContext.batchDepth, -10, true);
+        Dod::DataUtils::populate(this->renderCmdsContext.batches, { numOfTiles * numOfTiles }, true);
 
     }
 

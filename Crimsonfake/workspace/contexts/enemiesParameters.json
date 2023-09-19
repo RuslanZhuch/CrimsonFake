@@ -36,7 +36,7 @@
             "type": "object",
             "dataType": "float",
             "name": "itemSpawnProbability",
-            "initial": 0.1
+            "initial": 1
         }
     ]
 }
